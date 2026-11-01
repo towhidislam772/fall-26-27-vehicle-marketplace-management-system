@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | DriveHub</title>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <img src="image/logo.png" alt="DriveHub Logo" width="120" height="120">
+        <h1>DriveHub Vehicle Marketplace</h1>
+        <h3>Admin Dashboard</h3>
+        <h5>Logged in as: Md. Murad Hasan</h5>
+        <h5>Admin ID: ADM-001 | Role: Platform Administrator | Last login: 28 October 2026, 9:14 AM</h5>
+        <a href="login.html">Logout</a>
+    </header>
+
+    <nav class="section-nav">
+        <a href="#overviewSection">Overview</a>
+        |
+        <a href="#userSection">User Accounts</a>
+        |
+        <a href="#auditSection">Audit Log</a>
+        |
+        <a href="#analyticsSection">Analytics</a>
+        |
+        <a href="#exportSection">Export Data</a>
+    </nav>
+
+    <main class="container">
+
+        <section class="page-section" id="overviewSection">
+
+        <h2>Overview</h2>
+
+        <table border="1">
+            <caption>DriveHub at a Glance</caption>
+            <tr>
+                <th>Metric</th>
+                <th>Total</th>
+                <th>This Month</th>
+                <th>Change</th>
+            </tr>
+            <tr>
+                <td>Registered Customers</td>
+                <td>8,420</td>
+                <td>412</td>
+                <td>Up 9 percent</td>
+            </tr>
+            <tr>
+                <td>Approved Vendors</td>
+                <td>64</td>
+                <td>5</td>
+                <td>Up 8 percent</td>
+            </tr>
+            <tr>
+                <td>Active Employees</td>
+                <td>12</td>
+                <td>1</td>
+                <td>Up 1 employee</td>
+            </tr>
+            <tr>
+                <td>Active Listings</td>
+                <td>1,237</td>
+                <td>186</td>
+                <td>Up 14 percent</td>
+            </tr>
+            <tr>
+                <td>Cars Sold</td>
+                <td>912</td>
+                <td>47</td>
+                <td>Up 11 percent</td>
+            </tr>
+            <tr>
+                <td>Platform Revenue (BDT)</td>
+                <td>2,84,50,000</td>
+                <td>18,40,000</td>
+                <td>Up 12 percent</td>
+            </tr>
+        </table>
+
+        <h3>Waiting for My Decision</h3>
+
+        <table border="1">
+            <caption>Pending Admin Actions</caption>
+            <tr>
+                <th>Type</th>
+                <th>Reference</th>
+                <th>Detail</th>
+                <th>Submitted</th>
+            </tr>
+            <tr>
+                <td>Vendor Application</td>
+                <td>VAP-0318</td>
+                <td>Chattogram Auto Mart applied to join as a vendor</td>
+                <td>26 October 2026</td>
+            </tr>
+            <tr>
+                <td>Vendor Application</td>
+                <td>VAP-0319</td>
+                <td>Khulna Motors applied to join as a vendor</td>
+                <td>27 October 2026</td>
+            </tr>
+            <tr>
+                <td>Escalated Inquiry</td>
+                <td>INQ-5519</td>
+                <td>Vendor has not replied for two days</td>
+                <td>26 October 2026</td>
+            </tr>
+            <tr>
+                <td>Account Report</td>
+                <td>USR-4412</td>
+                <td>Customer reported for sending abusive inquiries</td>
+                <td>25 October 2026</td>
+            </tr>
+        </table>
+
+        <h3>My Profile</h3>
+
+        <img src="image/admin-photo.png" alt="Admin Profile Photo" width="150" height="150">
+
+        <form method="post">
+            <fieldset>
+                <legend>Update My Profile</legend>
+                <table>
+                    <tr>
+                        <td><label for="admName">Full Name:</label></td>
+                        <td><input type="text" id="admName" name="admName" value="Md. Murad Hasan" placeholder="Enter your full name" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="admEmail">Work Email:</label></td>
+                        <td><input type="email" id="admEmail" name="admEmail" value="murad.hasan@drivehub.com.bd" placeholder="Enter your work email" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="admPhone">Phone Number:</label></td>
+                        <td><input type="text" id="admPhone" name="admPhone" value="01700000000" placeholder="Enter your phone number" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="admPassword">New Password:</label></td>
+                        <td><input type="password" id="admPassword" name="admPassword" placeholder="Leave blank to keep the current password"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Save Profile">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+        </section>
+
+        <hr>
+
+        <section class="page-section" id="userSection">
+
+        <h2>User Account Management</h2>
+        <p>Create, view, edit, delete and search every account on the platform.</p>
+
+        <h3>Create a New Account</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>New User Account</legend>
+                <table>
+                    <tr>
+                        <td><label for="newUserName">Full Name:</label></td>
+                        <td><input type="text" id="newUserName" name="newUserName" placeholder="Enter the full name" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="newUserEmail">Email:</label></td>
+                        <td><input type="email" id="newUserEmail" name="newUserEmail" placeholder="Enter the email" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="newUserPhone">Phone Number:</label></td>
+                        <td><input type="text" id="newUserPhone" name="newUserPhone" placeholder="Enter the phone number" required></td>
+                    </tr>
+                    <tr>
+                        <td><label>Account Role:</label></td>
+                        <td>
+                            <input type="radio" id="newRoleCustomer" name="newUserRole" value="Customer" required>
+                            <label for="newRoleCustomer">Customer</label>
+                            <input type="radio" id="newRoleVendor" name="newUserRole" value="Vendor">
+                            <label for="newRoleVendor">Vendor</label>
+                            <input type="radio" id="newRoleEmployee" name="newUserRole" value="Employee">
+                            <label for="newRoleEmployee">Employee</label>
+                            <input type="radio" id="newRoleAdmin" name="newUserRole" value="Admin">
+                            <label for="newRoleAdmin">Admin</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="newUserCity">City:</label></td>
+                        <td>
+                            <select id="newUserCity" name="newUserCity">
+                                <option value="">-- Select City --</option>
+                                <option value="Dhaka">Dhaka</option>
+                                <option value="Chattogram">Chattogram</option>
+                                <option value="Sylhet">Sylhet</option>
+                                <option value="Rajshahi">Rajshahi</option>
+                                <option value="Khulna">Khulna</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="newUserDept">Department for Employees:</label></td>
+                        <td>
+                            <select id="newUserDept" name="newUserDept">
+                                <option value="">-- Not Applicable --</option>
+                                <option value="Operations">Customer Operations</option>
+                                <option value="Moderation">Listing Moderation</option>
+                                <option value="Sales">Sales Support</option>
+                                <option value="Technical">Technical Support</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Permissions:</label></td>
+                        <td>
+                            <input type="checkbox" id="permInquiries" name="newUserPerms" value="Inquiries">
+                            <label for="permInquiries">Handle Inquiries</label>
+                            <input type="checkbox" id="permTestDrives" name="newUserPerms" value="Test Drives">
+                            <label for="permTestDrives">Approve Test Drives</label>
+                            <input type="checkbox" id="permModeration" name="newUserPerms" value="Moderation">
+                            <label for="permModeration">Moderate Listings</label>
+                            <input type="checkbox" id="permSales" name="newUserPerms" value="Sales">
+                            <label for="permSales">Manage Sales</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="newUserJoin">Joining Date:</label></td>
+                        <td><input type="date" id="newUserJoin" name="newUserJoin" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="newUserPassword">Temporary Password:</label></td>
+                        <td><input type="password" id="newUserPassword" name="newUserPassword" placeholder="Set a temporary password" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="newUserPhoto">Profile Photo:</label></td>
+                        <td><input type="file" id="newUserPhoto" name="newUserPhoto"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Create Account">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+        <h3>Search User Accounts</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>Search and Filter</legend>
+                <table>
+                    <tr>
+                        <td><label for="searchUser">Name, Email or ID:</label></td>
+                        <td><input type="text" id="searchUser" name="searchUser" placeholder="Enter a name, email or user ID"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="searchRole">Role:</label></td>
+                        <td>
+                            <select id="searchRole" name="searchRole">
+                                <option value="">-- All Roles --</option>
+                                <option value="Customer">Customer</option>
+                                <option value="Vendor">Vendor</option>
+                                <option value="Employee">Employee</option>
+                                <option value="Admin">Admin</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="searchStatus">Status:</label></td>
+                        <td>
+                            <select id="searchStatus" name="searchStatus">
+                                <option value="">-- All Statuses --</option>
+                                <option value="Active">Active</option>
+                                <option value="Suspended">Suspended</option>
+                                <option value="Deactivated">Deactivated</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="searchCity">City:</label></td>
+                        <td>
+                            <select id="searchCity" name="searchCity">
+                                <option value="">-- All Cities --</option>
+                                <option value="Dhaka">Dhaka</option>
+                                <option value="Chattogram">Chattogram</option>
+                                <option value="Sylhet">Sylhet</option>
+                                <option value="Rajshahi">Rajshahi</option>
+                                <option value="Khulna">Khulna</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Search Users">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+        <h3>All User Accounts</h3>
+
+        <table border="1">
+            <caption>Every User on the Platform</caption>
+            <tr>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>City</th>
+                <th>Registered</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>ADM-001</td>
+                <td>Md. Murad Hasan</td>
+                <td>murad.hasan@drivehub.com.bd</td>
+                <td>Admin</td>
+                <td>Dhaka</td>
+                <td>01 January 2023</td>
+                <td>Active</td>
+                <td>Edit</td>
+            </tr>
+            <tr>
+                <td>EMP-104</td>
+                <td>Shafayat Jamil</td>
+                <td>shafayat.jamil@drivehub.com.bd</td>
+                <td>Employee</td>
+                <td>Dhaka</td>
+                <td>11 January 2024</td>
+                <td>Active</td>
+                <td>Edit, Delete</td>
+            </tr>
+            <tr>
+                <td>VEN-2041</td>
+                <td>Rahim Motors</td>
+                <td>info@rahimmotors.com.bd</td>
+                <td>Vendor</td>
+                <td>Dhaka</td>
+                <td>08 February 2019</td>
+                <td>Active</td>
+                <td>Edit, Delete</td>
+            </tr>
+            <tr>
+                <td>VEN-2065</td>
+                <td>Fast Track Autos</td>
+                <td>contact@fasttrack.com.bd</td>
+                <td>Vendor</td>
+                <td>Chattogram</td>
+                <td>22 November 2021</td>
+                <td>Deactivated</td>
+                <td>Edit, Delete</td>
+            </tr>
+            <tr>
+                <td>CUS-10234</td>
+                <td>Mohammed S Hossain</td>
+                <td>customer@drivehub.com.bd</td>
+                <td>Customer</td>
+                <td>Dhaka</td>
+                <td>14 March 2025</td>
+                <td>Active</td>
+                <td>Edit, Delete</td>
+            </tr>
+            <tr>
+                <td>CUS-10891</td>
+                <td>Nusrat Jahan</td>
+                <td>nusrat.j@example.com</td>
+                <td>Customer</td>
+                <td>Dhaka</td>
+                <td>02 July 2025</td>
+                <td>Active</td>
+                <td>Edit, Delete</td>
+            </tr>
+            <tr>
+                <td>USR-4412</td>
+                <td>Jamal Uddin</td>
+                <td>jamal.u@example.com</td>
+                <td>Customer</td>
+                <td>Khulna</td>
+                <td>23 September 2026</td>
+                <td>Suspended</td>
+                <td>Edit, Delete</td>
+            </tr>
+        </table>
+
+        <h3>Edit a User Account</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>Update an Existing Account</legend>
+                <table>
+                    <tr>
+                        <td><label for="editUser">Select User:</label></td>
+                        <td>
+                            <select id="editUser" name="editUser" required>
+                                <option value="">-- Select User --</option>
+                                <option value="EMP-104">EMP-104 Shafayat Jamil</option>
+                                <option value="VEN-2041">VEN-2041 Rahim Motors</option>
+                                <option value="VEN-2065">VEN-2065 Fast Track Autos</option>
+                                <option value="CUS-10234">CUS-10234 Mohammed S Hossain</option>
+                                <option value="USR-4412">USR-4412 Jamal Uddin</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="editUserEmail">New Email:</label></td>
+                        <td><input type="email" id="editUserEmail" name="editUserEmail" placeholder="Leave blank to keep the current email"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="editUserPhone">New Phone Number:</label></td>
+                        <td><input type="text" id="editUserPhone" name="editUserPhone" placeholder="Leave blank to keep the current number"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="editUserStatus">New Status:</label></td>
+                        <td>
+                            <select id="editUserStatus" name="editUserStatus">
+                                <option value="">-- Keep the Current Status --</option>
+                                <option value="Active">Active</option>
+                                <option value="Suspended">Suspended</option>
+                                <option value="Deactivated">Deactivated</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="editUserNote">Reason for the Change:</label></td>
+                        <td><textarea id="editUserNote" name="editUserNote" rows="4" cols="40" placeholder="Required for the audit log"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Update Account">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+        <h3>Delete a User Account</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>Remove an Account</legend>
+                <table>
+                    <tr>
+                        <td><label for="delUser">Select User:</label></td>
+                        <td>
+                            <select id="delUser" name="delUser" required>
+                                <option value="">-- Select User --</option>
+                                <option value="EMP-104">EMP-104 Shafayat Jamil</option>
+                                <option value="VEN-2065">VEN-2065 Fast Track Autos</option>
+                                <option value="CUS-10234">CUS-10234 Mohammed S Hossain</option>
+                                <option value="USR-4412">USR-4412 Jamal Uddin</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="delUserReason">Reason:</label></td>
+                        <td>
+                            <select id="delUserReason" name="delUserReason">
+                                <option value="">-- Select Reason --</option>
+                                <option value="Abuse">Abusive behaviour</option>
+                                <option value="Fraud">Suspected fraud</option>
+                                <option value="Fake">Fake listings or information</option>
+                                <option value="Policy">Policy violation</option>
+                                <option value="Request">The user requested deletion</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Notify:</label></td>
+                        <td>
+                            <input type="checkbox" id="notifyUser" name="delNotify" value="User" checked>
+                            <label for="notifyUser">Notify the User by Email</label>
+                            <input type="checkbox" id="notifyTeam" name="delNotify" value="Team">
+                            <label for="notifyTeam">Notify the Operations Team</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="checkbox" id="delUserConfirm" name="delUserConfirm" value="Confirmed" required>
+                            <label for="delUserConfirm">I confirm this deletion</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Delete Account">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+        <h3>Account Totals</h3>
+
+        <table border="1">
+            <caption>User Counts by Role and Status</caption>
+            <tr>
+                <th>Role</th>
+                <th>Active</th>
+                <th>Suspended</th>
+                <th>Deactivated</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>Customers</td>
+                <td>8,312</td>
+                <td>74</td>
+                <td>34</td>
+                <td>8,420</td>
+            </tr>
+            <tr>
+                <td>Vendors</td>
+                <td>61</td>
+                <td>1</td>
+                <td>2</td>
+                <td>64</td>
+            </tr>
+            <tr>
+                <td>Employees</td>
+                <td>11</td>
+                <td>0</td>
+                <td>1</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>Admins</td>
+                <td>2</td>
+                <td>0</td>
+                <td>0</td>
+                <td>2</td>
+            </tr>
+        </table>
+        </section>
+
+        <hr>
+
+        <section class="page-section" id="auditSection">
+
+        <h2>User Activity Audit Log</h2>
+        <p>Every important action on the platform is recorded here with a time stamp.</p>
+
+        <h3>Filter the Log</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>Audit Log Filters</legend>
+                <table>
+                    <tr>
+                        <td><label for="logUser">User ID or Name:</label></td>
+                        <td><input type="text" id="logUser" name="logUser" placeholder="Enter a user ID or name"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="logRole">User Role:</label></td>
+                        <td>
+                            <select id="logRole" name="logRole">
+                                <option value="">-- All Roles --</option>
+                                <option value="Customer">Customer</option>
+                                <option value="Vendor">Vendor</option>
+                                <option value="Employee">Employee</option>
+                                <option value="Admin">Admin</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="logFrom">From Date:</label></td>
+                        <td><input type="date" id="logFrom" name="logFrom"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="logTo">To Date:</label></td>
+                        <td><input type="date" id="logTo" name="logTo"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Action Types:</label></td>
+                        <td>
+                            <input type="checkbox" id="actLogin" name="logActions" value="Login" checked>
+                            <label for="actLogin">Login and Logout</label>
+                            <input type="checkbox" id="actListing" name="logActions" value="Listing" checked>
+                            <label for="actListing">Listing Changes</label>
+                            <input type="checkbox" id="actOrder" name="logActions" value="Order" checked>
+                            <label for="actOrder">Orders</label>
+                            <input type="checkbox" id="actAdmin" name="logActions" value="Admin">
+                            <label for="actAdmin">Admin Actions</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Severity:</label></td>
+                        <td>
+                            <input type="radio" id="sevAll" name="logSeverity" value="All" checked>
+                            <label for="sevAll">All</label>
+                            <input type="radio" id="sevNormal" name="logSeverity" value="Normal">
+                            <label for="sevNormal">Normal Only</label>
+                            <input type="radio" id="sevCritical" name="logSeverity" value="Critical">
+                            <label for="sevCritical">Critical Only</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Apply Filters">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+        <h3>Activity Records</h3>
+
+        <table border="1">
+            <caption>Platform Audit Trail</caption>
+            <tr>
+                <th>Log ID</th>
+                <th>Date and Time</th>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Action</th>
+                <th>Detail</th>
+                <th>Severity</th>
+            </tr>
+            <tr>
+                <td>LOG-99412</td>
+                <td>28 Oct 2026, 09:14</td>
+                <td>ADM-001</td>
+                <td>Md. Murad Hasan</td>
+                <td>Admin</td>
+                <td>Login</td>
+                <td>Successful admin login</td>
+                <td>Normal</td>
+            </tr>
+            <tr>
+                <td>LOG-99408</td>
+                <td>28 Oct 2026, 08:51</td>
+                <td>EMP-104</td>
+                <td>Shafayat Jamil</td>
+                <td>Employee</td>
+                <td>Listing Approved</td>
+                <td>Approved listing LST-7712 Honda Fit 2019</td>
+                <td>Normal</td>
+            </tr>
+            <tr>
+                <td>LOG-99401</td>
+                <td>28 Oct 2026, 08:33</td>
+                <td>VEN-2041</td>
+                <td>Rahim Motors</td>
+                <td>Vendor</td>
+                <td>Listing Created</td>
+                <td>Submitted LST-7640 Toyota Noah 2020</td>
+                <td>Normal</td>
+            </tr>
+            <tr>
+                <td>LOG-99388</td>
+                <td>27 Oct 2026, 22:07</td>
+                <td>USR-4412</td>
+                <td>Jamal Uddin</td>
+                <td>Customer</td>
+                <td>Failed Login</td>
+                <td>Five failed attempts, account locked</td>
+                <td>Critical</td>
+            </tr>
+            <tr>
+                <td>LOG-99375</td>
+                <td>27 Oct 2026, 19:44</td>
+                <td>CUS-10234</td>
+                <td>Mohammed S Hossain</td>
+                <td>Customer</td>
+                <td>Order Placed</td>
+                <td>Placed ORD-2026-00392 for Toyota Corolla 2023</td>
+                <td>Normal</td>
+            </tr>
+            <tr>
+                <td>LOG-99360</td>
+                <td>27 Oct 2026, 16:12</td>
+                <td>VEN-2088</td>
+                <td>Dhaka Motors Ltd</td>
+                <td>Vendor</td>
+                <td>Price Changed</td>
+                <td>Changed LST-7718 price to 62,00,000</td>
+                <td>Normal</td>
+            </tr>
+            <tr>
+                <td>LOG-99322</td>
+                <td>26 Oct 2026, 11:03</td>
+                <td>ADM-001</td>
+                <td>Md. Murad Hasan</td>
+                <td>Admin</td>
+                <td>Account Deactivated</td>
+                <td>Deactivated vendor VEN-2065</td>
+                <td>Critical</td>
+            </tr>
+            <tr>
+                <td>LOG-99288</td>
+                <td>25 Oct 2026, 17:52</td>
+                <td>ADM-001</td>
+                <td>Md. Murad Hasan</td>
+                <td>Admin</td>
+                <td>Data Exported</td>
+                <td>Exported the full user list to CSV</td>
+                <td>Critical</td>
+            </tr>
+        </table>
+
+        <h3>Log Summary</h3>
+
+        <table border="1">
+            <caption>Activity Counts for October 2026</caption>
+            <tr>
+                <th>Action Type</th>
+                <th>Count</th>
+                <th>Critical Entries</th>
+            </tr>
+            <tr>
+                <td>Logins and Logouts</td>
+                <td>24,118</td>
+                <td>87</td>
+            </tr>
+            <tr>
+                <td>Listing Changes</td>
+                <td>1,964</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>Orders</td>
+                <td>341</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>Admin Actions</td>
+                <td>148</td>
+                <td>31</td>
+            </tr>
+        </table>
+        </section>
+
+        <hr>
+
+        <section class="page-section" id="analyticsSection">
+
+        <h2>Platform Analytics</h2>
+        <p>Growth, traffic, revenue and vendor performance for the whole marketplace.</p>
+
+        <h3>Monthly Sales Volume for 2026</h3>
+
+        <table border="1">
+            <caption>Cars Sold Across Every Vendor</caption>
+            <tr>
+                <th>Month</th>
+                <th>Cars Sold</th>
+                <th>Revenue (BDT)</th>
+                <th>Commission Earned (BDT)</th>
+            </tr>
+            <tr>
+                <td>June</td>
+                <td>45</td>
+                <td>13,40,00,000</td>
+                <td>13,40,000</td>
+            </tr>
+            <tr>
+                <td>July</td>
+                <td>22</td>
+                <td>6,44,00,000</td>
+                <td>6,44,000</td>
+            </tr>
+            <tr>
+                <td>August</td>
+                <td>39</td>
+                <td>11,58,00,000</td>
+                <td>11,58,000</td>
+            </tr>
+            <tr>
+                <td>September</td>
+                <td>33</td>
+                <td>9,71,00,000</td>
+                <td>9,71,000</td>
+            </tr>
+            <tr>
+                <td>October</td>
+                <td>47</td>
+                <td>14,02,00,000</td>
+                <td>14,02,000</td>
+            </tr>
+            <tr>
+                <th>Total</th>
+                <th>186</th>
+                <th>55,15,00,000</th>
+                <th>55,15,000</th>
+            </tr>
+        </table>
+
+        <h3>Traffic and Engagement</h3>
+
+        <table border="1">
+            <caption>Site Activity in October 2026</caption>
+            <tr>
+                <th>Metric</th>
+                <th>This Month</th>
+                <th>Last Month</th>
+                <th>Change</th>
+            </tr>
+            <tr>
+                <td>Total Page Views</td>
+                <td>412,884</td>
+                <td>368,210</td>
+                <td>Up 12 percent</td>
+            </tr>
+            <tr>
+                <td>Unique Visitors</td>
+                <td>61,402</td>
+                <td>55,118</td>
+                <td>Up 11 percent</td>
+            </tr>
+            <tr>
+                <td>Car Comparisons Run</td>
+                <td>9,814</td>
+                <td>8,122</td>
+                <td>Up 21 percent</td>
+            </tr>
+            <tr>
+                <td>EMI Calculations Run</td>
+                <td>14,207</td>
+                <td>11,884</td>
+                <td>Up 20 percent</td>
+            </tr>
+            <tr>
+                <td>Inquiries Sent</td>
+                <td>2,641</td>
+                <td>2,318</td>
+                <td>Up 14 percent</td>
+            </tr>
+        </table>
+
+        <h3>Most Popular Brands</h3>
+
+        <table border="1">
+            <caption>Listings and Sales by Brand</caption>
+            <tr>
+                <th>Brand</th>
+                <th>Active Listings</th>
+                <th>Cars Sold</th>
+                <th>Share of Sales</th>
+            </tr>
+            <tr>
+                <td>Toyota</td>
+                <td>512</td>
+                <td>21</td>
+                <td>45 percent</td>
+            </tr>
+            <tr>
+                <td>Honda</td>
+                <td>288</td>
+                <td>11</td>
+                <td>23 percent</td>
+            </tr>
+            <tr>
+                <td>Nissan</td>
+                <td>194</td>
+                <td>7</td>
+                <td>15 percent</td>
+            </tr>
+            <tr>
+                <td>Mitsubishi</td>
+                <td>141</td>
+                <td>5</td>
+                <td>11 percent</td>
+            </tr>
+            <tr>
+                <td>BMW and Others</td>
+                <td>102</td>
+                <td>3</td>
+                <td>6 percent</td>
+            </tr>
+        </table>
+
+        <h3>Vendor Performance Ranking</h3>
+
+        <table border="1">
+            <caption>Vendors Ranked by Revenue in October 2026</caption>
+            <tr>
+                <th>Rank</th>
+                <th>Vendor</th>
+                <th>Listings</th>
+                <th>Cars Sold</th>
+                <th>Revenue (BDT)</th>
+                <th>Rating</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Dhaka Motors Ltd</td>
+                <td>31</td>
+                <td>11</td>
+                <td>5,12,00,000</td>
+                <td>Excellent</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Rahim Motors</td>
+                <td>24</td>
+                <td>7</td>
+                <td>2,14,00,000</td>
+                <td>Excellent</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Karim Auto House</td>
+                <td>17</td>
+                <td>6</td>
+                <td>1,48,00,000</td>
+                <td>Very Good</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Sylhet Car Zone</td>
+                <td>12</td>
+                <td>3</td>
+                <td>94,00,000</td>
+                <td>Good</td>
+            </tr>
+        </table>
+
+        <h3>Generate a Custom Report</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>Analytics Options</legend>
+                <table>
+                    <tr>
+                        <td><label for="anFrom">From Date:</label></td>
+                        <td><input type="date" id="anFrom" name="anFrom"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="anTo">To Date:</label></td>
+                        <td><input type="date" id="anTo" name="anTo"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="anMetric">Primary Metric:</label></td>
+                        <td>
+                            <select id="anMetric" name="anMetric">
+                                <option value="">-- Select Metric --</option>
+                                <option value="Sales">Sales Volume</option>
+                                <option value="Revenue">Revenue</option>
+                                <option value="Users">User Growth</option>
+                                <option value="Traffic">Traffic</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Group By:</label></td>
+                        <td>
+                            <input type="radio" id="grpDay" name="anGroup" value="Day">
+                            <label for="grpDay">Day</label>
+                            <input type="radio" id="grpWeek" name="anGroup" value="Week">
+                            <label for="grpWeek">Week</label>
+                            <input type="radio" id="grpMonth" name="anGroup" value="Month" checked>
+                            <label for="grpMonth">Month</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Generate Report">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+        </section>
+
+        <hr>
+
+        <section class="page-section" id="exportSection">
+
+        <h2>Export Data to CSV</h2>
+        <p>Download platform data for accounting, reporting or backup.<br>
+            Every export is recorded in the audit log as a critical action.
+        </p>
+
+        <form method="post">
+
+            <fieldset>
+                <legend>Choose the Data Set</legend>
+                <table>
+                    <tr>
+                        <td><label for="expTable">Data Set:</label></td>
+                        <td>
+                            <select id="expTable" name="expTable" required>
+                                <option value="">-- Select Data Set --</option>
+                                <option value="Customers">Customer Accounts</option>
+                                <option value="Vendors">Vendor Accounts</option>
+                                <option value="Employees">Employee Accounts</option>
+                                <option value="Listings">Car Listings</option>
+                                <option value="Orders">Orders and Sales</option>
+                                <option value="Inquiries">Customer Inquiries</option>
+                                <option value="AuditLog">Audit Log</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="expFrom">From Date:</label></td>
+                        <td><input type="date" id="expFrom" name="expFrom"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="expTo">To Date:</label></td>
+                        <td><input type="date" id="expTo" name="expTo"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="expStatus">Filter by Status:</label></td>
+                        <td>
+                            <select id="expStatus" name="expStatus">
+                                <option value="">-- All Records --</option>
+                                <option value="Active">Active Only</option>
+                                <option value="Inactive">Inactive Only</option>
+                                <option value="Completed">Completed Only</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <fieldset>
+                <legend>Choose the Columns</legend>
+                <table>
+                    <tr>
+                        <td><label>Columns to Include:</label></td>
+                        <td>
+                            <input type="checkbox" id="colId" name="expColumns" value="ID" checked>
+                            <label for="colId">Record ID</label>
+                            <input type="checkbox" id="colName" name="expColumns" value="Name" checked>
+                            <label for="colName">Name</label>
+                            <input type="checkbox" id="colEmail" name="expColumns" value="Email" checked>
+                            <label for="colEmail">Email</label>
+                            <input type="checkbox" id="colPhone" name="expColumns" value="Phone">
+                            <label for="colPhone">Phone</label>
+                            <input type="checkbox" id="colCity" name="expColumns" value="City">
+                            <label for="colCity">City</label>
+                            <input type="checkbox" id="colDate" name="expColumns" value="Date" checked>
+                            <label for="colDate">Date Created</label>
+                            <input type="checkbox" id="colStatus" name="expColumns" value="Status" checked>
+                            <label for="colStatus">Status</label>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <fieldset>
+                <legend>File Options</legend>
+                <table>
+                    <tr>
+                        <td><label for="expFileName">File Name:</label></td>
+                        <td><input type="text" id="expFileName" name="expFileName" placeholder="Enter a file name"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Separator:</label></td>
+                        <td>
+                            <input type="radio" id="sepComma" name="expSeparator" value="Comma" checked>
+                            <label for="sepComma">Comma</label>
+                            <input type="radio" id="sepSemicolon" name="expSeparator" value="Semicolon">
+                            <label for="sepSemicolon">Semicolon</label>
+                            <input type="radio" id="sepTab" name="expSeparator" value="Tab">
+                            <label for="sepTab">Tab</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Extra Options:</label></td>
+                        <td>
+                            <input type="checkbox" id="optHeader" name="expOptions" value="Header" checked>
+                            <label for="optHeader">Include a Header Row</label>
+                            <input type="checkbox" id="optMask" name="expOptions" value="Mask" checked>
+                            <label for="optMask">Mask Personal Data</label>
+                            <input type="checkbox" id="optEmailCopy" name="expOptions" value="Email Copy">
+                            <label for="optEmailCopy">Email a Copy to Me</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="expReason">Reason for Export:</label></td>
+                        <td><textarea id="expReason" name="expReason" rows="4" cols="40" placeholder="Required for the audit log"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="checkbox" id="expConfirm" name="expConfirm" value="Confirmed" required>
+                            <label for="expConfirm">I confirm this export follows the data policy</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Generate CSV File">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+        </form>
+
+        <h3>Available Data Sets</h3>
+
+        <table border="1">
+            <caption>What You Can Export</caption>
+            <tr>
+                <th>Data Set</th>
+                <th>Records</th>
+                <th>Approximate File Size</th>
+                <th>Last Exported</th>
+            </tr>
+            <tr>
+                <td>Customer Accounts</td>
+                <td>8,420</td>
+                <td>1.4 MB</td>
+                <td>25 October 2026</td>
+            </tr>
+            <tr>
+                <td>Vendor Accounts</td>
+                <td>64</td>
+                <td>18 KB</td>
+                <td>12 October 2026</td>
+            </tr>
+            <tr>
+                <td>Car Listings</td>
+                <td>1,237</td>
+                <td>620 KB</td>
+                <td>20 October 2026</td>
+            </tr>
+            <tr>
+                <td>Orders and Sales</td>
+                <td>912</td>
+                <td>410 KB</td>
+                <td>26 October 2026</td>
+            </tr>
+            <tr>
+                <td>Audit Log</td>
+                <td>99,412</td>
+                <td>14.8 MB</td>
+                <td>25 October 2026</td>
+            </tr>
+        </table>
+
+        <h3>Recent Export History</h3>
+
+        <table border="1">
+            <caption>Exports Performed by the Admin Team</caption>
+            <tr>
+                <th>Export ID</th>
+                <th>Data Set</th>
+                <th>Records</th>
+                <th>Date</th>
+                <th>Reason</th>
+            </tr>
+            <tr>
+                <td>EXP-0912</td>
+                <td>Orders and Sales</td>
+                <td>341</td>
+                <td>26 October 2026</td>
+                <td>Monthly accounting reconciliation</td>
+            </tr>
+            <tr>
+                <td>EXP-0908</td>
+                <td>Customer Accounts</td>
+                <td>8,420</td>
+                <td>25 October 2026</td>
+                <td>Quarterly backup</td>
+            </tr>
+            <tr>
+                <td>EXP-0901</td>
+                <td>Car Listings</td>
+                <td>1,198</td>
+                <td>20 October 2026</td>
+                <td>Inventory audit</td>
+            </tr>
+        </table>
+        </section>
+
+        <hr>
+
+    </main>
+
+    <footer class="site-footer">
+        <hr>
+
+        <h3>DriveHub Vehicle Marketplace Ltd.</h3>
+
+        <p>Level 5, Tech Tower, Kawran Bazar, Dhaka 1215, Bangladesh<br>
+            Phone: +880 1700 000000 | Hotline: 16263<br>
+            Email: support@drivehub.com.bd | Sales: sales@drivehub.com.bd<br>
+            Office Hours: Saturday to Thursday, 9:00 AM to 6:00 PM<br>
+            Trade Licence: TRAD-DH-2018-99120 | TIN: 441920883715 | BIN: 004412098-0203
+        </p>
+
+        <p>
+            <a href="index.html">Home</a> |
+            <a href="login.html">Login</a> |
+            <a href="register.html">Register</a> |
+            <a href="customer.html">Customer Dashboard</a> |
+            <a href="vendor.html">Vendor Dashboard</a> |
+            <a href="employee.html">Employee Dashboard</a> |
+            <a href="admin.html">Admin Dashboard</a>
+        </p>
+
+        <p>
+            <a href="https://facebook.com/drivehubbd" target="_blank"><img src="image/facebook.png" alt="Facebook" width="30" height="30"></a>
+            <a href="https://github.com/drivehubbd" target="_blank"><img src="image/github.png" alt="GitHub" width="30" height="30"></a>
+            <a href="https://drivehub.com.bd" target="_blank"><img src="image/website.png" alt="Website" width="30" height="30"></a>
+        </p>
+
+        <hr>
+        <h6>Copyright DriveHub Vehicle Marketplace Ltd. 2026. All rights reserved.</h6>
+        <h6>CSC 3215 Web Technologies Project, American International University-Bangladesh.</h6>
+    </footer>
+
+</body>
+
+</html>
