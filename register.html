@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | DriveHub Vehicle Marketplace</title>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <img src="image/logo.png" alt="DriveHub Logo" width="120" height="120">
+        <h1>Create Your DriveHub Account</h1>
+    </header>
+
+    <nav class="main-nav">
+        <a href="index.html">Home</a>
+        |
+        <a href="login.html">Login</a>
+        |
+        <a href="register.html">Register</a>
+    </nav>
+
+    <hr>
+
+    <main class="container">
+
+        <section class="page-section" id="registerSection">
+
+        <h2>Signup Form</h2>
+        <p>Customers, vendors and employees can register here.<br>
+            Vendor accounts must be approved by the admin before cars can be listed.<br>
+            Admin accounts are created by the system owner and cannot be registered.
+        </p>
+
+        <form method="post">
+
+            <fieldset>
+                <legend>Account Type</legend>
+                <table>
+                    <tr>
+                        <td><label>Register As:</label></td>
+                        <td>
+                            <input type="radio" id="roleCustomer" name="userRole" value="Customer" required>
+                            <label for="roleCustomer">Customer</label>
+                            <input type="radio" id="roleVendor" name="userRole" value="Vendor">
+                            <label for="roleVendor">Vendor</label>
+                            <input type="radio" id="roleEmployee" name="userRole" value="Employee">
+                            <label for="roleEmployee">Employee</label>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <fieldset>
+                <legend>Personal Information</legend>
+                <table>
+                    <tr>
+                        <td><label for="fullName">Full Name:</label></td>
+                        <td><input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="userEmail">Email:</label></td>
+                        <td><input type="email" id="userEmail" name="userEmail" placeholder="Enter your email" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="userPhone">Phone Number:</label></td>
+                        <td><input type="text" id="userPhone" name="userPhone" placeholder="Enter your phone number" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="userNid">NID Number:</label></td>
+                        <td><input type="number" id="userNid" name="userNid" placeholder="Enter your NID number" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="userDob">Date of Birth:</label></td>
+                        <td><input type="date" id="userDob" name="userDob" required></td>
+                    </tr>
+                    <tr>
+                        <td><label>Gender:</label></td>
+                        <td>
+                            <input type="radio" id="genderMale" name="gender" value="Male">
+                            <label for="genderMale">Male</label>
+                            <input type="radio" id="genderFemale" name="gender" value="Female">
+                            <label for="genderFemale">Female</label>
+                            <input type="radio" id="genderOther" name="gender" value="Other">
+                            <label for="genderOther">Other</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="userCity">City:</label></td>
+                        <td>
+                            <select id="userCity" name="userCity">
+                                <option value="">-- Select City --</option>
+                                <option value="Dhaka">Dhaka</option>
+                                <option value="Chattogram">Chattogram</option>
+                                <option value="Sylhet">Sylhet</option>
+                                <option value="Rajshahi">Rajshahi</option>
+                                <option value="Khulna">Khulna</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="userAddress">Full Address:</label></td>
+                        <td><textarea id="userAddress" name="userAddress" rows="4" cols="30" placeholder="Enter your full address"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="userPhoto">Profile Photo:</label></td>
+                        <td><input type="file" id="userPhoto" name="userPhoto"></td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <fieldset>
+                <legend>Business Information for Vendors Only</legend>
+                <table>
+                    <tr>
+                        <td><label for="shopName">Business Name:</label></td>
+                        <td><input type="text" id="shopName" name="shopName" placeholder="Enter your showroom name"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="tradeLicense">Trade Licence Number:</label></td>
+                        <td><input type="text" id="tradeLicense" name="tradeLicense" placeholder="Enter the trade licence number"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="shopAddress">Showroom Address:</label></td>
+                        <td><textarea id="shopAddress" name="shopAddress" rows="4" cols="30" placeholder="Enter the showroom address"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="licenseDoc">Trade Licence Document:</label></td>
+                        <td><input type="file" id="licenseDoc" name="licenseDoc"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Car Categories You Sell:</label></td>
+                        <td>
+                            <input type="checkbox" id="catSedan" name="categories" value="Sedan">
+                            <label for="catSedan">Sedan</label>
+                            <input type="checkbox" id="catSuv" name="categories" value="SUV">
+                            <label for="catSuv">SUV</label>
+                            <input type="checkbox" id="catHatch" name="categories" value="Hatchback">
+                            <label for="catHatch">Hatchback</label>
+                            <input type="checkbox" id="catMicro" name="categories" value="Microbus">
+                            <label for="catMicro">Microbus</label>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <fieldset>
+                <legend>Employment Information for Employees Only</legend>
+                <table>
+                    <tr>
+                        <td><label for="empDept">Department:</label></td>
+                        <td>
+                            <select id="empDept" name="empDept">
+                                <option value="">-- Select Department --</option>
+                                <option value="Operations">Customer Operations</option>
+                                <option value="Moderation">Listing Moderation</option>
+                                <option value="Sales">Sales Support</option>
+                                <option value="Technical">Technical Support</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="empBranch">Branch:</label></td>
+                        <td>
+                            <select id="empBranch" name="empBranch">
+                                <option value="">-- Select Branch --</option>
+                                <option value="Dhaka">Dhaka Head Office</option>
+                                <option value="Chattogram">Chattogram Branch</option>
+                                <option value="Sylhet">Sylhet Branch</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="empStaffId">Staff Reference Number:</label></td>
+                        <td><input type="text" id="empStaffId" name="empStaffId" placeholder="Given to you by the admin"></td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <fieldset>
+                <legend>Login Credentials</legend>
+                <table>
+                    <tr>
+                        <td><label for="userName">Username:</label></td>
+                        <td><input type="text" id="userName" name="userName" placeholder="Choose a username" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">Password:</label></td>
+                        <td><input type="password" id="password" name="password" placeholder="Enter your password" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="confirmPassword">Confirm Password:</label></td>
+                        <td><input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="securityQuestion">Security Question:</label></td>
+                        <td>
+                            <select id="securityQuestion" name="securityQuestion">
+                                <option value="">-- Select Question --</option>
+                                <option value="PetName">What is your first pet name?</option>
+                                <option value="School">What was your primary school name?</option>
+                                <option value="City">In which city were you born?</option>
+                                <option value="Teacher">Who was your favourite teacher?</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="securityAnswer">Your Answer:</label></td>
+                        <td><input type="text" id="securityAnswer" name="securityAnswer" placeholder="Enter your answer" required></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="checkbox" id="agreeTerms" name="agreeTerms" value="Agreed" required>
+                            <label for="agreeTerms">I agree to the Terms and Conditions</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Register">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+        </form>
+
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <hr>
+
+        <h3>DriveHub Vehicle Marketplace Ltd.</h3>
+
+        <p>Level 5, Tech Tower, Kawran Bazar, Dhaka 1215, Bangladesh<br>
+            Phone: +880 1700 000000 | Hotline: 16263<br>
+            Email: support@drivehub.com.bd | Sales: sales@drivehub.com.bd<br>
+            Office Hours: Saturday to Thursday, 9:00 AM to 6:00 PM<br>
+            Trade Licence: TRAD-DH-2018-99120 | TIN: 441920883715 | BIN: 004412098-0203
+        </p>
+
+        <p>
+            <a href="index.html">Home</a> |
+            <a href="login.html">Login</a> |
+            <a href="register.html">Register</a> |
+            <a href="customer.html">Customer Dashboard</a> |
+            <a href="vendor.html">Vendor Dashboard</a> |
+            <a href="employee.html">Employee Dashboard</a> |
+            <a href="admin.html">Admin Dashboard</a>
+        </p>
+
+        <p>
+            <a href="https://facebook.com/drivehubbd" target="_blank"><img src="image/facebook.png" alt="Facebook" width="30" height="30"></a>
+            <a href="https://github.com/drivehubbd" target="_blank"><img src="image/github.png" alt="GitHub" width="30" height="30"></a>
+            <a href="https://drivehub.com.bd" target="_blank"><img src="image/website.png" alt="Website" width="30" height="30"></a>
+        </p>
+
+        <hr>
+        <h6>Copyright DriveHub Vehicle Marketplace Ltd. 2026. All rights reserved.</h6>
+        <h6>CSC 3215 Web Technologies Project, American International University-Bangladesh.</h6>
+    </footer>
+
+</body>
+
+</html>
