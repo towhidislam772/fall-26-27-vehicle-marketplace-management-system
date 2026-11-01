@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard | DriveHub</title>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <img src="image/logo.png" alt="DriveHub Logo" width="120" height="120">
+        <h1>DriveHub Vehicle Marketplace</h1>
+        <h3>Employee Dashboard</h3>
+        <h5>Logged in as: Shafayat Jamil</h5>
+        <h5>Employee ID: EMP-104 | Department: Customer Operations | Joined: 11 January 2024</h5>
+        <a href="login.html">Logout</a>
+    </header>
+
+    <nav class="section-nav">
+        <a href="#overviewSection">Overview</a>
+        |
+        <a href="#moderationSection">Moderation Records</a>
+        |
+        <a href="#calendarSection">Test Drive Calendar</a>
+        |
+        <a href="#reportSection">Daily Report</a>
+        |
+        <a href="#inquiryHandlingSection">Inquiry Handling</a>
+    </nav>
+
+    <main class="container">
+
+        <section class="page-section" id="overviewSection">
+
+        <h2>Overview</h2>
+
+        <table border="1">
+            <caption>My Work Today, 28 October 2026</caption>
+            <tr>
+                <th>Task Type</th>
+                <th>Pending</th>
+                <th>Completed Today</th>
+            </tr>
+            <tr>
+                <td>Listings to Moderate</td>
+                <td>9</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <td>Customer Inquiries</td>
+                <td>7</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>Test Drive Requests</td>
+                <td>5</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Sales Transactions</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+        </table>
+
+        <h3>My Performance This Month</h3>
+
+        <table border="1">
+            <caption>Statistics for October 2026</caption>
+            <tr>
+                <th>Metric</th>
+                <th>My Count</th>
+                <th>Team Average</th>
+            </tr>
+            <tr>
+                <td>Inquiries Answered</td>
+                <td>214</td>
+                <td>186</td>
+            </tr>
+            <tr>
+                <td>Test Drives Approved</td>
+                <td>97</td>
+                <td>84</td>
+            </tr>
+            <tr>
+                <td>Listings Moderated</td>
+                <td>168</td>
+                <td>152</td>
+            </tr>
+            <tr>
+                <td>Average Response Time</td>
+                <td>2.4 hours</td>
+                <td>3.9 hours</td>
+            </tr>
+        </table>
+
+        <h3>My Profile</h3>
+
+        <img src="image/employee-photo.png" alt="Employee Profile Photo" width="150" height="150">
+
+        <form method="post">
+            <fieldset>
+                <legend>Update My Profile</legend>
+                <table>
+                    <tr>
+                        <td><label for="empName">Full Name:</label></td>
+                        <td><input type="text" id="empName" name="empName" value="Shafayat Jamil" placeholder="Enter your full name" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="empEmail">Work Email:</label></td>
+                        <td><input type="email" id="empEmail" name="empEmail" value="shafayat.jamil@drivehub.com.bd" placeholder="Enter your work email" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="empPhone">Phone Number:</label></td>
+                        <td><input type="text" id="empPhone" name="empPhone" value="01766554433" placeholder="Enter your phone number" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="empDept">Department:</label></td>
+                        <td>
+                            <select id="empDept" name="empDept">
+                                <option value="Operations" selected>Customer Operations</option>
+                                <option value="Moderation">Listing Moderation</option>
+                                <option value="Sales">Sales Support</option>
+                                <option value="Technical">Technical Support</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Shift:</label></td>
+                        <td>
+                            <input type="radio" id="shiftMorning" name="empShift" value="Morning" checked>
+                            <label for="shiftMorning">Morning, 9 AM to 5 PM</label>
+                            <input type="radio" id="shiftEvening" name="empShift" value="Evening">
+                            <label for="shiftEvening">Evening, 1 PM to 9 PM</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="empPassword">New Password:</label></td>
+                        <td><input type="password" id="empPassword" name="empPassword" placeholder="Leave blank to keep the current password"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Save Profile">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+        </section>
+
+        <hr>
+
+        <section class="page-section" id="moderationSection">
+
+        <h2>Moderation Records</h2>
+        <p>Create, view, edit, delete and search the moderation decisions you have made on vendor listings.</p>
+
+        <h3>Create a Moderation Record</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>New Moderation Decision</legend>
+                <table>
+                    <tr>
+                        <td><label for="modListing">Select Listing:</label></td>
+                        <td>
+                            <select id="modListing" name="modListing" required>
+                                <option value="">-- Select Listing --</option>
+                                <option value="LST-7640">LST-7640 Toyota Noah 2020, Rahim Motors</option>
+                                <option value="LST-7712">LST-7712 Honda Fit 2019, Karim Auto House</option>
+                                <option value="LST-7718">LST-7718 Audi A4 2017, Dhaka Motors Ltd</option>
+                                <option value="LST-7720">LST-7720 Toyota Hiace 2021, Sylhet Car Zone</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Checks Completed:</label></td>
+                        <td>
+                            <input type="checkbox" id="chkPhotos" name="modChecks" value="Photos">
+                            <label for="chkPhotos">Photos Are Clear</label>
+                            <input type="checkbox" id="chkPrice" name="modChecks" value="Price">
+                            <label for="chkPrice">Price Is Realistic</label>
+                            <input type="checkbox" id="chkSpecs" name="modChecks" value="Specs">
+                            <label for="chkSpecs">Specifications Match the Photos</label>
+                            <input type="checkbox" id="chkPapers" name="modChecks" value="Papers">
+                            <label for="chkPapers">Documents Uploaded</label>
+                            <input type="checkbox" id="chkDuplicate" name="modChecks" value="Not Duplicate">
+                            <label for="chkDuplicate">Not a Duplicate Listing</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Decision:</label></td>
+                        <td>
+                            <input type="radio" id="modApprove" name="modDecision" value="Approve" required>
+                            <label for="modApprove">Approve and Publish</label>
+                            <input type="radio" id="modReject" name="modDecision" value="Reject">
+                            <label for="modReject">Reject</label>
+                            <input type="radio" id="modChanges" name="modDecision" value="Request Changes">
+                            <label for="modChanges">Request Changes</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="modReason">Rejection Reason:</label></td>
+                        <td>
+                            <select id="modReason" name="modReason">
+                                <option value="">-- Select Reason --</option>
+                                <option value="Photos">Photos unclear or missing</option>
+                                <option value="Price">Price is unrealistic</option>
+                                <option value="Papers">Documents incomplete</option>
+                                <option value="Duplicate">Duplicate listing</option>
+                                <option value="Mismatch">Description does not match the car</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="modNote">Note to the Vendor:</label></td>
+                        <td><textarea id="modNote" name="modNote" rows="5" cols="40" placeholder="Explain what the vendor must fix"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="modDate">Decision Date:</label></td>
+                        <td><input type="date" id="modDate" name="modDate" required></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Create Record">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+        <h3>Search Moderation Records</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>Search and Filter</legend>
+                <table>
+                    <tr>
+                        <td><label for="modSearch">Keyword:</label></td>
+                        <td><input type="text" id="modSearch" name="modSearch" placeholder="Enter a listing ID or car name"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="modFilterDecision">Decision:</label></td>
+                        <td>
+                            <select id="modFilterDecision" name="modFilterDecision">
+                                <option value="">-- All Decisions --</option>
+                                <option value="Approved">Approved</option>
+                                <option value="Rejected">Rejected</option>
+                                <option value="Changes">Changes Requested</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="modFilterVendor">Vendor:</label></td>
+                        <td>
+                            <select id="modFilterVendor" name="modFilterVendor">
+                                <option value="">-- All Vendors --</option>
+                                <option value="VEN-2041">Rahim Motors</option>
+                                <option value="VEN-2055">Karim Auto House</option>
+                                <option value="VEN-2088">Dhaka Motors Ltd</option>
+                                <option value="VEN-2104">Sylhet Car Zone</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="modFilterFrom">From Date:</label></td>
+                        <td><input type="date" id="modFilterFrom" name="modFilterFrom"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Search">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+        <h3>Listings Waiting for Review</h3>
+
+        <table border="1">
+            <caption>Moderation Queue</caption>
+            <tr>
+                <th>Listing ID</th>
+                <th>Car Name</th>
+                <th>Vendor</th>
+                <th>Price (BDT)</th>
+                <th>Submitted</th>
+                <th>Photos</th>
+                <th>Papers</th>
+            </tr>
+            <tr>
+                <td>LST-7640</td>
+                <td>Toyota Noah 2020</td>
+                <td>Rahim Motors</td>
+                <td>38,00,000</td>
+                <td>25 October 2026</td>
+                <td>3 uploaded</td>
+                <td>Complete</td>
+            </tr>
+            <tr>
+                <td>LST-7712</td>
+                <td>Honda Fit 2019</td>
+                <td>Karim Auto House</td>
+                <td>18,50,000</td>
+                <td>26 October 2026</td>
+                <td>2 uploaded</td>
+                <td>Complete</td>
+            </tr>
+            <tr>
+                <td>LST-7718</td>
+                <td>Audi A4 2017</td>
+                <td>Dhaka Motors Ltd</td>
+                <td>62,00,000</td>
+                <td>27 October 2026</td>
+                <td>5 uploaded</td>
+                <td>Missing insurance</td>
+            </tr>
+            <tr>
+                <td>LST-7720</td>
+                <td>Toyota Hiace 2021</td>
+                <td>Sylhet Car Zone</td>
+                <td>48,00,000</td>
+                <td>27 October 2026</td>
+                <td>1 uploaded</td>
+                <td>Complete</td>
+            </tr>
+        </table>
+
+        <h3>My Moderation Records</h3>
+
+        <table border="1">
+            <caption>Decisions Made by Shafayat Jamil</caption>
+            <tr>
+                <th>Record ID</th>
+                <th>Listing ID</th>
+                <th>Car</th>
+                <th>Vendor</th>
+                <th>Decision</th>
+                <th>Reason</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>MOD-4412</td>
+                <td>LST-7701</td>
+                <td>Toyota Corolla 2023</td>
+                <td>Rahim Motors</td>
+                <td>Approved</td>
+                <td>All checks passed</td>
+                <td>12 October 2026</td>
+                <td>Edit, Delete</td>
+            </tr>
+            <tr>
+                <td>MOD-4428</td>
+                <td>LST-7612</td>
+                <td>Nissan Sunny 2018</td>
+                <td>Rahim Motors</td>
+                <td>Rejected</td>
+                <td>Photos unclear or missing</td>
+                <td>22 October 2026</td>
+                <td>Edit, Delete</td>
+            </tr>
+            <tr>
+                <td>MOD-4390</td>
+                <td>LST-7688</td>
+                <td>Mitsubishi Pajero 2020</td>
+                <td>Rahim Motors</td>
+                <td>Approved</td>
+                <td>All checks passed</td>
+                <td>29 September 2026</td>
+                <td>Edit, Delete</td>
+            </tr>
+            <tr>
+                <td>MOD-4405</td>
+                <td>LST-7698</td>
+                <td>Toyota Axio 2019</td>
+                <td>Karim Auto House</td>
+                <td>Changes Requested</td>
+                <td>Mileage did not match the odometer photo</td>
+                <td>18 October 2026</td>
+                <td>Edit, Delete</td>
+            </tr>
+            <tr>
+                <td>MOD-4435</td>
+                <td>LST-7712</td>
+                <td>Honda Fit 2019</td>
+                <td>Karim Auto House</td>
+                <td>Approved</td>
+                <td>All checks passed</td>
+                <td>28 October 2026</td>
+                <td>Edit, Delete</td>
+            </tr>
+        </table>
+
+        <h3>Edit a Moderation Record</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>Update an Existing Record</legend>
+                <table>
+                    <tr>
+                        <td><label for="editMod">Select Record:</label></td>
+                        <td>
+                            <select id="editMod" name="editMod" required>
+                                <option value="">-- Select Record --</option>
+                                <option value="MOD-4412">MOD-4412 Toyota Corolla 2023</option>
+                                <option value="MOD-4428">MOD-4428 Nissan Sunny 2018</option>
+                                <option value="MOD-4390">MOD-4390 Mitsubishi Pajero 2020</option>
+                                <option value="MOD-4405">MOD-4405 Toyota Axio 2019</option>
+                                <option value="MOD-4435">MOD-4435 Honda Fit 2019</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>New Decision:</label></td>
+                        <td>
+                            <input type="radio" id="editApprove" name="editDecision" value="Approve">
+                            <label for="editApprove">Approve</label>
+                            <input type="radio" id="editReject" name="editDecision" value="Reject">
+                            <label for="editReject">Reject</label>
+                            <input type="radio" id="editKeep" name="editDecision" value="Keep" checked>
+                            <label for="editKeep">Keep the Current Decision</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="editModNote">New Note:</label></td>
+                        <td><textarea id="editModNote" name="editModNote" rows="5" cols="40" placeholder="Leave blank to keep the current note"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Update Record">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+        <h3>Delete a Moderation Record</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>Remove a Record</legend>
+                <table>
+                    <tr>
+                        <td><label for="delMod">Select Record:</label></td>
+                        <td>
+                            <select id="delMod" name="delMod" required>
+                                <option value="">-- Select Record --</option>
+                                <option value="MOD-4412">MOD-4412 Toyota Corolla 2023</option>
+                                <option value="MOD-4428">MOD-4428 Nissan Sunny 2018</option>
+                                <option value="MOD-4390">MOD-4390 Mitsubishi Pajero 2020</option>
+                                <option value="MOD-4405">MOD-4405 Toyota Axio 2019</option>
+                                <option value="MOD-4435">MOD-4435 Honda Fit 2019</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="delModReason">Reason:</label></td>
+                        <td>
+                            <select id="delModReason" name="delModReason">
+                                <option value="">-- Select Reason --</option>
+                                <option value="Mistake">Record created by mistake</option>
+                                <option value="Duplicate">Duplicate record</option>
+                                <option value="Reassigned">Reassigned to another employee</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="checkbox" id="delModConfirm" name="delModConfirm" value="Confirmed" required>
+                            <label for="delModConfirm">I confirm this deletion</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Delete Record">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+        </section>
+
+        <hr>
+
+        <section class="page-section" id="calendarSection">
+
+        <h2>Test Drive Calendar View</h2>
+        <p>Every approved test drive for the week laid out by day and time slot.</p>
+
+        <table border="1">
+            <caption>Weekly Calendar, 26 October to 01 November 2026</caption>
+            <tr>
+                <th>Time Slot</th>
+                <th>Sun 26</th>
+                <th>Mon 27</th>
+                <th>Tue 28</th>
+                <th>Wed 29</th>
+                <th>Thu 30</th>
+                <th>Fri 31</th>
+                <th>Sat 01</th>
+            </tr>
+            <tr>
+                <th>10:00 AM</th>
+                <td>TD-2180<br>Honda Vezel</td>
+                <td>Free</td>
+                <td>TD-2205<br>Honda Civic</td>
+                <td>Free</td>
+                <td>Free</td>
+                <td>TD-2190<br>Toyota Premio</td>
+                <td>Free</td>
+            </tr>
+            <tr>
+                <th>11:00 AM</th>
+                <td>Free</td>
+                <td>TD-2192<br>Toyota Axio</td>
+                <td>Free</td>
+                <td>Free</td>
+                <td>TD-2211<br>Toyota Corolla</td>
+                <td>Free</td>
+                <td>TD-2220<br>BMW 320i</td>
+            </tr>
+            <tr>
+                <th>12:00 PM</th>
+                <td>Free</td>
+                <td>Free</td>
+                <td>TD-2208<br>Nissan X-Trail</td>
+                <td>TD-2214<br>Honda Vezel</td>
+                <td>Free</td>
+                <td>Free</td>
+                <td>Free</td>
+            </tr>
+            <tr>
+                <th>3:00 PM</th>
+                <td>TD-2186<br>Toyota Noah</td>
+                <td>Free</td>
+                <td>Free</td>
+                <td>Free</td>
+                <td>Free</td>
+                <td>Free</td>
+                <td>TD-2198<br>Mitsubishi Pajero</td>
+            </tr>
+            <tr>
+                <th>5:00 PM</th>
+                <td>Free</td>
+                <td>TD-2201<br>Toyota Allion</td>
+                <td>TD-2175<br>Toyota Corolla</td>
+                <td>Free</td>
+                <td>TD-2217<br>Nissan Sunny</td>
+                <td>Free</td>
+                <td>Free</td>
+            </tr>
+        </table>
+
+        <h3>Full Details of This Week</h3>
+
+        <table border="1">
+            <caption>Every Booking Between 26 October and 01 November</caption>
+            <tr>
+                <th>Request ID</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Customer</th>
+                <th>Car</th>
+                <th>Vendor</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>TD-2205</td>
+                <td>28 October 2026</td>
+                <td>10:00 AM</td>
+                <td>Sadia Islam</td>
+                <td>Honda Civic 2022</td>
+                <td>Karim Auto House</td>
+                <td>Completed</td>
+            </tr>
+            <tr>
+                <td>TD-2208</td>
+                <td>28 October 2026</td>
+                <td>12:00 PM</td>
+                <td>Tanvir Ahmed</td>
+                <td>Nissan X-Trail 2021</td>
+                <td>Dhaka Motors Ltd</td>
+                <td>In Progress</td>
+            </tr>
+            <tr>
+                <td>TD-2211</td>
+                <td>30 October 2026</td>
+                <td>11:00 AM</td>
+                <td>Mohammed S Hossain</td>
+                <td>Toyota Corolla 2023</td>
+                <td>Rahim Motors</td>
+                <td>Approved</td>
+            </tr>
+            <tr>
+                <td>TD-2190</td>
+                <td>31 October 2026</td>
+                <td>10:00 AM</td>
+                <td>Nusrat Jahan</td>
+                <td>Toyota Premio 2021</td>
+                <td>Rahim Motors</td>
+                <td>Approved</td>
+            </tr>
+            <tr>
+                <td>TD-2198</td>
+                <td>01 November 2026</td>
+                <td>3:00 PM</td>
+                <td>Mohammed S Hossain</td>
+                <td>Mitsubishi Pajero 2020</td>
+                <td>Rahim Motors</td>
+                <td>Pending</td>
+            </tr>
+        </table>
+
+        <h3>Change the Week Shown</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>Calendar Filter</legend>
+                <table>
+                    <tr>
+                        <td><label for="weekStart">Week Starting:</label></td>
+                        <td><input type="date" id="weekStart" name="weekStart" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="calVendor">Vendor:</label></td>
+                        <td>
+                            <select id="calVendor" name="calVendor">
+                                <option value="">-- All Vendors --</option>
+                                <option value="VEN-2041">Rahim Motors</option>
+                                <option value="VEN-2055">Karim Auto House</option>
+                                <option value="VEN-2088">Dhaka Motors Ltd</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Show:</label></td>
+                        <td>
+                            <input type="checkbox" id="showApproved" name="calShow" value="Approved" checked>
+                            <label for="showApproved">Approved</label>
+                            <input type="checkbox" id="showPending" name="calShow" value="Pending" checked>
+                            <label for="showPending">Pending</label>
+                            <input type="checkbox" id="showCompleted" name="calShow" value="Completed">
+                            <label for="showCompleted">Completed</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Show This Week">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+        </section>
+
+        <hr>
+
+        <section class="page-section" id="reportSection">
+
+        <h2>Printable Daily Report</h2>
+        <h5>Report Date: 28 October 2026 | Prepared By: Shafayat Jamil, EMP-104</h5>
+
+        <h3>Generate a Report</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>Report Settings</legend>
+                <table>
+                    <tr>
+                        <td><label for="reportDate">Report Date:</label></td>
+                        <td><input type="date" id="reportDate" name="reportDate" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="reportType">Report Type:</label></td>
+                        <td>
+                            <select id="reportType" name="reportType">
+                                <option value="">-- Select Type --</option>
+                                <option value="Daily">Daily Summary</option>
+                                <option value="Weekly">Weekly Summary</option>
+                                <option value="Monthly">Monthly Summary</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Include Sections:</label></td>
+                        <td>
+                            <input type="checkbox" id="secInquiries" name="reportSections" value="Inquiries" checked>
+                            <label for="secInquiries">Inquiries</label>
+                            <input type="checkbox" id="secTestDrives" name="reportSections" value="Test Drives" checked>
+                            <label for="secTestDrives">Test Drives</label>
+                            <input type="checkbox" id="secListings" name="reportSections" value="Listings" checked>
+                            <label for="secListings">Listings</label>
+                            <input type="checkbox" id="secSales" name="reportSections" value="Sales" checked>
+                            <label for="secSales">Sales</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Generate Report">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+        <h3>Section 1: Inquiry Activity</h3>
+
+        <table border="1">
+            <caption>Customer Inquiries on 28 October 2026</caption>
+            <tr>
+                <th>Metric</th>
+                <th>Count</th>
+            </tr>
+            <tr>
+                <td>New Inquiries Received</td>
+                <td>19</td>
+            </tr>
+            <tr>
+                <td>Inquiries Answered</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>Inquiries Still Pending</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>Average Response Time</td>
+                <td>2.4 hours</td>
+            </tr>
+        </table>
+
+        <h3>Section 2: Test Drive Activity</h3>
+
+        <table border="1">
+            <caption>Test Drives on 28 October 2026</caption>
+            <tr>
+                <th>Metric</th>
+                <th>Count</th>
+            </tr>
+            <tr>
+                <td>New Requests Received</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>Requests Approved</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Requests Rejected</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>Test Drives Completed</td>
+                <td>3</td>
+            </tr>
+        </table>
+
+        <h3>Section 3: Listing Moderation</h3>
+
+        <table border="1">
+            <caption>Listings Reviewed on 28 October 2026</caption>
+            <tr>
+                <th>Metric</th>
+                <th>Count</th>
+            </tr>
+            <tr>
+                <td>New Listings Submitted</td>
+                <td>23</td>
+            </tr>
+            <tr>
+                <td>Listings Approved</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <td>Listings Rejected</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Most Common Rejection Reason</td>
+                <td>Unclear or missing photos</td>
+            </tr>
+        </table>
+
+        <h3>Section 4: Day Summary</h3>
+
+        <table border="1">
+            <caption>Overall Figures for 28 October 2026</caption>
+            <tr>
+                <th>Area</th>
+                <th>Received</th>
+                <th>Completed</th>
+                <th>Pending</th>
+            </tr>
+            <tr>
+                <td>Inquiries</td>
+                <td>19</td>
+                <td>12</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>Test Drives</td>
+                <td>11</td>
+                <td>8</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>Listings</td>
+                <td>23</td>
+                <td>14</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>Sales</td>
+                <td>7</td>
+                <td>4</td>
+                <td>3</td>
+            </tr>
+        </table>
+
+        <h3>Notes for the Manager</h3>
+        <p>Inquiry INQ-5519 has been waiting two days because the vendor has not replied.<br>
+            The listing moderation backlog grew by six items because of the Friday holiday.<br>
+            I recommend assigning one more employee to moderation during weekends.
+        </p>
+
+        <h5>Signature: ____________________</h5>
+        </section>
+
+        <hr>
+
+        <section class="page-section" id="inquiryHandlingSection">
+
+        <h2>Inquiry and Test Drive Handling</h2>
+        <p>Step in when a vendor is slow to answer, and decide on test drive requests.</p>
+
+        <h3>Open Inquiries Across Every Vendor</h3>
+
+        <table border="1">
+            <caption>Inquiries Needing Attention</caption>
+            <tr>
+                <th>Inquiry ID</th>
+                <th>Customer</th>
+                <th>Car</th>
+                <th>Vendor</th>
+                <th>Topic</th>
+                <th>Date</th>
+                <th>Vendor Replied</th>
+            </tr>
+            <tr>
+                <td>INQ-5519</td>
+                <td>Nusrat Jahan</td>
+                <td>Mitsubishi Pajero 2020</td>
+                <td>Rahim Motors</td>
+                <td>Car Condition</td>
+                <td>26 October 2026</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>INQ-5510</td>
+                <td>Arif Hossain</td>
+                <td>Toyota Premio 2021</td>
+                <td>Rahim Motors</td>
+                <td>Bank Loan and EMI</td>
+                <td>25 October 2026</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>INQ-5495</td>
+                <td>Tanvir Ahmed</td>
+                <td>Honda Vezel 2019</td>
+                <td>Rahim Motors</td>
+                <td>Documents</td>
+                <td>24 October 2026</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>INQ-5505</td>
+                <td>Sadia Islam</td>
+                <td>Honda Civic 2022</td>
+                <td>Karim Auto House</td>
+                <td>Delivery</td>
+                <td>25 October 2026</td>
+                <td>Yes</td>
+            </tr>
+        </table>
+
+        <h3>Respond to an Inquiry</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>Employee Reply</legend>
+                <table>
+                    <tr>
+                        <td><label for="empInquiry">Select Inquiry:</label></td>
+                        <td>
+                            <select id="empInquiry" name="empInquiry" required>
+                                <option value="">-- Select Inquiry --</option>
+                                <option value="INQ-5519">INQ-5519 Nusrat Jahan, Mitsubishi Pajero 2020</option>
+                                <option value="INQ-5510">INQ-5510 Arif Hossain, Toyota Premio 2021</option>
+                                <option value="INQ-5495">INQ-5495 Tanvir Ahmed, Honda Vezel 2019</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="empReply">Your Reply:</label></td>
+                        <td><textarea id="empReply" name="empReply" rows="5" cols="40" placeholder="Write the reply for the customer"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label>Action Taken:</label></td>
+                        <td>
+                            <input type="radio" id="actReply" name="empAction" value="Reply" required>
+                            <label for="actReply">Reply to the Customer</label>
+                            <input type="radio" id="actRemind" name="empAction" value="Remind Vendor">
+                            <label for="actRemind">Send the Vendor a Reminder</label>
+                            <input type="radio" id="actEscalate" name="empAction" value="Escalate">
+                            <label for="actEscalate">Escalate to the Admin</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Send Reply">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+        <h3>Pending Test Drive Requests</h3>
+
+        <table border="1">
+            <caption>Requests Waiting for a Decision</caption>
+            <tr>
+                <th>Request ID</th>
+                <th>Customer</th>
+                <th>Car</th>
+                <th>Vendor</th>
+                <th>Requested Date</th>
+                <th>Time Slot</th>
+                <th>Licence Verified</th>
+            </tr>
+            <tr>
+                <td>TD-2198</td>
+                <td>Mohammed S Hossain</td>
+                <td>Mitsubishi Pajero 2020</td>
+                <td>Rahim Motors</td>
+                <td>01 November 2026</td>
+                <td>3:00 PM</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>TD-2214</td>
+                <td>Sadia Islam</td>
+                <td>Honda Vezel 2019</td>
+                <td>Rahim Motors</td>
+                <td>29 October 2026</td>
+                <td>12:00 PM</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>TD-2217</td>
+                <td>Rafiq Mia</td>
+                <td>Nissan Sunny 2018</td>
+                <td>Rahim Motors</td>
+                <td>30 October 2026</td>
+                <td>5:00 PM</td>
+                <td>No</td>
+            </tr>
+        </table>
+
+        <h3>Approve or Reject a Test Drive</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>Test Drive Decision</legend>
+                <table>
+                    <tr>
+                        <td><label for="tdRequest">Select Request:</label></td>
+                        <td>
+                            <select id="tdRequest" name="tdRequest" required>
+                                <option value="">-- Select Request --</option>
+                                <option value="TD-2198">TD-2198 Mitsubishi Pajero 2020, 01 November</option>
+                                <option value="TD-2214">TD-2214 Honda Vezel 2019, 29 October</option>
+                                <option value="TD-2217">TD-2217 Nissan Sunny 2018, 30 October</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Decision:</label></td>
+                        <td>
+                            <input type="radio" id="decApprove" name="tdDecision" value="Approve" required>
+                            <label for="decApprove">Approve</label>
+                            <input type="radio" id="decReject" name="tdDecision" value="Reject">
+                            <label for="decReject">Reject</label>
+                            <input type="radio" id="decReschedule" name="tdDecision" value="Reschedule">
+                            <label for="decReschedule">Reschedule</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Checks Completed:</label></td>
+                        <td>
+                            <input type="checkbox" id="checkLicense" name="tdChecks" value="Licence">
+                            <label for="checkLicense">Driving Licence Verified</label>
+                            <input type="checkbox" id="checkCar" name="tdChecks" value="Car Available">
+                            <label for="checkCar">Car Available</label>
+                            <input type="checkbox" id="checkVendor" name="tdChecks" value="Vendor Confirmed">
+                            <label for="checkVendor">Vendor Confirmed</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="newSlotDate">New Date if Rescheduling:</label></td>
+                        <td><input type="date" id="newSlotDate" name="newSlotDate"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="tdReason">Reason or Note:</label></td>
+                        <td><textarea id="tdReason" name="tdReason" rows="4" cols="40" placeholder="Explain the decision to the customer"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Save Decision">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+        </section>
+
+        <hr>
+
+    </main>
+
+    <footer class="site-footer">
+        <hr>
+
+        <h3>DriveHub Vehicle Marketplace Ltd.</h3>
+
+        <p>Level 5, Tech Tower, Kawran Bazar, Dhaka 1215, Bangladesh<br>
+            Phone: +880 1700 000000 | Hotline: 16263<br>
+            Email: support@drivehub.com.bd | Sales: sales@drivehub.com.bd<br>
+            Office Hours: Saturday to Thursday, 9:00 AM to 6:00 PM<br>
+            Trade Licence: TRAD-DH-2018-99120 | TIN: 441920883715 | BIN: 004412098-0203
+        </p>
+
+        <p>
+            <a href="index.html">Home</a> |
+            <a href="login.html">Login</a> |
+            <a href="register.html">Register</a> |
+            <a href="customer.html">Customer Dashboard</a> |
+            <a href="vendor.html">Vendor Dashboard</a> |
+            <a href="employee.html">Employee Dashboard</a> |
+            <a href="admin.html">Admin Dashboard</a>
+        </p>
+
+        <p>
+            <a href="https://facebook.com/drivehubbd" target="_blank"><img src="image/facebook.png" alt="Facebook" width="30" height="30"></a>
+            <a href="https://github.com/drivehubbd" target="_blank"><img src="image/github.png" alt="GitHub" width="30" height="30"></a>
+            <a href="https://drivehub.com.bd" target="_blank"><img src="image/website.png" alt="Website" width="30" height="30"></a>
+        </p>
+
+        <hr>
+        <h6>Copyright DriveHub Vehicle Marketplace Ltd. 2026. All rights reserved.</h6>
+        <h6>CSC 3215 Web Technologies Project, American International University-Bangladesh.</h6>
+    </footer>
+
+</body>
+
+</html>
