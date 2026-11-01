@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard | DriveHub</title>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <img src="image/logo.png" alt="DriveHub Logo" width="120" height="120">
+        <h1>DriveHub Vehicle Marketplace</h1>
+        <h3>Customer Dashboard</h3>
+        <h5>Logged in as: Mohammed S Hossain</h5>
+        <h5>Customer ID: CUS-10234 | Member since: 14 March 2025 | Status: Active</h5>
+        <a href="login.html">Logout</a>
+    </header>
+
+    <nav class="section-nav">
+        <a href="#overviewSection">Overview</a>
+        |
+        <a href="#inquirySection">My Inquiries</a>
+        |
+        <a href="#compareSection">Compare Cars</a>
+        |
+        <a href="#emiSection">EMI Calculator</a>
+        |
+        <a href="#invoiceSection">My Invoices</a>
+    </nav>
+
+    <main class="container">
+
+        <section class="page-section" id="overviewSection">
+
+        <h2>Overview</h2>
+
+        <table border="1">
+            <caption>Your Activity at a Glance</caption>
+            <tr>
+                <th>Item</th>
+                <th>Count</th>
+                <th>Last Update</th>
+            </tr>
+            <tr>
+                <td>Inquiries Sent</td>
+                <td>6</td>
+                <td>26 October 2026</td>
+            </tr>
+            <tr>
+                <td>Test Drives Requested</td>
+                <td>4</td>
+                <td>24 October 2026</td>
+            </tr>
+            <tr>
+                <td>Orders Placed</td>
+                <td>2</td>
+                <td>20 October 2026</td>
+            </tr>
+            <tr>
+                <td>Invoices Available</td>
+                <td>1</td>
+                <td>28 October 2026</td>
+            </tr>
+            <tr>
+                <td>Cars Compared</td>
+                <td>11</td>
+                <td>27 October 2026</td>
+            </tr>
+        </table>
+
+        <h3>My Profile</h3>
+
+        <img src="image/customer-photo.png" alt="Customer Profile Photo" width="150" height="150">
+
+        <form method="post">
+            <fieldset>
+                <legend>Update My Profile</legend>
+                <table>
+                    <tr>
+                        <td><label for="profileName">Full Name:</label></td>
+                        <td><input type="text" id="profileName" name="profileName" value="Mohammed S Hossain" placeholder="Enter your full name" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="profileEmail">Email:</label></td>
+                        <td><input type="email" id="profileEmail" name="profileEmail" value="customer@drivehub.com.bd" placeholder="Enter your email" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="profilePhone">Phone Number:</label></td>
+                        <td><input type="text" id="profilePhone" name="profilePhone" value="01755123456" placeholder="Enter your phone number" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="profileCity">City:</label></td>
+                        <td>
+                            <select id="profileCity" name="profileCity">
+                                <option value="Dhaka" selected>Dhaka</option>
+                                <option value="Chattogram">Chattogram</option>
+                                <option value="Sylhet">Sylhet</option>
+                                <option value="Rajshahi">Rajshahi</option>
+                                <option value="Khulna">Khulna</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="profilePassword">New Password:</label></td>
+                        <td><input type="password" id="profilePassword" name="profilePassword" placeholder="Leave blank to keep the current password"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Save Profile">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+        </section>
+
+        <hr>
+
+        <section class="page-section" id="inquirySection">
+
+        <h2>My Inquiries</h2>
+        <p>Create, view, edit, delete and search the inquiries you have sent to vendors.</p>
+
+        <h3>Create a New Inquiry</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>New Inquiry</legend>
+                <table>
+                    <tr>
+                        <td><label for="inqCar">Select Car:</label></td>
+                        <td>
+                            <select id="inqCar" name="inqCar" required>
+                                <option value="">-- Select Car --</option>
+                                <option value="Corolla">Toyota Corolla 2023, Rahim Motors</option>
+                                <option value="Civic">Honda Civic 2022, Karim Auto House</option>
+                                <option value="XTrail">Nissan X-Trail 2021, Dhaka Motors Ltd</option>
+                                <option value="Pajero">Mitsubishi Pajero 2020, Rahim Motors</option>
+                                <option value="Axio">Toyota Axio 2019, Karim Auto House</option>
+                                <option value="BMW">BMW 320i 2018, Dhaka Motors Ltd</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="inqTopic">Topic:</label></td>
+                        <td>
+                            <select id="inqTopic" name="inqTopic" required>
+                                <option value="">-- Select Topic --</option>
+                                <option value="Price">Price Negotiation</option>
+                                <option value="Condition">Car Condition and History</option>
+                                <option value="Papers">Documents and Registration</option>
+                                <option value="Finance">Bank Loan and EMI</option>
+                                <option value="Delivery">Delivery and Handover</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Preferred Reply Method:</label></td>
+                        <td>
+                            <input type="radio" id="replyEmail" name="replyMethod" value="Email">
+                            <label for="replyEmail">Email</label>
+                            <input type="radio" id="replyPhone" name="replyMethod" value="Phone">
+                            <label for="replyPhone">Phone Call</label>
+                            <input type="radio" id="replySms" name="replyMethod" value="SMS">
+                            <label for="replySms">SMS</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Also Ask About:</label></td>
+                        <td>
+                            <input type="checkbox" id="askWarranty" name="alsoAsk" value="Warranty">
+                            <label for="askWarranty">Warranty</label>
+                            <input type="checkbox" id="askExchange" name="alsoAsk" value="Exchange">
+                            <label for="askExchange">Exchange Offer</label>
+                            <input type="checkbox" id="askInsurance" name="alsoAsk" value="Insurance">
+                            <label for="askInsurance">Insurance</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="inqMessage">Your Question:</label></td>
+                        <td><textarea id="inqMessage" name="inqMessage" rows="5" cols="40" placeholder="Write your question here"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="inqDate">Preferred Reply Date:</label></td>
+                        <td><input type="date" id="inqDate" name="inqDate"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Create Inquiry">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+        <h3>Search My Inquiries</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>Search and Filter</legend>
+                <table>
+                    <tr>
+                        <td><label for="inqSearch">Keyword:</label></td>
+                        <td><input type="text" id="inqSearch" name="inqSearch" placeholder="Enter a car name or inquiry ID"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="inqStatus">Status:</label></td>
+                        <td>
+                            <select id="inqStatus" name="inqStatus">
+                                <option value="">-- All Statuses --</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Answered">Answered</option>
+                                <option value="Closed">Closed</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="inqFrom">From Date:</label></td>
+                        <td><input type="date" id="inqFrom" name="inqFrom"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Search">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+        <h3>My Inquiry Records</h3>
+
+        <table border="1">
+            <caption>All Inquiries You Have Sent</caption>
+            <tr>
+                <th>Inquiry ID</th>
+                <th>Car</th>
+                <th>Vendor</th>
+                <th>Topic</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Reply</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>INQ-5521</td>
+                <td>Toyota Corolla 2023</td>
+                <td>Rahim Motors</td>
+                <td>Price Negotiation</td>
+                <td>26 October 2026</td>
+                <td>Answered</td>
+                <td>Best price is BDT 27,50,000</td>
+                <td>Edit, Delete</td>
+            </tr>
+            <tr>
+                <td>INQ-5498</td>
+                <td>Honda Civic 2022</td>
+                <td>Karim Auto House</td>
+                <td>Car Condition</td>
+                <td>23 October 2026</td>
+                <td>Pending</td>
+                <td>Waiting for the vendor</td>
+                <td>Edit, Delete</td>
+            </tr>
+            <tr>
+                <td>INQ-5471</td>
+                <td>Nissan X-Trail 2021</td>
+                <td>Dhaka Motors Ltd</td>
+                <td>Bank Loan and EMI</td>
+                <td>19 October 2026</td>
+                <td>Answered</td>
+                <td>City Bank loan at 9 percent</td>
+                <td>Edit, Delete</td>
+            </tr>
+            <tr>
+                <td>INQ-5440</td>
+                <td>Toyota Axio 2019</td>
+                <td>Karim Auto House</td>
+                <td>Documents</td>
+                <td>15 October 2026</td>
+                <td>Closed</td>
+                <td>All papers clear</td>
+                <td>Delete</td>
+            </tr>
+            <tr>
+                <td>INQ-5402</td>
+                <td>BMW 320i 2018</td>
+                <td>Dhaka Motors Ltd</td>
+                <td>Delivery</td>
+                <td>11 October 2026</td>
+                <td>Closed</td>
+                <td>Free delivery inside Dhaka</td>
+                <td>Delete</td>
+            </tr>
+        </table>
+
+        <h3>Edit an Inquiry</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>Update an Existing Inquiry</legend>
+                <table>
+                    <tr>
+                        <td><label for="editInq">Select Inquiry:</label></td>
+                        <td>
+                            <select id="editInq" name="editInq" required>
+                                <option value="">-- Select Inquiry --</option>
+                                <option value="INQ-5521">INQ-5521 Toyota Corolla 2023</option>
+                                <option value="INQ-5498">INQ-5498 Honda Civic 2022</option>
+                                <option value="INQ-5471">INQ-5471 Nissan X-Trail 2021</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="editTopic">New Topic:</label></td>
+                        <td>
+                            <select id="editTopic" name="editTopic">
+                                <option value="">-- Keep the Current Topic --</option>
+                                <option value="Price">Price Negotiation</option>
+                                <option value="Condition">Car Condition and History</option>
+                                <option value="Papers">Documents and Registration</option>
+                                <option value="Finance">Bank Loan and EMI</option>
+                                <option value="Delivery">Delivery and Handover</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="editMessage">New Question Text:</label></td>
+                        <td><textarea id="editMessage" name="editMessage" rows="5" cols="40" placeholder="Leave blank to keep the current text"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Update Inquiry">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+        <h3>Delete an Inquiry</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>Remove an Inquiry</legend>
+                <table>
+                    <tr>
+                        <td><label for="delInq">Select Inquiry:</label></td>
+                        <td>
+                            <select id="delInq" name="delInq" required>
+                                <option value="">-- Select Inquiry --</option>
+                                <option value="INQ-5521">INQ-5521 Toyota Corolla 2023</option>
+                                <option value="INQ-5498">INQ-5498 Honda Civic 2022</option>
+                                <option value="INQ-5471">INQ-5471 Nissan X-Trail 2021</option>
+                                <option value="INQ-5440">INQ-5440 Toyota Axio 2019</option>
+                                <option value="INQ-5402">INQ-5402 BMW 320i 2018</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="delInqReason">Reason:</label></td>
+                        <td>
+                            <select id="delInqReason" name="delInqReason">
+                                <option value="">-- Select Reason --</option>
+                                <option value="Answered">My question was answered</option>
+                                <option value="Bought">I bought another car</option>
+                                <option value="Mistake">Sent by mistake</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="checkbox" id="delInqConfirm" name="delInqConfirm" value="Confirmed" required>
+                            <label for="delInqConfirm">I confirm this deletion</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Delete Inquiry">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+        </section>
+
+        <hr>
+
+        <section class="page-section" id="compareSection">
+
+        <h2>Car Comparison Tool</h2>
+        <p>Select two cars and submit the form to compare them side by side.</p>
+
+        <form method="post">
+            <fieldset>
+                <legend>Select Cars to Compare</legend>
+                <table>
+                    <tr>
+                        <td><label for="carOne">First Car:</label></td>
+                        <td>
+                            <select id="carOne" name="carOne" required>
+                                <option value="">-- Select First Car --</option>
+                                <option value="Corolla">Toyota Corolla 2023</option>
+                                <option value="Civic">Honda Civic 2022</option>
+                                <option value="XTrail">Nissan X-Trail 2021</option>
+                                <option value="Pajero">Mitsubishi Pajero 2020</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="carTwo">Second Car:</label></td>
+                        <td>
+                            <select id="carTwo" name="carTwo" required>
+                                <option value="">-- Select Second Car --</option>
+                                <option value="Corolla">Toyota Corolla 2023</option>
+                                <option value="Civic">Honda Civic 2022</option>
+                                <option value="XTrail">Nissan X-Trail 2021</option>
+                                <option value="Pajero">Mitsubishi Pajero 2020</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Compare On:</label></td>
+                        <td>
+                            <input type="checkbox" id="compPrice" name="compareOn" value="Price" checked>
+                            <label for="compPrice">Price</label>
+                            <input type="checkbox" id="compMileage" name="compareOn" value="Mileage" checked>
+                            <label for="compMileage">Mileage</label>
+                            <input type="checkbox" id="compEngine" name="compareOn" value="Engine">
+                            <label for="compEngine">Engine</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Compare Now">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+        <h3>Comparison Result</h3>
+
+        <table border="1">
+            <caption>Toyota Corolla 2023 compared with Honda Civic 2022</caption>
+            <tr>
+                <th>Specification</th>
+                <th>Toyota Corolla 2023</th>
+                <th>Honda Civic 2022</th>
+            </tr>
+            <tr>
+                <td>Photo</td>
+                <td><img src="image/car1.png" alt="Toyota Corolla 2023" width="200" height="120"></td>
+                <td><img src="image/car2.png" alt="Honda Civic 2022" width="200" height="120"></td>
+            </tr>
+            <tr>
+                <td>Price (BDT)</td>
+                <td>28,00,000</td>
+                <td>32,00,000</td>
+            </tr>
+            <tr>
+                <td>Engine</td>
+                <td>1500 cc</td>
+                <td>1800 cc Turbo</td>
+            </tr>
+            <tr>
+                <td>Fuel Type</td>
+                <td>Petrol</td>
+                <td>Octane</td>
+            </tr>
+            <tr>
+                <td>Mileage</td>
+                <td>15,000 km</td>
+                <td>22,000 km</td>
+            </tr>
+            <tr>
+                <td>Transmission</td>
+                <td>Automatic</td>
+                <td>Automatic</td>
+            </tr>
+            <tr>
+                <td>Seating Capacity</td>
+                <td>5</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>Features</td>
+                <td>AC, GPS, Reverse Camera</td>
+                <td>AC, GPS, Sunroof, Leather Seats</td>
+            </tr>
+            <tr>
+                <td>Vendor</td>
+                <td>Rahim Motors</td>
+                <td>Karim Auto House</td>
+            </tr>
+        </table>
+        </section>
+
+        <hr>
+
+        <section class="page-section" id="emiSection">
+
+        <h2>EMI Calculator</h2>
+        <p>Enter the car price, your down payment, the interest rate and the loan length.</p>
+
+        <form method="post">
+            <fieldset>
+                <legend>Loan Details</legend>
+                <table>
+                    <tr>
+                        <td><label for="emiPrice">Car Price (BDT):</label></td>
+                        <td><input type="number" id="emiPrice" name="emiPrice" placeholder="Enter the car price" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="emiDown">Down Payment (BDT):</label></td>
+                        <td><input type="number" id="emiDown" name="emiDown" placeholder="Enter the down payment" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="emiRate">Interest Rate (percent per year):</label></td>
+                        <td><input type="number" id="emiRate" name="emiRate" placeholder="Enter the interest rate" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="emiYears">Loan Duration:</label></td>
+                        <td>
+                            <select id="emiYears" name="emiYears" required>
+                                <option value="">-- Select Duration --</option>
+                                <option value="1">1 Year</option>
+                                <option value="3">3 Years</option>
+                                <option value="5">5 Years</option>
+                                <option value="7">7 Years</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Bank:</label></td>
+                        <td>
+                            <input type="radio" id="bankCity" name="bankName" value="City Bank">
+                            <label for="bankCity">City Bank</label>
+                            <input type="radio" id="bankBrac" name="bankName" value="BRAC Bank">
+                            <label for="bankBrac">BRAC Bank</label>
+                            <input type="radio" id="bankEbl" name="bankName" value="Eastern Bank">
+                            <label for="bankEbl">Eastern Bank</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Calculate EMI">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+        <h3>EMI Reference Chart</h3>
+
+        <table border="1">
+            <caption>Monthly Instalment for a BDT 20,00,000 Loan at 9 percent</caption>
+            <tr>
+                <th>Duration</th>
+                <th>Monthly EMI (BDT)</th>
+                <th>Total Interest (BDT)</th>
+                <th>Total Payable (BDT)</th>
+            </tr>
+            <tr>
+                <td>1 Year</td>
+                <td>1,74,998</td>
+                <td>99,976</td>
+                <td>20,99,976</td>
+            </tr>
+            <tr>
+                <td>3 Years</td>
+                <td>63,600</td>
+                <td>2,89,600</td>
+                <td>22,89,600</td>
+            </tr>
+            <tr>
+                <td>5 Years</td>
+                <td>41,517</td>
+                <td>4,91,020</td>
+                <td>24,91,020</td>
+            </tr>
+            <tr>
+                <td>7 Years</td>
+                <td>32,186</td>
+                <td>7,03,624</td>
+                <td>27,03,624</td>
+            </tr>
+        </table>
+
+        <h3>Bank Interest Rates</h3>
+
+        <table border="1">
+            <caption>Car Loan Rates for DriveHub Customers</caption>
+            <tr>
+                <th>Bank</th>
+                <th>Interest Rate</th>
+                <th>Minimum Down Payment</th>
+                <th>Maximum Duration</th>
+            </tr>
+            <tr>
+                <td>City Bank</td>
+                <td>9.00 percent</td>
+                <td>30 percent</td>
+                <td>7 Years</td>
+            </tr>
+            <tr>
+                <td>BRAC Bank</td>
+                <td>9.50 percent</td>
+                <td>25 percent</td>
+                <td>6 Years</td>
+            </tr>
+            <tr>
+                <td>Eastern Bank</td>
+                <td>9.25 percent</td>
+                <td>30 percent</td>
+                <td>7 Years</td>
+            </tr>
+        </table>
+        </section>
+
+        <hr>
+
+        <section class="page-section" id="invoiceSection">
+
+        <h2>My Invoices</h2>
+        <p>Invoices become available once an order is confirmed and paid.</p>
+
+        <table border="1">
+            <caption>Invoice List</caption>
+            <tr>
+                <th>Invoice Number</th>
+                <th>Order Number</th>
+                <th>Car</th>
+                <th>Amount (BDT)</th>
+                <th>Invoice Date</th>
+                <th>Payment Status</th>
+            </tr>
+            <tr>
+                <td>INV-2026-00417</td>
+                <td>ORD-2026-00392</td>
+                <td>Toyota Corolla 2023</td>
+                <td>30,00,000</td>
+                <td>28 October 2026</td>
+                <td>Paid</td>
+            </tr>
+        </table>
+
+        <h3>Invoice INV-2026-00417</h3>
+
+        <img src="image/logo.png" alt="DriveHub Logo" width="120" height="120">
+        <h4>DriveHub Vehicle Marketplace Ltd.</h4>
+        <h5>Level 5, Tech Tower, Kawran Bazar, Dhaka 1215</h5>
+
+        <table border="1">
+            <caption>Billed To</caption>
+            <tr>
+                <th>Field</th>
+                <th>Detail</th>
+            </tr>
+            <tr>
+                <td>Customer Name</td>
+                <td>Mohammed S Hossain</td>
+            </tr>
+            <tr>
+                <td>Customer ID</td>
+                <td>CUS-10234</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>Flat 4B, House 21, Dhanmondi 27, Dhaka 1209</td>
+            </tr>
+            <tr>
+                <td>Sold By</td>
+                <td>Rahim Motors, VEN-2041</td>
+            </tr>
+        </table>
+
+        <table border="1">
+            <caption>Itemized Bill</caption>
+            <tr>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Unit Price (BDT)</th>
+                <th>Amount (BDT)</th>
+            </tr>
+            <tr>
+                <td>Toyota Corolla 2023, Chassis NZE161-7654321</td>
+                <td>1</td>
+                <td>28,00,000</td>
+                <td>28,00,000</td>
+            </tr>
+            <tr>
+                <td>Registration and Documentation Fee</td>
+                <td>1</td>
+                <td>45,000</td>
+                <td>45,000</td>
+            </tr>
+            <tr>
+                <td>One Year Comprehensive Insurance</td>
+                <td>1</td>
+                <td>38,000</td>
+                <td>38,000</td>
+            </tr>
+            <tr>
+                <td>DriveHub Platform Service Charge</td>
+                <td>1</td>
+                <td>15,000</td>
+                <td>15,000</td>
+            </tr>
+            <tr>
+                <td colspan="3">Subtotal</td>
+                <td>28,98,000</td>
+            </tr>
+            <tr>
+                <td colspan="3">VAT at 5 percent</td>
+                <td>1,44,900</td>
+            </tr>
+            <tr>
+                <td colspan="3">Discount</td>
+                <td>42,900</td>
+            </tr>
+            <tr>
+                <th colspan="3">Grand Total</th>
+                <th>30,00,000</th>
+            </tr>
+        </table>
+
+        <h3>Email a Copy</h3>
+
+        <form method="post">
+            <fieldset>
+                <legend>Send This Invoice</legend>
+                <table>
+                    <tr>
+                        <td><label for="invoiceEmail">Email Invoice To:</label></td>
+                        <td><input type="email" id="invoiceEmail" name="invoiceEmail" placeholder="Enter an email address" required></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Email Invoice">
+                            <input type="reset">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+        </section>
+
+        <hr>
+
+    </main>
+
+    <footer class="site-footer">
+        <hr>
+
+        <h3>DriveHub Vehicle Marketplace Ltd.</h3>
+
+        <p>Level 5, Tech Tower, Kawran Bazar, Dhaka 1215, Bangladesh<br>
+            Phone: +880 1700 000000 | Hotline: 16263<br>
+            Email: support@drivehub.com.bd | Sales: sales@drivehub.com.bd<br>
+            Office Hours: Saturday to Thursday, 9:00 AM to 6:00 PM<br>
+            Trade Licence: TRAD-DH-2018-99120 | TIN: 441920883715 | BIN: 004412098-0203
+        </p>
+
+        <p>
+            <a href="index.html">Home</a> |
+            <a href="login.html">Login</a> |
+            <a href="register.html">Register</a> |
+            <a href="customer.html">Customer Dashboard</a> |
+            <a href="vendor.html">Vendor Dashboard</a> |
+            <a href="employee.html">Employee Dashboard</a> |
+            <a href="admin.html">Admin Dashboard</a>
+        </p>
+
+        <p>
+            <a href="https://facebook.com/drivehubbd" target="_blank"><img src="image/facebook.png" alt="Facebook" width="30" height="30"></a>
+            <a href="https://github.com/drivehubbd" target="_blank"><img src="image/github.png" alt="GitHub" width="30" height="30"></a>
+            <a href="https://drivehub.com.bd" target="_blank"><img src="image/website.png" alt="Website" width="30" height="30"></a>
+        </p>
+
+        <hr>
+        <h6>Copyright DriveHub Vehicle Marketplace Ltd. 2026. All rights reserved.</h6>
+        <h6>CSC 3215 Web Technologies Project, American International University-Bangladesh.</h6>
+    </footer>
+
+</body>
+
+</html>
