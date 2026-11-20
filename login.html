@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login to the DriveHub Vehicle Marketplace Management System">
+    <title>Login | DriveHub Vehicle Marketplace</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+
+    <!-- HEADER: logo on the left, account buttons on the right -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="image/logo.png" alt="DriveHub Logo" width="40" height="40">
+            Drive<span>Hub</span>
+        </a>
+        <div class="user-info">
+            <a href="login.html" class="btn btn-small btn-light">Login</a>
+            <a href="register.html" class="btn btn-small">Register</a>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="topnav">
+        <a href="index.html">Home</a>
+        <a href="index.html#catalog">Browse Cars</a>
+        <a href="index.html#who">Who It Is For</a>
+        <a href="index.html#how">How It Works</a>
+        <a href="index.html#vendors">Our Vendors</a>
+        <a href="index.html#contact">Contact Us</a>
+    </nav>
+
+    <main class="container">
+        <div class="auth-box">
+
+            <div class="card">
+                <h2 class="page-title">Welcome back</h2>
+                <p class="page-subtitle">One login for everyone: customers, vendors, employees and admins.
+                    We will open the right dashboard for your account.</p>
+
+                <div id="loginMessage" class="message"></div>
+
+                <!-- onsubmit="return validateLogin()"  (Lecture 05: Form Validation)
+                    return false -> the form is NOT sent, the user stays here
+                    return true  -> the browser opens the page in "action".
+                    JavaScript sets the action to customer.html, vendor.html,
+                    employee.html or admin.html, depending on the account's role.
+
+                    Using method="post" for the login form as required. -->
+                <form id="loginForm" action="index.html" method="post" onsubmit="return validateLogin()">
+                    <fieldset>
+                        <legend>Your account</legend>
+                        <table class="form-table">
+                            <tr>
+                                <td><label for="loginEmail">Email or Username:</label></td>
+                                <td>
+                                    <input type="text" id="loginEmail" name="loginEmail" placeholder="e.g. customer or customer@drivehub.com.bd">
+                                    <span class="error" id="loginEmailError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="loginPassword">Password:</label></td>
+                                <td>
+                                    <input type="password" id="loginPassword" name="loginPassword" placeholder="Enter your password">
+                                    <span class="error" id="loginPasswordError"></span>
+                                    <input type="checkbox" id="showPassword" value="Show" onchange="togglePassword()">
+                                    <label for="showPassword" class="option-label">Show password</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="checkbox" id="rememberMe" name="rememberMe" value="Yes">
+                                    <label for="rememberMe" class="option-label">Remember me on this device</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+
+                    <input type="submit" class="btn btn-block" value="Login">
+                </form>
+
+                <p class="auth-switch">Do not have an account yet? <a href="register.html">Register here</a></p>
+            </div>
+
+            <div class="card">
+                <h3>Demo accounts</h3>
+                <p class="hint">Click "Use" to fill the form, then press Login.</p>
+                <table class="demo-accounts">
+                    <tr>
+                        <td><span class="badge admin">Admin</span></td>
+                        <td>admin / admin1234</td>
+                        <td><button type="button" class="btn btn-small" onclick="fillDemo('admin', 'admin1234')">Use</button></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge employee">Employee</span></td>
+                        <td>employee / employee123</td>
+                        <td><button type="button" class="btn btn-small" onclick="fillDemo('employee', 'employee123')">Use</button></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge vendor">Vendor</span></td>
+                        <td>vendor / vendor1234</td>
+                        <td><button type="button" class="btn btn-small" onclick="fillDemo('vendor', 'vendor1234')">Use</button></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge customer">Customer</span></td>
+                        <td>customer / customer123</td>
+                        <td><button type="button" class="btn btn-small" onclick="fillDemo('customer', 'customer123')">Use</button></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge orange">Pending</span></td>
+                        <td>tahmina / tahmina123</td>
+                        <td><button type="button" class="btn btn-small btn-secondary" onclick="fillDemo('tahmina', 'tahmina123')">Use</button></td>
+                    </tr>
+                </table>
+                <p class="hint">The last one is an employee who registered but is not approved yet, so login is refused.</p>
+            </div>
+
+            <div class="card">
+                <h3>Forgot your password</h3>
+                <p class="hint">Answer the security question you chose during registration to reset your password.</p>
+
+                <div id="resetMessage" class="message"></div>
+
+                <form id="resetForm" method="post" onsubmit="return resetPassword()">
+                    <fieldset>
+                        <legend>Password Reset</legend>
+                        <table class="form-table">
+                            <tr>
+                                <td><label for="resetEmail">Registered Email:</label></td>
+                                <td>
+                                    <input type="email" id="resetEmail" name="resetEmail" placeholder="Enter your email">
+                                    <span class="error" id="resetEmailError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="resetQuestion">Security Question:</label></td>
+                                <td>
+                                    <select id="resetQuestion" name="resetQuestion">
+                                        <option value="">-- Select Question --</option>
+                                        <option value="PetName">What is your first pet name?</option>
+                                        <option value="School">What was your primary school name?</option>
+                                        <option value="City">In which city were you born?</option>
+                                        <option value="Teacher">Who was your favourite teacher?</option>
+                                    </select>
+                                    <span class="error" id="resetQuestionError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="resetAnswer">Your Answer:</label></td>
+                                <td>
+                                    <input type="text" id="resetAnswer" name="resetAnswer" placeholder="Enter your answer">
+                                    <span class="error" id="resetAnswerError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="resetNew">New Password:</label></td>
+                                <td>
+                                    <input type="password" id="resetNew" name="resetNew" placeholder="Enter a new password">
+                                    <span class="error" id="resetNewError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="resetConfirm">Confirm New Password:</label></td>
+                                <td>
+                                    <input type="password" id="resetConfirm" name="resetConfirm" placeholder="Re-enter the new password">
+                                    <span class="error" id="resetConfirmError"></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+
+                    <input type="submit" class="btn" value="Reset Password">
+                    <input type="reset" class="btn btn-secondary" value="Clear">
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <h3>DriveHub Vehicle Marketplace Ltd.</h3>
+
+        <p>Level 5, Tech Tower, Kawran Bazar, Dhaka 1215, Bangladesh<br>
+            Phone: +880 1700 000000 | Hotline: 16263<br>
+            Email: support@drivehub.com.bd | Sales: sales@drivehub.com.bd<br>
+            Office Hours: Saturday to Thursday, 9:00 AM to 6:00 PM<br>
+            Trade Licence: TRAD-DH-2018-99120 | TIN: 441920883715 | BIN: 004412098-0203
+        </p>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="customer.html">Customer Dashboard</a>
+            <a href="vendor.html">Vendor Dashboard</a>
+            <a href="employee.html">Employee Dashboard</a>
+            <a href="admin.html">Admin Dashboard</a>
+        </div>
+
+        <p class="footer-social">
+            <a href="https://facebook.com/drivehubbd" target="_blank"><img src="image/facebook.png" alt="Facebook" width="30" height="30"></a>
+            <a href="https://github.com/drivehubbd" target="_blank"><img src="image/github.png" alt="GitHub" width="30" height="30"></a>
+            <a href="https://drivehub.com.bd" target="_blank"><img src="image/website.png" alt="Website" width="30" height="30"></a>
+        </p>
+
+        <div class="footer-bottom">
+            Copyright DriveHub Vehicle Marketplace Ltd. 2026. All rights reserved.<br>
+            CSC 3215 Web Technologies Project, American International University-Bangladesh.
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>
