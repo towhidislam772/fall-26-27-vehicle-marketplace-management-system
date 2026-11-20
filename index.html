@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DriveHub Vehicle Marketplace: browse, compare and buy cars from verified vendors">
+    <title>Home | DriveHub Vehicle Marketplace</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+
+    <!-- HEADER: logo on the left, account buttons on the right -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="image/logo.png" alt="DriveHub Logo" width="40" height="40">
+            Drive<span>Hub</span>
+        </a>
+        <div class="user-info">
+            <a href="login.html" class="btn btn-small btn-light">Login</a>
+            <a href="register.html" class="btn btn-small">Register</a>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="topnav">
+        <a href="index.html" class="active">Home</a>
+        <a href="#catalog">Browse Cars</a>
+        <a href="#who">Who It Is For</a>
+        <a href="#how">How It Works</a>
+        <a href="#vendors">Our Vendors</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    <!-- HERO with the catalogue search -->
+    <div class="hero">
+        <h1>Find your next car</h1>
+        <p>Search every verified vendor in one place, compare two cars side by side,
+            work out the monthly instalment, and buy with confidence.</p>
+
+        <!-- Typing here filters the results below right away (onkeyup) -->
+        <div class="hero-search">
+            <input type="text" id="catalogSearch" placeholder="Search by car name, brand, listing ID or vendor..." onkeyup="renderCatalog()">
+            <select id="catalogBrand" onchange="renderCatalog()">
+                <option value="All">All brands</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Honda">Honda</option>
+                <option value="Nissan">Nissan</option>
+                <option value="Mitsubishi">Mitsubishi</option>
+                <option value="BMW">BMW</option>
+            </select>
+            <input type="number" id="catalogMaxPrice" placeholder="Maximum price in BDT" onkeyup="renderCatalog()">
+        </div>
+        <p class="hero-note">No account needed to search. <a href="#catalog" class="hero-link">See the results &darr;</a></p>
+    </div>
+
+    <main class="container">
+
+        <!-- WHY DRIVEHUB -->
+        <div class="feature-strip">
+            <div class="feature">
+                <span class="feature-icon">1</span>
+                <h3>One Account</h3>
+                <p>Register once and log in from a single page, whoever you are.</p>
+            </div>
+            <div class="feature">
+                <span class="feature-icon" id="vendorCount">0</span>
+                <h3>Verified Vendors</h3>
+                <p>Every vendor is checked and approved by our admin team before listing a car.</p>
+            </div>
+            <div class="feature">
+                <span class="feature-icon" id="liveCount">0</span>
+                <h3>Moderated Listings</h3>
+                <p>An employee reviews every car before it reaches the public catalogue.</p>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">24</span>
+                <h3>Open Every Day</h3>
+                <p>Hotline 16263 answers 24 hours. Offices open Saturday to Thursday.</p>
+            </div>
+        </div>
+
+        <!-- ABOUT -->
+        <section id="about" class="home-section">
+            <div class="section-heading">
+                <h2>About DriveHub</h2>
+                <p>A multi vendor vehicle marketplace built for the Bangladeshi car market.</p>
+            </div>
+            <div class="card">
+                <p>DriveHub is a multi vendor vehicle marketplace built for the Bangladeshi car market.<br>
+                    Verified vendors list their vehicles and customers browse, compare, book a test drive<br>
+                    and buy with confidence. Every listing is moderated by our employees before it goes live.
+                </p>
+            </div>
+        </section>
+
+        <!-- SEARCH RESULTS -->
+        <section id="catalog" class="home-section">
+            <div class="section-heading">
+                <h2>Available Cars</h2>
+                <p>Type in the search box above, pick a brand, or set a maximum price.</p>
+            </div>
+            <div class="card">
+                <p class="result-count" id="catalogCount"></p>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <caption>Public Car Catalogue</caption>
+                        <thead>
+                            <tr>
+                                <th>Listing ID</th>
+                                <th>Car Name</th>
+                                <th>Brand</th>
+                                <th>Year</th>
+                                <th>Price (BDT)</th>
+                                <th>Fuel</th>
+                                <th>Mileage</th>
+                                <th>Condition</th>
+                                <th>Vendor</th>
+                            </tr>
+                        </thead>
+                        <tbody id="catalogBody"></tbody>
+                    </table>
+                </div>
+                <p class="hint">Want to buy one? <a href="register.html">Create a free customer account</a> or
+                    <a href="login.html">log in</a> to send an inquiry and book a test drive.</p>
+            </div>
+        </section>
+
+        <!-- FEATURED CARS -->
+        <section id="featured" class="home-section">
+            <div class="section-heading">
+                <h2>Featured Cars</h2>
+                <p>Two of the most viewed listings on DriveHub this week.</p>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <img src="image/car1.png" alt="Toyota Corolla 2023" width="500" height="300" class="car-photo">
+                        <h4>Toyota Corolla 2023</h4>
+                        <p>Well maintained sedan with low mileage. Single owner, full service history.</p>
+                        <h5>Price: BDT 28,00,000 | Vendor: Rahim Motors | Location: Dhaka</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="image/car3.png" alt="Nissan X-Trail 2021" width="500" height="300" class="car-photo">
+                        <h4>Nissan X-Trail 2021</h4>
+                        <p>Seven seater family SUV. Reconditioned from Japan with a full auction sheet.</p>
+                        <h5>Price: BDT 41,50,000 | Vendor: Dhaka Motors Ltd | Location: Dhaka</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHO IT IS FOR -->
+        <section id="who" class="home-section">
+            <div class="section-heading">
+                <h2>Who is DriveHub for?</h2>
+                <p>Choose your type when you register. Everyone logs in from the same page.</p>
+            </div>
+
+            <div class="role-grid">
+                <div class="role-card customer">
+                    <span class="badge customer">Customer</span>
+                    <h3>Customers</h3>
+                    <ul>
+                        <li>Compare two cars side by side</li>
+                        <li>Work out a monthly instalment before visiting a bank</li>
+                        <li>Send an inquiry straight to the vendor</li>
+                        <li>Keep a printable invoice for every purchase</li>
+                    </ul>
+                    <a href="register.html" class="btn btn-success">Register as Customer</a>
+                </div>
+
+                <div class="role-card vendor">
+                    <span class="badge vendor">Vendor</span>
+                    <h3>Vendors</h3>
+                    <ul>
+                        <li>List your cars with photos and full specifications</li>
+                        <li>Estimate a fair price before you post</li>
+                        <li>Track monthly sales and how many people viewed each car</li>
+                        <li>Renew a listing before it expires</li>
+                    </ul>
+                    <a href="register.html" class="btn btn-success">Register as Vendor</a>
+                </div>
+
+                <div class="role-card employee">
+                    <span class="badge employee">Employee</span>
+                    <h3>Employees</h3>
+                    <ul>
+                        <li>Approve or reject every vendor listing</li>
+                        <li>Answer inquiries when a vendor is slow to reply</li>
+                        <li>Decide on test drive requests from a weekly calendar</li>
+                        <li>Print a daily operations report</li>
+                    </ul>
+                    <a href="register.html" class="btn btn-success">Apply as Employee</a>
+                </div>
+
+                <div class="role-card admin">
+                    <span class="badge admin">Admin</span>
+                    <h3>Administrators</h3>
+                    <ul>
+                        <li>Approve new vendors and employees</li>
+                        <li>Manage every account on the platform</li>
+                        <li>Watch the activity log and platform analytics</li>
+                        <li>Export any data set to CSV</li>
+                    </ul>
+                    <a href="login.html" class="btn">Admin Login</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section id="how" class="home-section">
+            <div class="section-heading">
+                <h2>How it works</h2>
+                <p>Three simple steps.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <h3>Register</h3>
+                    <p>Open <a href="register.html">Register</a>, choose Customer, Vendor or Employee,
+                        and fill in the details that your type needs. A vendor also uploads a trade licence.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <h3>Log in</h3>
+                    <p>Use the <a href="login.html">single login page</a>. DriveHub opens your own dashboard
+                        automatically. Vendors and employees log in after an admin approves them.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <h3>Use the marketplace</h3>
+                    <p>Browse and compare cars, list a car for sale, moderate listings or manage
+                        the whole platform, depending on your account.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- OUR VENDORS -->
+        <section id="vendors" class="home-section">
+            <div class="section-heading">
+                <h2>Our Verified Vendors</h2>
+                <p>Every showroom below has been checked and approved by the DriveHub admin team.</p>
+            </div>
+            <div class="card">
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <caption>Registered Vendors on DriveHub</caption>
+                        <thead>
+                            <tr>
+                                <th>Vendor ID</th>
+                                <th>Business Name</th>
+                                <th>City</th>
+                                <th>Listings</th>
+                                <th>Cars Sold</th>
+                                <th>Member Since</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody id="vendorBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT US -->
+        <section id="contact" class="home-section">
+            <div class="section-heading">
+                <h2>Contact Us</h2>
+                <p>Our hotline answers 24 hours a day.</p>
+            </div>
+            <div class="card">
+                <p><strong>DriveHub Vehicle Marketplace Ltd.</strong></p>
+                <table class="contact-table">
+                    <tr>
+                        <td>Address:</td>
+                        <td>Level 5, Tech Tower, Kawran Bazar, Dhaka 1215, Bangladesh</td>
+                    </tr>
+                    <tr>
+                        <td>Phone:</td>
+                        <td>+880 1700 000000</td>
+                    </tr>
+                    <tr>
+                        <td>Hotline:</td>
+                        <td>16263, open 24 hours</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td><a href="mailto:support@drivehub.com.bd">support@drivehub.com.bd</a></td>
+                    </tr>
+                    <tr>
+                        <td>Office Hours:</td>
+                        <td>Saturday to Thursday, 9:00 AM to 6:00 PM</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section class="home-section">
+            <div class="cta-band">
+                <h2>Ready to find your car?</h2>
+                <p>It takes less than two minutes to create an account.</p>
+                <a href="register.html" class="btn btn-light">Create an account</a>
+                <a href="login.html" class="btn btn-secondary">I already have one</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <h3>DriveHub Vehicle Marketplace Ltd.</h3>
+
+        <p>Level 5, Tech Tower, Kawran Bazar, Dhaka 1215, Bangladesh<br>
+            Phone: +880 1700 000000 | Hotline: 16263<br>
+            Email: support@drivehub.com.bd | Sales: sales@drivehub.com.bd<br>
+            Office Hours: Saturday to Thursday, 9:00 AM to 6:00 PM<br>
+            Trade Licence: TRAD-DH-2018-99120 | TIN: 441920883715 | BIN: 004412098-0203
+        </p>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="customer.html">Customer Dashboard</a>
+            <a href="vendor.html">Vendor Dashboard</a>
+            <a href="employee.html">Employee Dashboard</a>
+            <a href="admin.html">Admin Dashboard</a>
+        </div>
+
+        <p class="footer-social">
+            <a href="https://facebook.com/drivehubbd" target="_blank"><img src="image/facebook.png" alt="Facebook" width="30" height="30"></a>
+            <a href="https://github.com/drivehubbd" target="_blank"><img src="image/github.png" alt="GitHub" width="30" height="30"></a>
+            <a href="https://drivehub.com.bd" target="_blank"><img src="image/website.png" alt="Website" width="30" height="30"></a>
+        </p>
+
+        <div class="footer-bottom">
+            Copyright DriveHub Vehicle Marketplace Ltd. 2026. All rights reserved.<br>
+            CSC 3215 Web Technologies Project, American International University-Bangladesh.
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/home.js"></script>
+</body>
+
+</html>
