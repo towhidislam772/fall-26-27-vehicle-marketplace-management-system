@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vendor dashboard of the DriveHub Vehicle Marketplace">
+    <title>Vendor Dashboard | DriveHub Vehicle Marketplace</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="image/logo.png" alt="DriveHub Logo" width="40" height="40">
+            Drive<span>Hub</span>
+        </a>
+        <div class="user-info">
+            <span class="badge vendor">Vendor</span>
+            <span>Welcome, Rahim Motors</span>
+            <span class="hint">VEN-2041</span>
+            <a href="login.html" class="btn btn-small btn-light">Logout</a>
+        </div>
+    </header>
+
+    <!-- THE WORKING AREA: side menu on the left, the content on the right -->
+    <div class="shell">
+
+    <!-- SIDE MENU: each button shows one section -->
+    <nav class="topnav">
+        <button type="button" id="nav-overviewSection" onclick="showSection('overviewSection')">Overview</button>
+        <button type="button" id="nav-listingSection" onclick="showSection('listingSection')">My Listings</button>
+        <button type="button" id="nav-valuationSection" onclick="showSection('valuationSection')">Valuation Estimator</button>
+        <button type="button" id="nav-salesSection" onclick="showSection('salesSection')">Sales Chart</button>
+        <button type="button" id="nav-expirySection" onclick="showSection('expirySection')">Listing Expiry</button>
+    </nav>
+
+    <main class="container">
+
+        <!-- OVERVIEW: showroom counters and the business profile -->
+        <section id="overviewSection" class="page-section">
+            <h2 class="page-title">Overview</h2>
+            <p class="page-subtitle">Vendor ID: VEN-2041 &middot; Approved &middot; Member since 08 February 2019</p>
+
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number" id="statLive">0</div><div class="stat-label">Listings live now</div></div>
+                <div class="stat-card"><div class="stat-number" id="statWaiting">0</div><div class="stat-label">Waiting for moderation</div></div>
+                <div class="stat-card"><div class="stat-number" id="statSold">0</div><div class="stat-label">Cars sold</div></div>
+                <div class="stat-card"><div class="stat-number" id="statViews">0</div><div class="stat-label">Total listing views</div></div>
+                <div class="stat-card"><div class="stat-number" id="statInquiries">0</div><div class="stat-label">Inquiries received</div></div>
+                <div class="stat-card"><div class="stat-number" id="statStock">0</div><div class="stat-label">Stock value (BDT)</div></div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3>My Business Profile</h3>
+                        <img src="image/vendor1.png" alt="Rahim Motors Logo" width="150" height="150" class="profile-photo">
+
+                        <div id="profileMessage" class="message"></div>
+
+                        <form id="profileForm" method="post" onsubmit="return saveProfile()">
+                            <fieldset>
+                                <legend>Update Business Profile</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="vendorName">Business Name:</label></td>
+                                        <td>
+                                            <input type="text" id="vendorName" name="vendorName" value="Rahim Motors" placeholder="Enter the business name">
+                                            <span class="error" id="vendorNameError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="vendorEmail">Business Email:</label></td>
+                                        <td>
+                                            <input type="email" id="vendorEmail" name="vendorEmail" value="info@rahimmotors.com.bd" placeholder="Enter the business email">
+                                            <span class="error" id="vendorEmailError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="vendorPhone">Phone Number:</label></td>
+                                        <td>
+                                            <input type="text" id="vendorPhone" name="vendorPhone" value="01711111111" placeholder="11 digits starting with 01">
+                                            <span class="error" id="vendorPhoneError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="vendorAddress">Showroom Address:</label></td>
+                                        <td>
+                                            <textarea id="vendorAddress" name="vendorAddress" rows="4" cols="30" placeholder="Enter the showroom address">House 14, Road 7, Tejgaon Industrial Area, Dhaka 1208</textarea>
+                                            <span class="error" id="vendorAddressError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="vendorLogo">Change Logo:</label></td>
+                                        <td><input type="file" id="vendorLogo" name="vendorLogo"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="vendorPassword">New Password:</label></td>
+                                        <td>
+                                            <input type="password" id="vendorPassword" name="vendorPassword" placeholder="Leave blank to keep the current password">
+                                            <span class="error" id="vendorPasswordError"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="submit" class="btn" value="Save Profile">
+                            <input type="reset" class="btn btn-secondary" value="Undo Changes">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <h3>What you can do here</h3>
+                        <ul style="margin-left:20px">
+                            <li><strong>My Listings</strong> &ndash; add, edit, delete and search every car you have on DriveHub.</li>
+                            <li><strong>Valuation Estimator</strong> &ndash; get a fair listing price before you post a car.</li>
+                            <li><strong>Sales Chart</strong> &ndash; monthly sales and how many people viewed each listing.</li>
+                            <li><strong>Listing Expiry</strong> &ndash; see what is about to expire and renew it.</li>
+                        </ul>
+                        <p class="hint">A new listing always goes to an employee for moderation before it is published.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- MY LISTINGS: Create, Read, Update, Delete and Search -->
+        <section id="listingSection" class="page-section">
+            <h2 class="page-title">My Car Listings</h2>
+            <p class="page-subtitle">Create, view, edit, delete and search the cars you have listed on the marketplace.</p>
+
+            <div id="listingMessage" class="message"></div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3 id="listingFormTitle">Add a New Listing</h3>
+                        <form id="listingForm" method="post" onsubmit="return saveCar()">
+                            <fieldset>
+                                <legend>Car Details</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="carName">Car Name:</label></td>
+                                        <td>
+                                            <input type="text" id="carName" name="carName" placeholder="For example Toyota Corolla 2023">
+                                            <span class="error" id="carNameError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="carBrand">Brand:</label></td>
+                                        <td>
+                                            <select id="carBrand" name="carBrand">
+                                                <option value="">-- Select Brand --</option>
+                                                <option value="Toyota">Toyota</option>
+                                                <option value="Honda">Honda</option>
+                                                <option value="Nissan">Nissan</option>
+                                                <option value="Mitsubishi">Mitsubishi</option>
+                                                <option value="BMW">BMW</option>
+                                            </select>
+                                            <span class="error" id="carBrandError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="carYear">Manufacturing Year:</label></td>
+                                        <td>
+                                            <input type="number" id="carYear" name="carYear" placeholder="Between 1990 and 2026">
+                                            <span class="error" id="carYearError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="carPrice">Price (BDT):</label></td>
+                                        <td>
+                                            <input type="number" id="carPrice" name="carPrice" placeholder="Enter the asking price">
+                                            <span class="error" id="carPriceError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="carMileage">Mileage (km):</label></td>
+                                        <td>
+                                            <input type="number" id="carMileage" name="carMileage" placeholder="Enter the mileage">
+                                            <span class="error" id="carMileageError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="carEngine">Engine Capacity (cc):</label></td>
+                                        <td>
+                                            <input type="number" id="carEngine" name="carEngine" placeholder="Between 600 and 6000">
+                                            <span class="error" id="carEngineError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fuel Type:</td>
+                                        <td>
+                                            <input type="radio" id="fuelPetrol" name="fuelType" value="Petrol">
+                                            <label for="fuelPetrol" class="option-label">Petrol</label>
+                                            <input type="radio" id="fuelDiesel" name="fuelType" value="Diesel">
+                                            <label for="fuelDiesel" class="option-label">Diesel</label>
+                                            <input type="radio" id="fuelOctane" name="fuelType" value="Octane">
+                                            <label for="fuelOctane" class="option-label">Octane</label>
+                                            <input type="radio" id="fuelHybrid" name="fuelType" value="Hybrid">
+                                            <label for="fuelHybrid" class="option-label">Hybrid</label>
+                                            <span class="error" id="fuelTypeError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Condition:</td>
+                                        <td>
+                                            <input type="radio" id="condNew" name="carCondition" value="New">
+                                            <label for="condNew" class="option-label">New</label>
+                                            <input type="radio" id="condRecond" name="carCondition" value="Reconditioned">
+                                            <label for="condRecond" class="option-label">Reconditioned</label>
+                                            <input type="radio" id="condUsed" name="carCondition" value="Used">
+                                            <label for="condUsed" class="option-label">Used</label>
+                                            <span class="error" id="carConditionError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Features:</td>
+                                        <td>
+                                            <input type="checkbox" id="featureAC" name="features" value="AC">
+                                            <label for="featureAC" class="option-label">AC</label>
+                                            <input type="checkbox" id="featureGPS" name="features" value="GPS">
+                                            <label for="featureGPS" class="option-label">GPS</label>
+                                            <input type="checkbox" id="featureSunroof" name="features" value="Sunroof">
+                                            <label for="featureSunroof" class="option-label">Sunroof</label>
+                                            <input type="checkbox" id="featureAlloy" name="features" value="Alloy Wheels">
+                                            <label for="featureAlloy" class="option-label">Alloy Wheels</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="carPhoto">Main Photo:</label></td>
+                                        <td><input type="file" id="carPhoto" name="carPhoto"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="listDate">Listing Date:</label></td>
+                                        <td>
+                                            <input type="date" id="listDate" name="listDate">
+                                            <span class="error" id="listDateError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="carDesc">Description:</label></td>
+                                        <td>
+                                            <textarea id="carDesc" name="carDesc" rows="5" cols="40" placeholder="Describe the car and its condition"></textarea>
+                                            <span class="error" id="carDescError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input type="checkbox" id="vendorAgree" name="vendorAgree" value="Agreed">
+                                            <label for="vendorAgree" class="option-label">I confirm all information is true</label>
+                                            <span class="error" id="vendorAgreeError"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="submit" id="listingSaveButton" class="btn" value="Create Listing">
+                            <button type="button" class="btn btn-secondary" onclick="resetCarForm()">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-wide">
+                    <div class="card">
+                        <h3>My Listing Records</h3>
+                        <div class="search-bar">
+                            <input type="text" id="lstSearch" placeholder="Search by car name, brand or listing ID..." onkeyup="renderListings()">
+                            <select id="lstStatusFilter" onchange="renderListings()">
+                                <option value="All">Any status</option>
+                                <option value="Live">Approved and Live</option>
+                                <option value="Waiting">Waiting for Moderation</option>
+                                <option value="Rejected">Rejected</option>
+                                <option value="Sold">Sold</option>
+                            </select>
+                            <select id="lstBrandFilter" onchange="renderListings()">
+                                <option value="All">All brands</option>
+                                <option value="Toyota">Toyota</option>
+                                <option value="Honda">Honda</option>
+                                <option value="Nissan">Nissan</option>
+                                <option value="Mitsubishi">Mitsubishi</option>
+                                <option value="BMW">BMW</option>
+                            </select>
+                        </div>
+                        <p class="result-count" id="listingCount"></p>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>Listings by Rahim Motors</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Listing ID</th>
+                                        <th>Car Name</th>
+                                        <th>Year</th>
+                                        <th>Price (BDT)</th>
+                                        <th>Views</th>
+                                        <th>Inquiries</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="listingTableBody"></tbody>
+                            </table>
+                        </div>
+                        <p class="hint">A car that is already sold belongs to the sales record and cannot be edited or deleted.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Listing Preview</h3>
+                        <div id="listingPreview"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- UNIQUE FEATURE 1: CAR VALUATION ESTIMATOR -->
+        <section id="valuationSection" class="page-section">
+            <h2 class="page-title">Car Valuation Estimator</h2>
+            <p class="page-subtitle">Enter the original showroom price and the car details to get a suggested listing price.</p>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3>Valuation Input</h3>
+                        <form id="valuationForm" method="post" onsubmit="return estimateValue()">
+                            <fieldset>
+                                <legend>The Car</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="valBrand">Brand:</label></td>
+                                        <td>
+                                            <select id="valBrand" name="valBrand">
+                                                <option value="">-- Select Brand --</option>
+                                                <option value="Toyota">Toyota</option>
+                                                <option value="Honda">Honda</option>
+                                                <option value="Nissan">Nissan</option>
+                                                <option value="Mitsubishi">Mitsubishi</option>
+                                                <option value="BMW">BMW</option>
+                                            </select>
+                                            <span class="error" id="valBrandError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="valOriginal">Original Price (BDT):</label></td>
+                                        <td>
+                                            <input type="number" id="valOriginal" name="valOriginal" placeholder="The showroom price when new">
+                                            <span class="error" id="valOriginalError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="valYear">Manufacturing Year:</label></td>
+                                        <td>
+                                            <input type="number" id="valYear" name="valYear" placeholder="Between 1990 and 2026">
+                                            <span class="error" id="valYearError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="valMileage">Mileage (km):</label></td>
+                                        <td>
+                                            <input type="number" id="valMileage" name="valMileage" placeholder="Enter the mileage">
+                                            <span class="error" id="valMileageError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Condition:</td>
+                                        <td>
+                                            <input type="radio" id="valExcellent" name="valCondition" value="Excellent">
+                                            <label for="valExcellent" class="option-label">Excellent</label>
+                                            <input type="radio" id="valGood" name="valCondition" value="Good">
+                                            <label for="valGood" class="option-label">Good</label>
+                                            <input type="radio" id="valAverage" name="valCondition" value="Average">
+                                            <label for="valAverage" class="option-label">Average</label>
+                                            <input type="radio" id="valPoor" name="valCondition" value="Poor">
+                                            <label for="valPoor" class="option-label">Needs Work</label>
+                                            <span class="error" id="valConditionError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Deductions:</td>
+                                        <td>
+                                            <input type="checkbox" id="valAccident" name="valDeductions" value="Accident">
+                                            <label for="valAccident" class="option-label">Accident History</label>
+                                            <input type="checkbox" id="valRepaint" name="valDeductions" value="Repaint">
+                                            <label for="valRepaint" class="option-label">Repainted Panels</label>
+                                            <input type="checkbox" id="valPapers" name="valDeductions" value="Papers">
+                                            <label for="valPapers" class="option-label">Papers Not Updated</label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="submit" class="btn" value="Estimate Value">
+                            <input type="reset" class="btn btn-secondary" value="Clear">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card" id="valuationResult" style="display:none">
+                        <h3>Estimate</h3>
+                        <div class="result-box" id="valuationHeadline"></div>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>How the Estimate Was Worked Out</caption>
+                                <thead>
+                                    <tr><th>Item</th><th>Rate</th><th>Amount (BDT)</th></tr>
+                                </thead>
+                                <tbody id="valuationBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Depreciation Rules</h3>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>Standard Depreciation by Age</caption>
+                                <thead>
+                                    <tr><th>Age of Car</th><th>Depreciation Applied</th></tr>
+                                </thead>
+                                <tbody id="depreciationBody"></tbody>
+                            </table>
+                        </div>
+                        <p class="hint">Mileage adds up to 15 percent more, and the condition you choose adds
+                            between 0 and 20 percent. Accident history, repainted panels and out of date papers
+                            each take a little more off.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- UNIQUE FEATURE 2: SALES CHART AND VISITOR COUNTER -->
+        <section id="salesSection" class="page-section">
+            <h2 class="page-title">Sales Performance Chart</h2>
+            <p class="page-subtitle">Monthly sales and the visitor counter for every listing you own.</p>
+
+            <div id="salesMessage" class="message"></div>
+
+            <div class="card">
+                <h3>Cars Sold per Month in 2026</h3>
+                <div id="salesChart"></div>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <caption>Sales by Rahim Motors</caption>
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Cars Sold</th>
+                                <th>Revenue (BDT)</th>
+                                <th>Average Price (BDT)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="salesBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-wide">
+                    <div class="card">
+                        <h3>Visitor Counter per Listing</h3>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>How Many People Viewed Each Car</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Listing ID</th>
+                                        <th>Car Name</th>
+                                        <th>Total Views</th>
+                                        <th>Inquiries</th>
+                                        <th>Conversion</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="visitorBody"></tbody>
+                            </table>
+                        </div>
+                        <p class="hint">Conversion is the number of inquiries for every 100 views.
+                            One or more is High, under 0.7 is Low.</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <h3>Generate a Sales Report</h3>
+                        <form id="salesReportForm" method="post" onsubmit="return generateSalesReport()">
+                            <fieldset>
+                                <legend>Report Options</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="reportYear">Year:</label></td>
+                                        <td>
+                                            <select id="reportYear" name="reportYear">
+                                                <option value="2026">2026</option>
+                                                <option value="2025">2025</option>
+                                                <option value="2024">2024</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="reportFrom">From Date:</label></td>
+                                        <td><input type="date" id="reportFrom" name="reportFrom"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="reportTo">To Date:</label></td>
+                                        <td><input type="date" id="reportTo" name="reportTo"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Include:</td>
+                                        <td>
+                                            <input type="checkbox" id="incSales" name="reportInclude" value="Sales" checked>
+                                            <label for="incSales" class="option-label">Sales</label>
+                                            <input type="checkbox" id="incViews" name="reportInclude" value="Views" checked>
+                                            <label for="incViews" class="option-label">Views</label>
+                                            <input type="checkbox" id="incInquiries" name="reportInclude" value="Inquiries">
+                                            <label for="incInquiries" class="option-label">Inquiries</label>
+                                            <span class="error" id="reportIncludeError"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="submit" class="btn" value="Generate Report">
+                            <input type="reset" class="btn btn-secondary" value="Clear">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- UNIQUE FEATURE 3: LISTING EXPIRY AND RENEWAL -->
+        <section id="expirySection" class="page-section">
+            <h2 class="page-title">Listing Expiry and Renewal</h2>
+            <p class="page-subtitle" id="expirySummary"></p>
+
+            <div id="renewMessage" class="message"></div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3>Needs Your Attention</h3>
+                        <div id="expiryCards"></div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Renew a Listing</h3>
+                        <form id="renewForm" method="post" onsubmit="return renewListing()">
+                            <fieldset>
+                                <legend>Renewal Form</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="renewListing">Select Listing:</label></td>
+                                        <td>
+                                            <select id="renewListing" name="renewListing" onchange="previewRenewal()"></select>
+                                            <span class="error" id="renewListingError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Renewal Period:</td>
+                                        <td>
+                                            <input type="radio" id="renew30" name="renewPeriod" value="30" onchange="previewRenewal()">
+                                            <label for="renew30" class="option-label">30 Days, BDT 500</label>
+                                            <input type="radio" id="renew60" name="renewPeriod" value="60" onchange="previewRenewal()">
+                                            <label for="renew60" class="option-label">60 Days, BDT 900</label>
+                                            <input type="radio" id="renew90" name="renewPeriod" value="90" onchange="previewRenewal()">
+                                            <label for="renew90" class="option-label">90 Days, BDT 1,200</label>
+                                            <span class="error" id="renewPeriodError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="renewStart">Renewal Start Date:</label></td>
+                                        <td>
+                                            <input type="date" id="renewStart" name="renewStart">
+                                            <span class="error" id="renewStartError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Renewal Options:</td>
+                                        <td>
+                                            <input type="checkbox" id="optFeature" name="renewOptions" value="Featured" onchange="previewRenewal()">
+                                            <label for="optFeature" class="option-label">Mark as Featured, BDT 800 extra</label>
+                                            <input type="checkbox" id="optTop" name="renewOptions" value="Top of Search" onchange="previewRenewal()">
+                                            <label for="optTop" class="option-label">Top of Search, BDT 600 extra</label>
+                                            <input type="checkbox" id="optAuto" name="renewOptions" value="Auto Renew" onchange="previewRenewal()">
+                                            <label for="optAuto" class="option-label">Enable Auto Renewal</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="renewPayment">Payment Method:</label></td>
+                                        <td>
+                                            <select id="renewPayment" name="renewPayment">
+                                                <option value="">-- Select Method --</option>
+                                                <option value="bKash">bKash</option>
+                                                <option value="Nagad">Nagad</option>
+                                                <option value="Card">Debit or Credit Card</option>
+                                            </select>
+                                            <span class="error" id="renewPaymentError"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="submit" class="btn btn-success" value="Renew Listing">
+                            <input type="reset" class="btn btn-secondary" value="Clear">
+                        </form>
+                        <div class="result-box" id="renewPreview">Choose a listing and a period to see the price.</div>
+                    </div>
+                </div>
+
+                <div class="col-wide">
+                    <div class="card">
+                        <h3>Days Remaining on Each Listing</h3>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>Every Listing That Is Not Sold</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Listing ID</th>
+                                        <th>Car Name</th>
+                                        <th>Listed On</th>
+                                        <th>Duration</th>
+                                        <th>Expires On</th>
+                                        <th>Days Left</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="expiryBody"></tbody>
+                            </table>
+                        </div>
+                        <p class="hint">The days left are counted from today's date, so this table is always current.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Renewal History</h3>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>Past Renewals Paid by Rahim Motors</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Renewal ID</th>
+                                        <th>Listing</th>
+                                        <th>Period</th>
+                                        <th>Date Paid</th>
+                                        <th>Amount (BDT)</th>
+                                        <th>Method</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="renewalBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <h3>DriveHub Vehicle Marketplace Ltd.</h3>
+
+        <p>Level 5, Tech Tower, Kawran Bazar, Dhaka 1215, Bangladesh<br>
+            Phone: +880 1700 000000 | Hotline: 16263<br>
+            Email: support@drivehub.com.bd | Sales: sales@drivehub.com.bd<br>
+            Office Hours: Saturday to Thursday, 9:00 AM to 6:00 PM<br>
+            Trade Licence: TRAD-DH-2018-99120 | TIN: 441920883715 | BIN: 004412098-0203
+        </p>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="customer.html">Customer Dashboard</a>
+            <a href="vendor.html">Vendor Dashboard</a>
+            <a href="employee.html">Employee Dashboard</a>
+            <a href="admin.html">Admin Dashboard</a>
+        </div>
+
+        <p class="footer-social">
+            <a href="https://facebook.com/drivehubbd" target="_blank"><img src="image/facebook.png" alt="Facebook" width="30" height="30"></a>
+            <a href="https://github.com/drivehubbd" target="_blank"><img src="image/github.png" alt="GitHub" width="30" height="30"></a>
+            <a href="https://drivehub.com.bd" target="_blank"><img src="image/website.png" alt="Website" width="30" height="30"></a>
+        </p>
+
+        <div class="footer-bottom">
+            Copyright DriveHub Vehicle Marketplace Ltd. 2026. All rights reserved.<br>
+            CSC 3215 Web Technologies Project, American International University-Bangladesh.
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/vendor.js"></script>
+</body>
+
+</html>

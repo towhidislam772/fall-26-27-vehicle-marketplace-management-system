@@ -1,0 +1,197 @@
+/* DriveHub Vehicle Marketplace Management System
+   File 4 of 6: tables.css
+
+   Data tables, the search bar above them, status badges
+   and the weekly test drive calendar. */
+
+
+/* A wrapper so a wide table scrolls inside its card
+   instead of stretching the whole page */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid #ECD8E4;
+}
+
+.data-table {
+  width: 100%;
+  min-width: 560px;            /* narrow columns scroll instead of squashing */
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.data-table caption {
+  text-align: left;
+  color: #8E4472;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-size: 0.78rem;
+  padding: 10px 12px 8px 12px;
+  background-color: #FDFBFC;
+}
+
+.data-table th {
+  background-color: #6B2150;
+  color: #FFFFFF;
+  text-align: left;
+  padding: 11px 12px;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.data-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #F4E7EF;
+  background-color: #FFFFFF;
+}
+
+/* Ids and the action buttons never wrap onto two lines */
+.data-table td:first-child,
+.data-table td:last-child {
+  white-space: nowrap;
+}
+
+/* Striped rows with a pseudo-class (Lecture 02: nth-child) */
+.data-table tbody tr:nth-child(even) td {
+  background-color: #FCF7FA;
+}
+
+/* The whole row lights up when the mouse is over it */
+.data-table tbody tr:hover td {
+  background-color: #F4E7EF;
+}
+
+.data-table td .btn {
+  margin: 2px;
+}
+
+.empty-row {
+  text-align: center;
+  color: #9A9096;
+  padding: 22px;
+  font-style: italic;
+}
+
+
+/* THE SEARCH BAR
+   A text box and a few dropdowns sitting on one line above a table */
+.search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding: 12px;
+  background-color: #F9F2F6;
+  border-radius: 10px;
+}
+
+.search-bar input {
+  flex: 2;
+  min-width: 200px;
+}
+
+.search-bar select {
+  flex: 1;
+  min-width: 150px;
+}
+
+.result-count {
+  font-size: 0.84rem;
+  color: #7A7075;
+  margin-bottom: 10px;
+}
+
+
+/* STATUS BADGES
+   One base class plus a colour class, for example  class="badge green" */
+.badge {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 14px;
+  font-size: 0.74rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  background-color: #7C6E75;
+  white-space: nowrap;
+}
+
+.badge.admin    { background-color: #B3261E; }
+.badge.employee { background-color: #1B5FA8; }
+.badge.vendor   { background-color: #C97A1A; }
+.badge.customer { background-color: #2E7D4F; }
+
+.badge.green  { background-color: #2E7D4F; }
+.badge.orange { background-color: #C97A1A; }
+.badge.red    { background-color: #B3261E; }
+.badge.blue   { background-color: #1B5FA8; }
+.badge.plum   { background-color: #6B2150; }
+.badge.grey   { background-color: #7C6E75; }
+
+
+/* THE WEEKLY TEST DRIVE CALENDAR
+   A grid of days across the top and time slots down the side */
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.83rem;
+}
+
+.calendar-table th,
+.calendar-table td {
+  border: 1px solid #E3CBD9;
+  padding: 9px;
+  text-align: center;
+  vertical-align: top;
+}
+
+.calendar-table th {
+  background-color: #6B2150;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.76rem;
+}
+
+.calendar-table .slot-free {
+  color: #B0A6AC;
+}
+
+.calendar-table .slot-booked {
+  background-color: #F4E7EF;
+  color: #3F0D2C;
+  font-weight: bold;
+  border-left: 3px solid #C9A227;
+}
+
+
+/* The small table of demo logins on the login page */
+.demo-accounts {
+  font-size: 0.88rem;
+  border-collapse: collapse;
+}
+
+.demo-accounts td {
+  padding: 5px 12px 5px 0;
+}
+
+/* The company details table on the home page */
+.contact-table {
+  margin: 10px 0;
+  border-collapse: collapse;
+}
+
+.contact-table td {
+  padding: 6px 12px 6px 0;
+  vertical-align: top;
+}
+
+.contact-table td:first-child {
+  font-weight: bold;
+  white-space: nowrap;
+  color: #6B2150;
+}
