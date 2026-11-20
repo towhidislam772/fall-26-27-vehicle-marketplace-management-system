@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Customer dashboard of the DriveHub Vehicle Marketplace">
+    <title>Customer Dashboard | DriveHub Vehicle Marketplace</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="image/logo.png" alt="DriveHub Logo" width="40" height="40">
+            Drive<span>Hub</span>
+        </a>
+        <div class="user-info">
+            <span class="badge customer">Customer</span>
+            <span>Welcome, Mohammed S Hossain</span>
+            <span class="hint">CUS-10234</span>
+            <a href="login.html" class="btn btn-small btn-light">Logout</a>
+        </div>
+    </header>
+
+    <!-- THE WORKING AREA: side menu on the left, the content on the right -->
+    <div class="shell">
+
+    <!-- SIDE MENU: each button shows one section -->
+    <nav class="topnav">
+        <button type="button" id="nav-overviewSection" onclick="showSection('overviewSection')">Overview</button>
+        <button type="button" id="nav-inquirySection" onclick="showSection('inquirySection')">My Inquiries</button>
+        <button type="button" id="nav-compareSection" onclick="showSection('compareSection')">Compare Cars</button>
+        <button type="button" id="nav-emiSection" onclick="showSection('emiSection')">EMI Calculator</button>
+        <button type="button" id="nav-invoiceSection" onclick="showSection('invoiceSection')">My Invoices</button>
+    </nav>
+
+    <main class="container">
+
+        <!-- OVERVIEW: live counters and the profile form -->
+        <section id="overviewSection" class="page-section">
+            <h2 class="page-title">Overview</h2>
+            <p class="page-subtitle">Customer ID: CUS-10234 &middot; Member since 14 March 2025 &middot; Status: Active</p>
+
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number" id="statInquiries">0</div><div class="stat-label">Inquiries sent</div></div>
+                <div class="stat-card"><div class="stat-number" id="statAnswered">0</div><div class="stat-label">Answered by vendors</div></div>
+                <div class="stat-card"><div class="stat-number" id="statPending">0</div><div class="stat-label">Still waiting</div></div>
+                <div class="stat-card"><div class="stat-number" id="statDrives">0</div><div class="stat-label">Test drives booked</div></div>
+                <div class="stat-card"><div class="stat-number" id="statInvoices">0</div><div class="stat-label">Invoices available</div></div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3>My Profile</h3>
+                        <img src="image/customer-photo.png" alt="Customer Profile Photo" width="150" height="150" class="profile-photo">
+
+                        <div id="profileMessage" class="message"></div>
+
+                        <form id="profileForm" method="post" onsubmit="return saveProfile()">
+                            <fieldset>
+                                <legend>Update My Profile</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="profileName">Full Name:</label></td>
+                                        <td>
+                                            <input type="text" id="profileName" name="profileName" value="Mohammed S Hossain" placeholder="Enter your full name">
+                                            <span class="error" id="profileNameError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="profileEmail">Email:</label></td>
+                                        <td>
+                                            <input type="email" id="profileEmail" name="profileEmail" value="customer@drivehub.com.bd" placeholder="Enter your email">
+                                            <span class="error" id="profileEmailError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="profilePhone">Phone Number:</label></td>
+                                        <td>
+                                            <input type="text" id="profilePhone" name="profilePhone" value="01755123456" placeholder="11 digits starting with 01">
+                                            <span class="error" id="profilePhoneError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="profileCity">City:</label></td>
+                                        <td>
+                                            <select id="profileCity" name="profileCity">
+                                                <option value="Dhaka" selected>Dhaka</option>
+                                                <option value="Chattogram">Chattogram</option>
+                                                <option value="Sylhet">Sylhet</option>
+                                                <option value="Rajshahi">Rajshahi</option>
+                                                <option value="Khulna">Khulna</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="profilePassword">New Password:</label></td>
+                                        <td>
+                                            <input type="password" id="profilePassword" name="profilePassword" placeholder="Leave blank to keep the current password">
+                                            <span class="error" id="profilePasswordError"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="submit" class="btn" value="Save Profile">
+                            <input type="reset" class="btn btn-secondary" value="Undo Changes">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <h3>What you can do here</h3>
+                        <ul class="role-card-list" style="margin-left:20px">
+                            <li><strong>My Inquiries</strong> &ndash; create, edit, delete and search every question you sent a vendor.</li>
+                            <li><strong>Compare Cars</strong> &ndash; put two listings side by side and see the price difference.</li>
+                            <li><strong>EMI Calculator</strong> &ndash; work out the monthly instalment before you visit a bank.</li>
+                            <li><strong>My Invoices</strong> &ndash; open and print the invoice for a car you bought.</li>
+                        </ul>
+                        <p class="hint">Use the menu at the top of the page to move between these sections.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- MY INQUIRIES: Create, Read, Update, Delete and Search -->
+        <section id="inquirySection" class="page-section">
+            <h2 class="page-title">My Inquiries</h2>
+            <p class="page-subtitle">Create, view, edit, delete and search the inquiries you have sent to vendors.</p>
+
+            <div id="inquiryMessage" class="message"></div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3 id="inquiryFormTitle">Create a New Inquiry</h3>
+                        <form id="inquiryForm" method="post" onsubmit="return saveInquiry()">
+                            <fieldset>
+                                <legend>Inquiry Details</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="inqCar">Select Car:</label></td>
+                                        <td>
+                                            <select id="inqCar" name="inqCar"></select>
+                                            <span class="error" id="inqCarError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="inqTopic">Topic:</label></td>
+                                        <td>
+                                            <select id="inqTopic" name="inqTopic">
+                                                <option value="">-- Select Topic --</option>
+                                                <option value="Price Negotiation">Price Negotiation</option>
+                                                <option value="Car Condition and History">Car Condition and History</option>
+                                                <option value="Documents and Registration">Documents and Registration</option>
+                                                <option value="Bank Loan and EMI">Bank Loan and EMI</option>
+                                                <option value="Delivery and Handover">Delivery and Handover</option>
+                                            </select>
+                                            <span class="error" id="inqTopicError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Preferred Reply Method:</td>
+                                        <td>
+                                            <input type="radio" id="replyEmail" name="replyMethod" value="Email">
+                                            <label for="replyEmail" class="option-label">Email</label>
+                                            <input type="radio" id="replyPhone" name="replyMethod" value="Phone">
+                                            <label for="replyPhone" class="option-label">Phone Call</label>
+                                            <input type="radio" id="replySms" name="replyMethod" value="SMS">
+                                            <label for="replySms" class="option-label">SMS</label>
+                                            <span class="error" id="replyMethodError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Also Ask About:</td>
+                                        <td>
+                                            <input type="checkbox" id="askWarranty" name="alsoAsk" value="Warranty">
+                                            <label for="askWarranty" class="option-label">Warranty</label>
+                                            <input type="checkbox" id="askExchange" name="alsoAsk" value="Exchange">
+                                            <label for="askExchange" class="option-label">Exchange Offer</label>
+                                            <input type="checkbox" id="askInsurance" name="alsoAsk" value="Insurance">
+                                            <label for="askInsurance" class="option-label">Insurance</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="inqMessage">Your Question:</label></td>
+                                        <td>
+                                            <textarea id="inqMessage" name="inqMessage" rows="5" cols="40" placeholder="Write your question here" onkeyup="countInquiryCharacters()"></textarea>
+                                            <span class="hint" id="messageCounter">0 / 300</span>
+                                            <span class="error" id="inqMessageError"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="submit" id="inquirySaveButton" class="btn" value="Create Inquiry">
+                            <button type="button" class="btn btn-secondary" onclick="resetInquiryForm()">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-wide">
+                    <div class="card">
+                        <h3>My Inquiry Records</h3>
+                        <div class="search-bar">
+                            <input type="text" id="inqSearch" placeholder="Search by car, vendor, topic or inquiry ID..." onkeyup="renderInquiries()">
+                            <select id="inqStatusFilter" onchange="renderInquiries()">
+                                <option value="All">Any status</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Answered">Answered</option>
+                                <option value="Closed">Closed</option>
+                            </select>
+                        </div>
+                        <p class="result-count" id="inquiryCount"></p>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>All Inquiries You Have Sent</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Inquiry ID</th>
+                                        <th>Car</th>
+                                        <th>Vendor</th>
+                                        <th>Topic</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Reply</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="inquiryTableBody"></tbody>
+                            </table>
+                        </div>
+                        <p class="hint">A closed inquiry can no longer be edited, only deleted.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- UNIQUE FEATURE 1: CAR COMPARISON TOOL -->
+        <section id="compareSection" class="page-section">
+            <h2 class="page-title">Car Comparison Tool</h2>
+            <p class="page-subtitle">Pick two cars, choose what to compare, and see them side by side.</p>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3>Select Cars to Compare</h3>
+                        <form id="compareForm" method="post" onsubmit="return compareCars()">
+                            <fieldset>
+                                <legend>Comparison Input</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="carOne">First Car:</label></td>
+                                        <td>
+                                            <select id="carOne" name="carOne"></select>
+                                            <span class="error" id="carOneError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="carTwo">Second Car:</label></td>
+                                        <td>
+                                            <select id="carTwo" name="carTwo"></select>
+                                            <span class="error" id="carTwoError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Compare On:</td>
+                                        <td>
+                                            <input type="checkbox" id="compPrice" name="compareOn" value="Price" checked>
+                                            <label for="compPrice" class="option-label">Price</label>
+                                            <input type="checkbox" id="compMileage" name="compareOn" value="Mileage" checked>
+                                            <label for="compMileage" class="option-label">Mileage</label>
+                                            <input type="checkbox" id="compEngine" name="compareOn" value="Engine" checked>
+                                            <label for="compEngine" class="option-label">Engine</label>
+                                            <input type="checkbox" id="compFuel" name="compareOn" value="Fuel">
+                                            <label for="compFuel" class="option-label">Fuel Type</label>
+                                            <input type="checkbox" id="compFeatures" name="compareOn" value="Features">
+                                            <label for="compFeatures" class="option-label">Features</label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="submit" class="btn" value="Compare Now">
+                            <input type="reset" class="btn btn-secondary" value="Clear">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-wide">
+                    <div class="card" id="compareResult" style="display:none">
+                        <h3>Comparison Result</h3>
+                        <div class="result-box" id="compareVerdict"></div>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption id="compareCaption"></caption>
+                                <tbody id="compareBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>How the comparison works</h3>
+                        <p class="hint">Every row is read straight from the listing the vendor posted.
+                            The price difference under the verdict is worked out by JavaScript, not typed in,
+                            so it is always correct even after a vendor changes a price.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- UNIQUE FEATURE 2: EMI CALCULATOR -->
+        <section id="emiSection" class="page-section">
+            <h2 class="page-title">EMI Calculator</h2>
+            <p class="page-subtitle">Enter the car price, your down payment and the loan length to see the monthly instalment.</p>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3>Loan Details</h3>
+                        <form id="emiForm" method="post" onsubmit="return calculateEmi()">
+                            <fieldset>
+                                <legend>Your Loan</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="emiPrice">Car Price (BDT):</label></td>
+                                        <td>
+                                            <input type="number" id="emiPrice" name="emiPrice" placeholder="For example 2800000">
+                                            <span class="error" id="emiPriceError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="emiDown">Down Payment (BDT):</label></td>
+                                        <td>
+                                            <input type="number" id="emiDown" name="emiDown" placeholder="For example 900000">
+                                            <span class="error" id="emiDownError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="emiYears">Loan Duration:</label></td>
+                                        <td>
+                                            <select id="emiYears" name="emiYears">
+                                                <option value="0">-- Select Duration --</option>
+                                                <option value="1">1 Year</option>
+                                                <option value="3">3 Years</option>
+                                                <option value="5">5 Years</option>
+                                                <option value="7">7 Years</option>
+                                            </select>
+                                            <span class="error" id="emiYearsError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bank:</td>
+                                        <td>
+                                            <input type="radio" id="bankCity" name="bankName" value="City Bank">
+                                            <label for="bankCity" class="option-label">City Bank</label>
+                                            <input type="radio" id="bankBrac" name="bankName" value="BRAC Bank">
+                                            <label for="bankBrac" class="option-label">BRAC Bank</label>
+                                            <input type="radio" id="bankEbl" name="bankName" value="Eastern Bank">
+                                            <label for="bankEbl" class="option-label">Eastern Bank</label>
+                                            <span class="error" id="bankNameError"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="submit" class="btn" value="Calculate EMI">
+                            <input type="reset" class="btn btn-secondary" value="Clear">
+                        </form>
+
+                        <div class="result-box" id="emiResult" style="display:none">
+                            <p>Your monthly instalment</p>
+                            <p class="big" id="emiMonthly"></p>
+                            <p class="hint" id="emiMonths"></p>
+                            <table class="data-table">
+                                <tbody>
+                                    <tr><td>Bank</td><td id="emiBank"></td></tr>
+                                    <tr><td>Loan amount</td><td id="emiLoan"></td></tr>
+                                    <tr><td>Total interest</td><td id="emiInterest"></td></tr>
+                                    <tr><td>Total payable</td><td id="emiTotal"></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <h3>The same loan over different periods</h3>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption id="emiChartCaption">Calculate an EMI above to fill this table</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Duration</th>
+                                        <th>Monthly EMI (BDT)</th>
+                                        <th>Total Interest (BDT)</th>
+                                        <th>Total Payable (BDT)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="emiChartBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Bank Interest Rates</h3>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>Car Loan Rates for DriveHub Customers</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Bank</th>
+                                        <th>Interest Rate</th>
+                                        <th>Minimum Down Payment</th>
+                                        <th>Maximum Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bankBody"></tbody>
+                            </table>
+                        </div>
+                        <p class="hint">The calculator refuses a loan that breaks the chosen bank's own rules.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- UNIQUE FEATURE 3: PRINTABLE INVOICE -->
+        <section id="invoiceSection" class="page-section">
+            <h2 class="page-title">My Invoices</h2>
+            <p class="page-subtitle">An invoice becomes available once an order is confirmed and paid.</p>
+
+            <div id="invoiceMessage" class="message"></div>
+
+            <div class="card">
+                <h3>Invoice List</h3>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <caption>Invoices Issued to You</caption>
+                        <thead>
+                            <tr>
+                                <th>Invoice Number</th>
+                                <th>Order Number</th>
+                                <th>Car</th>
+                                <th>Amount (BDT)</th>
+                                <th>Invoice Date</th>
+                                <th>Payment</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invoiceListBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card" id="invoiceDetail" style="display:none">
+                <img src="image/logo.png" alt="DriveHub Logo" width="90" height="90" class="profile-photo">
+                <h3 id="invoiceNumber"></h3>
+                <h4>DriveHub Vehicle Marketplace Ltd.</h4>
+                <h5>Level 5, Tech Tower, Kawran Bazar, Dhaka 1215</h5>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <caption>Billed To</caption>
+                        <thead>
+                            <tr><th>Field</th><th>Detail</th></tr>
+                        </thead>
+                        <tbody id="billedToBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <caption>Itemized Bill</caption>
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>Unit Price (BDT)</th>
+                                <th>Amount (BDT)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invoiceItemsBody"></tbody>
+                    </table>
+                </div>
+
+                <button type="button" class="btn" onclick="printInvoice()">Print This Invoice</button>
+            </div>
+
+            <div class="card">
+                <h3>Email a Copy</h3>
+                <form id="invoiceEmailForm" method="post" onsubmit="return emailInvoice()">
+                    <fieldset>
+                        <legend>Send This Invoice</legend>
+                        <table class="form-table">
+                            <tr>
+                                <td><label for="invoiceEmail">Email Invoice To:</label></td>
+                                <td>
+                                    <input type="email" id="invoiceEmail" name="invoiceEmail" placeholder="Enter an email address">
+                                    <span class="error" id="invoiceEmailError"></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <input type="submit" class="btn" value="Email Invoice">
+                    <input type="reset" class="btn btn-secondary" value="Clear">
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <h3>DriveHub Vehicle Marketplace Ltd.</h3>
+
+        <p>Level 5, Tech Tower, Kawran Bazar, Dhaka 1215, Bangladesh<br>
+            Phone: +880 1700 000000 | Hotline: 16263<br>
+            Email: support@drivehub.com.bd | Sales: sales@drivehub.com.bd<br>
+            Office Hours: Saturday to Thursday, 9:00 AM to 6:00 PM<br>
+            Trade Licence: TRAD-DH-2018-99120 | TIN: 441920883715 | BIN: 004412098-0203
+        </p>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="customer.html">Customer Dashboard</a>
+            <a href="vendor.html">Vendor Dashboard</a>
+            <a href="employee.html">Employee Dashboard</a>
+            <a href="admin.html">Admin Dashboard</a>
+        </div>
+
+        <p class="footer-social">
+            <a href="https://facebook.com/drivehubbd" target="_blank"><img src="image/facebook.png" alt="Facebook" width="30" height="30"></a>
+            <a href="https://github.com/drivehubbd" target="_blank"><img src="image/github.png" alt="GitHub" width="30" height="30"></a>
+            <a href="https://drivehub.com.bd" target="_blank"><img src="image/website.png" alt="Website" width="30" height="30"></a>
+        </p>
+
+        <div class="footer-bottom">
+            Copyright DriveHub Vehicle Marketplace Ltd. 2026. All rights reserved.<br>
+            CSC 3215 Web Technologies Project, American International University-Bangladesh.
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/customer.js"></script>
+</body>
+
+</html>
