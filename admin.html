@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin dashboard of the DriveHub Vehicle Marketplace">
+    <title>Admin Dashboard | DriveHub Vehicle Marketplace</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="image/logo.png" alt="DriveHub Logo" width="40" height="40">
+            Drive<span>Hub</span>
+        </a>
+        <div class="user-info">
+            <span class="badge admin">Admin</span>
+            <span>Welcome, Md. Murad Hasan</span>
+            <span class="hint">ADM-001</span>
+            <a href="login.html" class="btn btn-small btn-light">Logout</a>
+        </div>
+    </header>
+
+    <!-- THE WORKING AREA: side menu on the left, the content on the right -->
+    <div class="shell">
+
+    <!-- SIDE MENU: each button shows one section -->
+    <nav class="topnav">
+        <button type="button" id="nav-overviewSection" onclick="showSection('overviewSection')">Overview</button>
+        <button type="button" id="nav-userSection" onclick="showSection('userSection')">User Accounts</button>
+        <button type="button" id="nav-auditSection" onclick="showSection('auditSection')">Audit Log</button>
+        <button type="button" id="nav-analyticsSection" onclick="showSection('analyticsSection')">Analytics</button>
+        <button type="button" id="nav-exportSection" onclick="showSection('exportSection')">Export Data</button>
+    </nav>
+
+    <main class="container">
+
+        <!-- OVERVIEW: platform totals and what needs a decision -->
+        <section id="overviewSection" class="page-section">
+            <h2 class="page-title">Overview</h2>
+            <p class="page-subtitle">Admin ID: ADM-001 &middot; Platform Administrator
+                <span class="hint" id="overviewTime"></span></p>
+
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number" id="statUsers">0</div><div class="stat-label">Accounts in total</div></div>
+                <div class="stat-card"><div class="stat-number" id="statCustomers">0</div><div class="stat-label">Customers</div></div>
+                <div class="stat-card"><div class="stat-number" id="statVendors">0</div><div class="stat-label">Vendors</div></div>
+                <div class="stat-card"><div class="stat-number" id="statEmployees">0</div><div class="stat-label">Employees</div></div>
+                <div class="stat-card"><div class="stat-number" id="statPending">0</div><div class="stat-label">Waiting for approval</div></div>
+                <div class="stat-card"><div class="stat-number" id="statLive">0</div><div class="stat-label">Listings live</div></div>
+                <div class="stat-card"><div class="stat-number" id="statWaiting">0</div><div class="stat-label">Listings in moderation</div></div>
+                <div class="stat-card"><div class="stat-number" id="statSold">0</div><div class="stat-label">Cars sold</div></div>
+                <div class="stat-card"><div class="stat-number" id="statRevenue">0</div><div class="stat-label">Commission earned (BDT)</div></div>
+            </div>
+
+            <div class="row">
+                <div class="col-wide">
+                    <div class="card">
+                        <h3>Waiting for My Decision</h3>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>Pending Admin Actions</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Reference</th>
+                                        <th>Detail</th>
+                                        <th>Submitted</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="pendingBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Accounts by Role</h3>
+                        <div id="roleChart"></div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <h3>My Profile</h3>
+                        <img src="image/admin-photo.png" alt="Admin Profile Photo" width="150" height="150" class="profile-photo">
+
+                        <div id="profileMessage" class="message"></div>
+
+                        <form id="profileForm" method="post" onsubmit="return saveProfile()">
+                            <fieldset>
+                                <legend>Update My Profile</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="admName">Full Name:</label></td>
+                                        <td>
+                                            <input type="text" id="admName" name="admName" value="Md. Murad Hasan" placeholder="Enter your full name">
+                                            <span class="error" id="admNameError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="admEmail">Work Email:</label></td>
+                                        <td>
+                                            <input type="email" id="admEmail" name="admEmail" value="murad.hasan@drivehub.com.bd" placeholder="Enter your work email">
+                                            <span class="error" id="admEmailError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="admPhone">Phone Number:</label></td>
+                                        <td>
+                                            <input type="text" id="admPhone" name="admPhone" value="01700000000" placeholder="11 digits starting with 01">
+                                            <span class="error" id="admPhoneError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="admPassword">New Password:</label></td>
+                                        <td>
+                                            <input type="password" id="admPassword" name="admPassword" placeholder="Leave blank to keep the current password">
+                                            <span class="error" id="admPasswordError"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="submit" class="btn" value="Save Profile">
+                            <input type="reset" class="btn btn-secondary" value="Undo Changes">
+                        </form>
+                        <p class="hint">Changing the admin password is written into the audit log as a critical action.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- USER ACCOUNTS: Create, Read, Update, Delete and Search -->
+        <section id="userSection" class="page-section">
+            <h2 class="page-title">User Account Management</h2>
+            <p class="page-subtitle">Create, view, edit, delete and search every account on the platform.</p>
+
+            <div id="userMessage" class="message"></div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3 id="userFormTitle">Create a New Account</h3>
+                        <form id="userForm" method="post" onsubmit="return saveUser()">
+                            <fieldset>
+                                <legend>Account Details</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="newUserName">Full Name:</label></td>
+                                        <td>
+                                            <input type="text" id="newUserName" name="newUserName" placeholder="Enter the full name">
+                                            <span class="error" id="newUserNameError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="newUserUsername">Username:</label></td>
+                                        <td>
+                                            <input type="text" id="newUserUsername" name="newUserUsername" placeholder="At least 4 characters">
+                                            <span class="error" id="newUserUsernameError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="newUserEmail">Email:</label></td>
+                                        <td>
+                                            <input type="email" id="newUserEmail" name="newUserEmail" placeholder="Enter the email">
+                                            <span class="error" id="newUserEmailError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="newUserPhone">Phone Number:</label></td>
+                                        <td>
+                                            <input type="text" id="newUserPhone" name="newUserPhone" placeholder="11 digits starting with 01">
+                                            <span class="error" id="newUserPhoneError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Account Role:</td>
+                                        <td>
+                                            <input type="radio" id="newRoleCustomer" name="newUserRole" value="Customer">
+                                            <label for="newRoleCustomer" class="option-label">Customer</label>
+                                            <input type="radio" id="newRoleVendor" name="newUserRole" value="Vendor">
+                                            <label for="newRoleVendor" class="option-label">Vendor</label>
+                                            <input type="radio" id="newRoleEmployee" name="newUserRole" value="Employee">
+                                            <label for="newRoleEmployee" class="option-label">Employee</label>
+                                            <input type="radio" id="newRoleAdmin" name="newUserRole" value="Admin">
+                                            <label for="newRoleAdmin" class="option-label">Admin</label>
+                                            <span class="error" id="newUserRoleError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Account Status:</td>
+                                        <td>
+                                            <input type="radio" id="newStatusActive" name="newUserStatus" value="Active">
+                                            <label for="newStatusActive" class="option-label">Active</label>
+                                            <input type="radio" id="newStatusPending" name="newUserStatus" value="Pending">
+                                            <label for="newStatusPending" class="option-label">Pending</label>
+                                            <input type="radio" id="newStatusSuspended" name="newUserStatus" value="Suspended">
+                                            <label for="newStatusSuspended" class="option-label">Suspended</label>
+                                            <input type="radio" id="newStatusDeactivated" name="newUserStatus" value="Deactivated">
+                                            <label for="newStatusDeactivated" class="option-label">Deactivated</label>
+                                            <span class="error" id="newUserStatusError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="newUserCity">City:</label></td>
+                                        <td>
+                                            <select id="newUserCity" name="newUserCity">
+                                                <option value="">-- Select City --</option>
+                                                <option value="Dhaka">Dhaka</option>
+                                                <option value="Chattogram">Chattogram</option>
+                                                <option value="Sylhet">Sylhet</option>
+                                                <option value="Rajshahi">Rajshahi</option>
+                                                <option value="Khulna">Khulna</option>
+                                            </select>
+                                            <span class="error" id="newUserCityError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Permissions:</td>
+                                        <td>
+                                            <input type="checkbox" id="permInquiries" name="newUserPerms" value="Inquiries">
+                                            <label for="permInquiries" class="option-label">Handle Inquiries</label>
+                                            <input type="checkbox" id="permTestDrives" name="newUserPerms" value="Test Drives">
+                                            <label for="permTestDrives" class="option-label">Approve Test Drives</label>
+                                            <input type="checkbox" id="permModeration" name="newUserPerms" value="Moderation">
+                                            <label for="permModeration" class="option-label">Moderate Listings</label>
+                                            <input type="checkbox" id="permSales" name="newUserPerms" value="Sales">
+                                            <label for="permSales" class="option-label">Manage Sales</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="newUserJoin">Joining Date:</label></td>
+                                        <td>
+                                            <input type="date" id="newUserJoin" name="newUserJoin">
+                                            <span class="error" id="newUserJoinError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="newUserPassword">Password:</label></td>
+                                        <td>
+                                            <input type="password" id="newUserPassword" name="newUserPassword" placeholder="At least 8 characters">
+                                            <span class="error" id="newUserPasswordError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="newUserPhoto">Profile Photo:</label></td>
+                                        <td><input type="file" id="newUserPhoto" name="newUserPhoto"></td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="submit" id="userSaveButton" class="btn" value="Create Account">
+                            <button type="button" class="btn btn-secondary" onclick="resetUserForm()">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-wide">
+                    <div class="card">
+                        <h3>All User Accounts</h3>
+                        <div class="search-bar">
+                            <input type="text" id="userSearch" placeholder="Search by name, email, username or user ID..." onkeyup="renderUsers()">
+                            <select id="userRoleFilter" onchange="renderUsers()">
+                                <option value="All">All roles</option>
+                                <option value="Customer">Customer</option>
+                                <option value="Vendor">Vendor</option>
+                                <option value="Employee">Employee</option>
+                                <option value="Admin">Admin</option>
+                            </select>
+                            <select id="userStatusFilter" onchange="renderUsers()">
+                                <option value="All">Any status</option>
+                                <option value="Active">Active</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Suspended">Suspended</option>
+                                <option value="Deactivated">Deactivated</option>
+                            </select>
+                            <select id="userCityFilter" onchange="renderUsers()">
+                                <option value="All">All cities</option>
+                                <option value="Dhaka">Dhaka</option>
+                                <option value="Chattogram">Chattogram</option>
+                                <option value="Sylhet">Sylhet</option>
+                                <option value="Rajshahi">Rajshahi</option>
+                                <option value="Khulna">Khulna</option>
+                            </select>
+                        </div>
+                        <p class="result-count" id="userCount"></p>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>Every User on the Platform</caption>
+                                <thead>
+                                    <tr>
+                                        <th>User ID</th>
+                                        <th>Name</th>
+                                        <th>Username</th>
+                                        <th>Role</th>
+                                        <th>City</th>
+                                        <th>Registered</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="userTableBody"></tbody>
+                            </table>
+                        </div>
+                        <p class="hint">You cannot delete the admin account you are logged in with.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Account Totals</h3>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>User Counts by Role and Status</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Role</th>
+                                        <th>Active</th>
+                                        <th>Pending</th>
+                                        <th>Suspended</th>
+                                        <th>Deactivated</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="totalsBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- UNIQUE FEATURE 1: USER ACTIVITY AUDIT LOG -->
+        <section id="auditSection" class="page-section">
+            <h2 class="page-title">User Activity Audit Log</h2>
+            <p class="page-subtitle">Every important action on the platform is recorded here with a time stamp.</p>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3>Filter the Log</h3>
+                        <form id="logForm" method="post" onsubmit="return false">
+                            <fieldset>
+                                <legend>Audit Log Filters</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="logUser">User, Action or Detail:</label></td>
+                                        <td><input type="text" id="logUser" name="logUser" placeholder="Search the whole log..." onkeyup="renderLog()"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="logRoleFilter">User Role:</label></td>
+                                        <td>
+                                            <select id="logRoleFilter" name="logRoleFilter" onchange="renderLog()">
+                                                <option value="All">All roles</option>
+                                                <option value="Customer">Customer</option>
+                                                <option value="Vendor">Vendor</option>
+                                                <option value="Employee">Employee</option>
+                                                <option value="Admin">Admin</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="logFrom">From Date:</label></td>
+                                        <td><input type="date" id="logFrom" name="logFrom" onchange="renderLog()"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="logTo">To Date:</label></td>
+                                        <td><input type="date" id="logTo" name="logTo" onchange="renderLog()"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Severity:</td>
+                                        <td>
+                                            <input type="radio" id="sevAll" name="logSeverity" value="All" checked onchange="renderLog()">
+                                            <label for="sevAll" class="option-label">All</label>
+                                            <input type="radio" id="sevNormal" name="logSeverity" value="Normal" onchange="renderLog()">
+                                            <label for="sevNormal" class="option-label">Normal Only</label>
+                                            <input type="radio" id="sevCritical" name="logSeverity" value="Critical" onchange="renderLog()">
+                                            <label for="sevCritical" class="option-label">Critical Only</label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <button type="button" class="btn btn-danger" onclick="clearLog()">Clear the Whole Log</button>
+                        </form>
+                        <p class="hint">Clearing the log is itself written into the log as a critical action.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Log Summary</h3>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>How Many Entries of Each Type</caption>
+                                <thead>
+                                    <tr><th>Action Type</th><th>Count</th><th>Critical</th></tr>
+                                </thead>
+                                <tbody id="logSummaryBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-wide">
+                    <div class="card">
+                        <h3>Activity Records</h3>
+                        <p class="result-count" id="logCount"></p>
+                        <div class="notice-board" id="logBoard"></div>
+                        <p class="hint">Critical entries have a red bar. The board scrolls on its own
+                            so the page stays a sensible length.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- UNIQUE FEATURE 2: PLATFORM ANALYTICS -->
+        <section id="analyticsSection" class="page-section">
+            <h2 class="page-title">Platform Analytics</h2>
+            <p class="page-subtitle">Growth, sales, brands and vendor performance for the whole marketplace.</p>
+
+            <div id="analyticsMessage" class="message"></div>
+
+            <div class="card">
+                <h3>Monthly Sales Volume for 2026</h3>
+                <div id="monthChart"></div>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <caption>Cars Sold Across Every Vendor</caption>
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Cars Sold</th>
+                                <th>Revenue (BDT)</th>
+                                <th>Commission Earned (BDT)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="analyticsSalesBody"></tbody>
+                    </table>
+                </div>
+                <p class="hint">DriveHub keeps 1 percent of every sale. The commission column is worked out,
+                    not typed in, so changing the rule changes every figure.</p>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3>Most Popular Brands</h3>
+                        <div id="brandChart"></div>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>Listings and Sales by Brand</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Brand</th>
+                                        <th>Active Listings</th>
+                                        <th>Cars Sold</th>
+                                        <th>Share of Sales</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="brandBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <h3>Vendor Performance Ranking</h3>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>Vendors and the Stock They Have Live</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Vendor</th>
+                                        <th>Live Listings</th>
+                                        <th>Cars Sold</th>
+                                        <th>Stock Value (BDT)</th>
+                                        <th>Rating</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="rankingBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Generate a Custom Report</h3>
+                        <form id="analyticsForm" method="post" onsubmit="return generateAnalyticsReport()">
+                            <fieldset>
+                                <legend>Analytics Options</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="anFrom">From Date:</label></td>
+                                        <td><input type="date" id="anFrom" name="anFrom"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="anTo">To Date:</label></td>
+                                        <td><input type="date" id="anTo" name="anTo"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="anMetric">Primary Metric:</label></td>
+                                        <td>
+                                            <select id="anMetric" name="anMetric">
+                                                <option value="">-- Select Metric --</option>
+                                                <option value="Sales Volume">Sales Volume</option>
+                                                <option value="Revenue">Revenue</option>
+                                                <option value="User Growth">User Growth</option>
+                                                <option value="Traffic">Traffic</option>
+                                            </select>
+                                            <span class="error" id="anMetricError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Group By:</td>
+                                        <td>
+                                            <input type="radio" id="grpDay" name="anGroup" value="Day">
+                                            <label for="grpDay" class="option-label">Day</label>
+                                            <input type="radio" id="grpWeek" name="anGroup" value="Week">
+                                            <label for="grpWeek" class="option-label">Week</label>
+                                            <input type="radio" id="grpMonth" name="anGroup" value="Month" checked>
+                                            <label for="grpMonth" class="option-label">Month</label>
+                                            <span class="error" id="anGroupError"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="submit" class="btn" value="Generate Report">
+                            <input type="reset" class="btn btn-secondary" value="Clear">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- UNIQUE FEATURE 3: EXPORT DATA TO CSV -->
+        <section id="exportSection" class="page-section">
+            <h2 class="page-title">Export Data to CSV</h2>
+            <p class="page-subtitle">Download platform data for accounting, reporting or backup.
+                Every export is recorded in the audit log as a critical action.</p>
+
+            <div id="exportMessage" class="message"></div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3>Export Settings</h3>
+                        <form id="exportForm" method="post" onsubmit="return generateCsv()">
+
+                            <fieldset>
+                                <legend>Choose the Data Set</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="expTable">Data Set:</label></td>
+                                        <td>
+                                            <select id="expTable" name="expTable">
+                                                <option value="">-- Select Data Set --</option>
+                                                <option value="Users">User Accounts</option>
+                                                <option value="Listings">Car Listings</option>
+                                                <option value="Inquiries">Customer Inquiries</option>
+                                                <option value="TestDrives">Test Drive Requests</option>
+                                                <option value="Moderation">Moderation Records</option>
+                                                <option value="AuditLog">Audit Log</option>
+                                            </select>
+                                            <span class="error" id="expTableError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="expFrom">From Date:</label></td>
+                                        <td><input type="date" id="expFrom" name="expFrom"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="expTo">To Date:</label></td>
+                                        <td><input type="date" id="expTo" name="expTo"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="expStatus">Filter by Status:</label></td>
+                                        <td>
+                                            <select id="expStatus" name="expStatus">
+                                                <option value="">-- All Records --</option>
+                                                <option value="Active">Active Only</option>
+                                                <option value="Inactive">Inactive Only</option>
+                                                <option value="Completed">Completed Only</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Choose the Columns</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td>Columns to Include:</td>
+                                        <td>
+                                            <input type="checkbox" id="colId" name="expColumns" value="ID" checked>
+                                            <label for="colId" class="option-label">Record ID</label>
+                                            <input type="checkbox" id="colName" name="expColumns" value="Name" checked>
+                                            <label for="colName" class="option-label">Name</label>
+                                            <input type="checkbox" id="colEmail" name="expColumns" value="Email" checked>
+                                            <label for="colEmail" class="option-label">Email</label>
+                                            <input type="checkbox" id="colPhone" name="expColumns" value="Phone">
+                                            <label for="colPhone" class="option-label">Phone</label>
+                                            <input type="checkbox" id="colCity" name="expColumns" value="City">
+                                            <label for="colCity" class="option-label">City</label>
+                                            <input type="checkbox" id="colDate" name="expColumns" value="Date" checked>
+                                            <label for="colDate" class="option-label">Date Created</label>
+                                            <input type="checkbox" id="colStatus" name="expColumns" value="Status" checked>
+                                            <label for="colStatus" class="option-label">Status</label>
+                                            <span class="error" id="expColumnsError"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>File Options</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="expFileName">File Name:</label></td>
+                                        <td>
+                                            <input type="text" id="expFileName" name="expFileName" placeholder="For example drivehub-users-october">
+                                            <span class="error" id="expFileNameError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Separator:</td>
+                                        <td>
+                                            <input type="radio" id="sepComma" name="expSeparator" value="Comma" checked>
+                                            <label for="sepComma" class="option-label">Comma</label>
+                                            <input type="radio" id="sepSemicolon" name="expSeparator" value="Semicolon">
+                                            <label for="sepSemicolon" class="option-label">Semicolon</label>
+                                            <input type="radio" id="sepTab" name="expSeparator" value="Tab">
+                                            <label for="sepTab" class="option-label">Tab</label>
+                                            <span class="error" id="expSeparatorError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Extra Options:</td>
+                                        <td>
+                                            <input type="checkbox" id="optHeader" name="expOptions" value="Header" checked>
+                                            <label for="optHeader" class="option-label">Include a Header Row</label>
+                                            <input type="checkbox" id="optMask" name="expOptions" value="Mask" checked>
+                                            <label for="optMask" class="option-label">Mask Personal Data</label>
+                                            <input type="checkbox" id="optEmailCopy" name="expOptions" value="Email Copy">
+                                            <label for="optEmailCopy" class="option-label">Email a Copy to Me</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="expReason">Reason for Export:</label></td>
+                                        <td>
+                                            <textarea id="expReason" name="expReason" rows="4" cols="40" placeholder="Required for the audit log"></textarea>
+                                            <span class="error" id="expReasonError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input type="checkbox" id="expConfirm" name="expConfirm" value="Confirmed">
+                                            <label for="expConfirm" class="option-label">I confirm this export follows the data policy</label>
+                                            <span class="error" id="expConfirmError"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+
+                            <input type="submit" class="btn" value="Generate CSV File">
+                            <input type="reset" class="btn btn-secondary" value="Clear">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card" id="csvPreview" style="display:none">
+                        <h3>CSV Preview</h3>
+                        <p><strong id="csvName"></strong></p>
+                        <p class="result-count" id="csvSummary"></p>
+                        <div class="result-box">
+                            <div id="csvText" class="csv-text"></div>
+                        </div>
+                        <p class="hint">Masking replaces everything after the first three characters
+                            of an email address or a phone number with asterisks.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Available Data Sets</h3>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>What You Can Export Right Now</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Data Set</th>
+                                        <th>Records</th>
+                                        <th>Approximate File Size</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dataSetBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Recent Export History</h3>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>Exports Performed by the Admin Team</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Export ID</th>
+                                        <th>Data Set</th>
+                                        <th>Records</th>
+                                        <th>Date</th>
+                                        <th>Reason</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="exportHistoryBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <h3>DriveHub Vehicle Marketplace Ltd.</h3>
+
+        <p>Level 5, Tech Tower, Kawran Bazar, Dhaka 1215, Bangladesh<br>
+            Phone: +880 1700 000000 | Hotline: 16263<br>
+            Email: support@drivehub.com.bd | Sales: sales@drivehub.com.bd<br>
+            Office Hours: Saturday to Thursday, 9:00 AM to 6:00 PM<br>
+            Trade Licence: TRAD-DH-2018-99120 | TIN: 441920883715 | BIN: 004412098-0203
+        </p>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="customer.html">Customer Dashboard</a>
+            <a href="vendor.html">Vendor Dashboard</a>
+            <a href="employee.html">Employee Dashboard</a>
+            <a href="admin.html">Admin Dashboard</a>
+        </div>
+
+        <p class="footer-social">
+            <a href="https://facebook.com/drivehubbd" target="_blank"><img src="image/facebook.png" alt="Facebook" width="30" height="30"></a>
+            <a href="https://github.com/drivehubbd" target="_blank"><img src="image/github.png" alt="GitHub" width="30" height="30"></a>
+            <a href="https://drivehub.com.bd" target="_blank"><img src="image/website.png" alt="Website" width="30" height="30"></a>
+        </p>
+
+        <div class="footer-bottom">
+            Copyright DriveHub Vehicle Marketplace Ltd. 2026. All rights reserved.<br>
+            CSC 3215 Web Technologies Project, American International University-Bangladesh.
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

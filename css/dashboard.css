@@ -1,0 +1,181 @@
+/* DriveHub Vehicle Marketplace Management System
+   File 5 of 6: dashboard.css
+
+   The widgets inside the four dashboards: statistic tiles, bar charts,
+   progress meters, the scrolling activity board, result boxes,
+   reminder cards and the photos. */
+
+
+/* STATISTIC TILES
+   CSS Grid fits as many tiles on a row as the screen allows */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background-color: #FFFFFF;
+  border: 1px solid #ECD8E4;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 5px 14px rgba(63, 13, 44, 0.06);
+  border-top: 4px solid #6B2150;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(63, 13, 44, 0.14);
+}
+
+.stat-card .stat-number {
+  font-size: 2.1rem;
+  font-weight: bold;
+  color: #3F0D2C;
+  line-height: 1.1;
+}
+
+.stat-card .stat-label {
+  color: #7A7075;
+  font-size: 0.86rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+
+/* HORIZONTAL BAR CHART
+   JavaScript sets each bar's width as a percentage with element.style */
+.bar-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 11px;
+}
+
+.bar-label {
+  width: 155px;
+  font-size: 0.88rem;
+  color: #574E53;
+}
+
+.bar-track {
+  flex: 1;
+  background-color: #F4E7EF;
+  border-radius: 12px;
+  height: 20px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  width: 0;
+  background-color: #8E4472;
+  border-radius: 12px;
+  transition: width 0.6s;
+}
+
+.bar-value {
+  width: 58px;
+  text-align: right;
+  font-weight: bold;
+  font-size: 0.88rem;
+  color: #3F0D2C;
+}
+
+
+/* PROGRESS METER, used by the listing expiry cards */
+.progress-track {
+  background-color: #F4E7EF;
+  border-radius: 14px;
+  height: 26px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background-color: #6B2150;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 0.82rem;
+  text-align: center;
+  line-height: 26px;
+  transition: width 0.6s;
+}
+
+
+/* THE ACTIVITY BOARD on the admin audit log
+   A fixed height with its own scroll bar
+   (Lecture 02, Exercise 4: overflow-y auto with a coloured left border) */
+.notice-board {
+  height: 390px;
+  overflow-y: auto;
+  border: 1px solid #ECD8E4;
+  border-radius: 12px;
+  padding: 12px;
+  background-color: #FCF9FB;
+}
+
+.log-item {
+  background-color: #FFFFFF;
+  border: 1px solid #F1E2EA;
+  border-left: 5px solid #6B2150;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 9px;
+  box-shadow: 0 1px 4px rgba(63, 13, 44, 0.05);
+}
+
+.log-item .log-time {
+  font-size: 0.78rem;
+  color: #9A9096;
+}
+
+
+/* RESULT BOX, used by the calculators and the estimators */
+.result-box {
+  background-color: #F9F2F6;
+  border: 1px solid #E3CBD9;
+  border-left: 5px solid #C9A227;
+  border-radius: 12px;
+  padding: 18px;
+  margin-top: 14px;
+}
+
+.result-box .big {
+  font-size: 1.9rem;
+  font-weight: bold;
+  color: #6B2150;
+  display: inline-block;
+}
+
+
+/* REMINDER CARDS on the vendor expiry section */
+.reminder {
+  border-radius: 12px;
+  padding: 15px 18px;
+  margin-bottom: 13px;
+  border: 1px solid #DCEBDF;
+  border-left: 6px solid #2E7D4F;
+  background-color: #F3F9F5;
+}
+
+.reminder h4 {
+  margin-bottom: 2px;
+}
+
+
+/* PHOTOS */
+.car-photo {
+  border: 1px solid #E3CBD9;
+  border-radius: 10px;
+}
+
+.profile-photo {
+  border-radius: 12px;
+  border: 3px solid #C9A227;
+  margin-bottom: 12px;
+}
