@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create a DriveHub Vehicle Marketplace account">
+    <title>Register | DriveHub Vehicle Marketplace</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+
+    <!-- HEADER: logo on the left, account buttons on the right -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="image/logo.png" alt="DriveHub Logo" width="40" height="40">
+            Drive<span>Hub</span>
+        </a>
+        <div class="user-info">
+            <a href="login.html" class="btn btn-small btn-light">Login</a>
+            <a href="register.html" class="btn btn-small">Register</a>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="topnav">
+        <a href="index.html">Home</a>
+        <a href="index.html#catalog">Browse Cars</a>
+        <a href="index.html#who">Who It Is For</a>
+        <a href="index.html#how">How It Works</a>
+        <a href="index.html#vendors">Our Vendors</a>
+        <a href="index.html#contact">Contact Us</a>
+    </nav>
+
+    <main class="container">
+        <div class="auth-box wide">
+            <div class="card">
+                <h2 class="page-title">Create your account</h2>
+                <p class="page-subtitle">One registration page for customers, vendors and employees.
+                    Choose who you are and the form will ask only for what we need.
+                    Admin accounts are created by the system owner and cannot be registered.</p>
+
+                <div id="registerMessage" class="message"></div>
+
+                <form id="registerForm" method="post" onsubmit="return validateRegister()">
+
+                    <!-- STEP 1: TYPE OF ACCOUNT
+                         Radio buttons share one name, so only one type can be picked.
+                         onchange calls showTypeFields(), which shows the matching fieldset. -->
+                    <fieldset>
+                        <legend>Step 1 &middot; I want to register as</legend>
+                        <div class="type-grid">
+                            <label class="type-option" id="typeCardCustomer" for="roleCustomer">
+                                <input type="radio" id="roleCustomer" name="userRole" value="Customer" onchange="showTypeFields()">
+                                <strong>Customer</strong>
+                                <span class="hint">Browse, compare, inquire and buy a car.</span>
+                            </label>
+                            <label class="type-option" id="typeCardVendor" for="roleVendor">
+                                <input type="radio" id="roleVendor" name="userRole" value="Vendor" onchange="showTypeFields()">
+                                <strong>Vendor</strong>
+                                <span class="hint">List cars for sale. Needs admin approval.</span>
+                            </label>
+                            <label class="type-option" id="typeCardEmployee" for="roleEmployee">
+                                <input type="radio" id="roleEmployee" name="userRole" value="Employee" onchange="showTypeFields()">
+                                <strong>Employee</strong>
+                                <span class="hint">Moderate listings and handle inquiries. Needs admin approval.</span>
+                            </label>
+                        </div>
+                        <span class="error" id="userRoleError"></span>
+                    </fieldset>
+
+                    <!-- STEP 2: DETAILS EVERYONE GIVES -->
+                    <fieldset id="commonFields" style="display:none">
+                        <legend>Step 2 &middot; Personal Information</legend>
+                        <table class="form-table">
+                            <tr>
+                                <td><label for="fullName">Full Name:</label></td>
+                                <td>
+                                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name">
+                                    <span class="error" id="fullNameError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="userEmail">Email:</label></td>
+                                <td>
+                                    <input type="email" id="userEmail" name="userEmail" placeholder="Enter your email">
+                                    <span class="error" id="userEmailError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="userPhone">Phone Number:</label></td>
+                                <td>
+                                    <input type="text" id="userPhone" name="userPhone" placeholder="11 digits starting with 01">
+                                    <span class="error" id="userPhoneError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="userNid">NID Number:</label></td>
+                                <td>
+                                    <input type="number" id="userNid" name="userNid" placeholder="Enter your NID number">
+                                    <span class="error" id="userNidError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="userDob">Date of Birth:</label></td>
+                                <td>
+                                    <input type="date" id="userDob" name="userDob">
+                                    <span class="error" id="userDobError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Gender:</td>
+                                <td>
+                                    <input type="radio" id="genderMale" name="gender" value="Male">
+                                    <label for="genderMale" class="option-label">Male</label>
+                                    <input type="radio" id="genderFemale" name="gender" value="Female">
+                                    <label for="genderFemale" class="option-label">Female</label>
+                                    <input type="radio" id="genderOther" name="gender" value="Other">
+                                    <label for="genderOther" class="option-label">Other</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="userCity">City:</label></td>
+                                <td>
+                                    <select id="userCity" name="userCity">
+                                        <option value="">-- Select City --</option>
+                                        <option value="Dhaka">Dhaka</option>
+                                        <option value="Chattogram">Chattogram</option>
+                                        <option value="Sylhet">Sylhet</option>
+                                        <option value="Rajshahi">Rajshahi</option>
+                                        <option value="Khulna">Khulna</option>
+                                    </select>
+                                    <span class="error" id="userCityError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="userAddress">Full Address:</label></td>
+                                <td><textarea id="userAddress" name="userAddress" rows="4" cols="30" placeholder="Enter your full address"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><label for="userPhoto">Profile Photo:</label></td>
+                                <td><input type="file" id="userPhoto" name="userPhoto"></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+
+                    <!-- CUSTOMER ONLY -->
+                    <fieldset class="type-fields" id="customerFields">
+                        <legend>Customer Preferences</legend>
+                        <table class="form-table">
+                            <tr>
+                                <td><label for="budgetRange">Budget Range:</label></td>
+                                <td>
+                                    <select id="budgetRange" name="budgetRange">
+                                        <option value="">-- Select Budget --</option>
+                                        <option value="Under20">Under BDT 20,00,000</option>
+                                        <option value="20to40">BDT 20,00,000 to 40,00,000</option>
+                                        <option value="Above40">Above BDT 40,00,000</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Car Types You Are Looking For:</td>
+                                <td>
+                                    <input type="checkbox" id="wantSedan" name="wantTypes" value="Sedan">
+                                    <label for="wantSedan" class="option-label">Sedan</label>
+                                    <input type="checkbox" id="wantSuv" name="wantTypes" value="SUV">
+                                    <label for="wantSuv" class="option-label">SUV</label>
+                                    <input type="checkbox" id="wantHatch" name="wantTypes" value="Hatchback">
+                                    <label for="wantHatch" class="option-label">Hatchback</label>
+                                    <input type="checkbox" id="wantMicro" name="wantTypes" value="Microbus">
+                                    <label for="wantMicro" class="option-label">Microbus</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="drivingLicence">Driving Licence Number:</label></td>
+                                <td><input type="text" id="drivingLicence" name="drivingLicence" placeholder="Needed to book a test drive"></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+
+                    <!-- VENDOR ONLY -->
+                    <fieldset class="type-fields" id="vendorFields">
+                        <legend>Business Information</legend>
+                        <table class="form-table">
+                            <tr>
+                                <td><label for="shopName">Business Name:</label></td>
+                                <td>
+                                    <input type="text" id="shopName" name="shopName" placeholder="Enter your showroom name">
+                                    <span class="error" id="shopNameError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="tradeLicence">Trade Licence Number:</label></td>
+                                <td>
+                                    <input type="text" id="tradeLicence" name="tradeLicence" placeholder="Enter the trade licence number">
+                                    <span class="error" id="tradeLicenceError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="shopAddress">Showroom Address:</label></td>
+                                <td><textarea id="shopAddress" name="shopAddress" rows="4" cols="30" placeholder="Enter the showroom address"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><label for="licenceDoc">Trade Licence Document:</label></td>
+                                <td><input type="file" id="licenceDoc" name="licenceDoc"></td>
+                            </tr>
+                            <tr>
+                                <td>Car Categories You Sell:</td>
+                                <td>
+                                    <input type="checkbox" id="catSedan" name="categories" value="Sedan">
+                                    <label for="catSedan" class="option-label">Sedan</label>
+                                    <input type="checkbox" id="catSuv" name="categories" value="SUV">
+                                    <label for="catSuv" class="option-label">SUV</label>
+                                    <input type="checkbox" id="catHatch" name="categories" value="Hatchback">
+                                    <label for="catHatch" class="option-label">Hatchback</label>
+                                    <input type="checkbox" id="catMicro" name="categories" value="Microbus">
+                                    <label for="catMicro" class="option-label">Microbus</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+
+                    <!-- EMPLOYEE ONLY -->
+                    <fieldset class="type-fields" id="employeeFields">
+                        <legend>Employment Information</legend>
+                        <table class="form-table">
+                            <tr>
+                                <td><label for="empDept">Department:</label></td>
+                                <td>
+                                    <select id="empDept" name="empDept">
+                                        <option value="">-- Select Department --</option>
+                                        <option value="Customer Operations">Customer Operations</option>
+                                        <option value="Listing Moderation">Listing Moderation</option>
+                                        <option value="Sales Support">Sales Support</option>
+                                        <option value="Technical Support">Technical Support</option>
+                                    </select>
+                                    <span class="error" id="empDeptError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="empBranch">Branch:</label></td>
+                                <td>
+                                    <select id="empBranch" name="empBranch">
+                                        <option value="">-- Select Branch --</option>
+                                        <option value="Dhaka">Dhaka Head Office</option>
+                                        <option value="Chattogram">Chattogram Branch</option>
+                                        <option value="Sylhet">Sylhet Branch</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="empStaffId">Staff Reference Number:</label></td>
+                                <td>
+                                    <input type="text" id="empStaffId" name="empStaffId" placeholder="Given to you by the admin">
+                                    <span class="error" id="empStaffIdError"></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+
+                    <!-- STEP 3: LOGIN CREDENTIALS -->
+                    <fieldset id="loginFields" style="display:none">
+                        <legend>Step 3 &middot; Login Credentials</legend>
+                        <table class="form-table">
+                            <tr>
+                                <td><label for="userName">Username:</label></td>
+                                <td>
+                                    <input type="text" id="userName" name="userName" placeholder="Choose a username">
+                                    <span class="error" id="userNameError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="password">Password:</label></td>
+                                <td>
+                                    <input type="password" id="password" name="password" placeholder="At least 8 characters" onkeyup="checkStrength()">
+                                    <span class="hint" id="strengthText"></span>
+                                    <span class="error" id="passwordError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="confirmPassword">Confirm Password:</label></td>
+                                <td>
+                                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password">
+                                    <span class="error" id="confirmPasswordError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="securityQuestion">Security Question:</label></td>
+                                <td>
+                                    <select id="securityQuestion" name="securityQuestion">
+                                        <option value="">-- Select Question --</option>
+                                        <option value="PetName">What is your first pet name?</option>
+                                        <option value="School">What was your primary school name?</option>
+                                        <option value="City">In which city were you born?</option>
+                                        <option value="Teacher">Who was your favourite teacher?</option>
+                                    </select>
+                                    <span class="error" id="securityQuestionError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="securityAnswer">Your Answer:</label></td>
+                                <td>
+                                    <input type="text" id="securityAnswer" name="securityAnswer" placeholder="Enter your answer">
+                                    <span class="error" id="securityAnswerError"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="checkbox" id="agreeTerms" name="agreeTerms" value="Agreed">
+                                    <label for="agreeTerms" class="option-label">I agree to the Terms and Conditions</label>
+                                    <span class="error" id="agreeTermsError"></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+
+                    <div id="registerButtons" style="display:none">
+                        <input type="submit" class="btn btn-block" value="Register">
+                        <input type="reset" class="btn btn-secondary btn-block" value="Clear the Form" onclick="showTypeFields()">
+                    </div>
+
+                </form>
+
+                <p class="auth-switch">Already have an account? <a href="login.html">Login here</a></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <h3>DriveHub Vehicle Marketplace Ltd.</h3>
+
+        <p>Level 5, Tech Tower, Kawran Bazar, Dhaka 1215, Bangladesh<br>
+            Phone: +880 1700 000000 | Hotline: 16263<br>
+            Email: support@drivehub.com.bd | Sales: sales@drivehub.com.bd<br>
+            Office Hours: Saturday to Thursday, 9:00 AM to 6:00 PM<br>
+            Trade Licence: TRAD-DH-2018-99120 | TIN: 441920883715 | BIN: 004412098-0203
+        </p>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="customer.html">Customer Dashboard</a>
+            <a href="vendor.html">Vendor Dashboard</a>
+            <a href="employee.html">Employee Dashboard</a>
+            <a href="admin.html">Admin Dashboard</a>
+        </div>
+
+        <p class="footer-social">
+            <a href="https://facebook.com/drivehubbd" target="_blank"><img src="image/facebook.png" alt="Facebook" width="30" height="30"></a>
+            <a href="https://github.com/drivehubbd" target="_blank"><img src="image/github.png" alt="GitHub" width="30" height="30"></a>
+            <a href="https://drivehub.com.bd" target="_blank"><img src="image/website.png" alt="Website" width="30" height="30"></a>
+        </p>
+
+        <div class="footer-bottom">
+            Copyright DriveHub Vehicle Marketplace Ltd. 2026. All rights reserved.<br>
+            CSC 3215 Web Technologies Project, American International University-Bangladesh.
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/register.js"></script>
+</body>
+
+</html>
