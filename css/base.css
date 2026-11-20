@@ -1,0 +1,95 @@
+/* DriveHub Vehicle Marketplace Management System
+   File 1 of 6: base.css
+
+   Reset, page defaults, typography and links.
+   This file is linked FIRST on every page, because the rules here are the
+   starting point that the other five style sheets build on.
+   (Lecture 02: "Inserting CSS, External CSS is recommended")
+
+   Colour palette, Paletton plum family with a gold accent:
+     #3F0D2C  darkest plum   header and footer
+     #6B2150  dark plum      navigation, buttons, table headers
+     #8E4472  mid plum       hover state, captions
+     #B5799C  light plum     input borders
+     #D9AEC6  pale plum      card borders and dividers
+     #F4E7EF  very pale plum tinted panels
+     #FAF6F8  page tint      page background
+     #C9A227  gold accent    underlines and highlights
+     #2E2A2C  body text */
+
+
+/* Universal selector reset (Lecture 02: "* { margin: 0; }") */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;  /* ends with a generic family */
+  font-size: 16px;
+  line-height: 1.65;
+  color: #2E2A2C;
+  background-color: #FAF6F8;
+}
+
+
+/* Headings. Grouping selector: one rule for all six at once */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.3;
+  color: #3F0D2C;
+  letter-spacing: -0.2px;
+}
+
+h1 { font-size: 2.1rem; }
+h2 { font-size: 1.55rem; }
+h3 { font-size: 1.2rem; }
+h4 { font-size: 1.05rem; }
+
+
+/* Links. The transition makes the colour fade instead of jumping */
+a {
+  color: #6B2150;
+  transition: color 0.25s;
+}
+
+a:hover {
+  color: #8E4472;
+}
+
+/* :focus keeps the current link visible for anyone using the keyboard */
+a:focus {
+  outline: 2px solid #C9A227;
+}
+
+
+/* Pictures never grow wider than the box they sit in.
+   The width and height attributes in the HTML still set the normal size */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* Lists inside cards keep a sensible indent */
+ul {
+  margin-left: 20px;
+}
+
+li {
+  margin-bottom: 4px;
+}
+
+
+/* Small grey helper text, used all over the project */
+.hint {
+  font-size: 0.85rem;
+  color: #7A7075;
+}
+
+/* The CSV preview on the admin page, in a typewriter font */
+.csv-text {
+  font-family: "Courier New", monospace;
+  font-size: 0.84rem;
+  color: #413A3E;
+}
