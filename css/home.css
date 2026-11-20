@@ -1,0 +1,293 @@
+/* DriveHub Vehicle Marketplace Management System
+   File 6 of 6: home.css
+
+   The three public pages: the home page hero and its sections,
+   the login box and the registration type picker. */
+
+
+/* THE HERO at the top of the home page */
+.hero {
+  background-color: #3F0D2C;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 76px 20px 64px 20px;
+  border-bottom: 4px solid #C9A227;
+}
+
+/* The heading, with a gold underline.
+   display: inline-block keeps the border as short as the words itself */
+.hero h1 {
+  display: inline-block;
+  color: #FFFFFF;
+  font-size: 2.7rem;
+  letter-spacing: -0.5px;
+  padding-bottom: 14px;
+  border-bottom: 4px solid #C9A227;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.12rem;
+  color: #E3CBD9;
+  max-width: 660px;
+  margin: 0 auto 22px auto;
+}
+
+/* The search box inside the hero */
+.hero-search {
+  max-width: 700px;
+  margin: 26px auto 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  background-color: #FFFFFF;
+  padding: 8px;
+  border-radius: 16px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+}
+
+.hero-search input {
+  flex: 3;
+  min-width: 220px;
+  border: none;
+  padding: 12px 14px;
+  font-size: 1rem;
+}
+
+.hero-search select {
+  flex: 1;
+  min-width: 150px;
+  border: none;
+}
+
+.hero-note {
+  font-size: 0.9rem;
+  color: #D9AEC6;
+  margin-top: 14px;
+}
+
+.hero-link {
+  color: #C9A227;
+}
+
+.hero-link:hover {
+  color: #FFFFFF;
+}
+
+
+/* EVERY SECTION on the home page gets space above and below */
+.home-section {
+  padding: 44px 0 10px 0;
+}
+
+.section-heading {
+  text-align: center;
+  margin: 10px 0 26px 0;
+}
+
+.section-heading h2 {
+  display: inline-block;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #C9A227;
+}
+
+.section-heading p {
+  color: #7A7075;
+  font-weight: normal;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+
+/* THE FOUR POINT STRIP under the hero */
+.feature-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.feature {
+  text-align: center;
+  padding: 22px 16px;
+  background-color: #FFFFFF;
+  border: 1px solid #ECD8E4;
+  border-radius: 14px;
+  transition: transform 0.25s, border-color 0.25s;
+}
+
+.feature:hover {
+  transform: translateY(-4px);
+  border-color: #C9A227;
+}
+
+.feature .feature-icon {
+  display: inline-block;
+  width: 56px;
+  height: 56px;
+  line-height: 56px;
+  border-radius: 50%;
+  background-color: #F4E7EF;
+  border: 2px solid #C9A227;
+  color: #6B2150;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+/* THE FOUR ROLE CARDS */
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.role-card {
+  background-color: #FFFFFF;
+  border: 1px solid #ECD8E4;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 5px 14px rgba(63, 13, 44, 0.07);
+  border-top: 5px solid #6B2150;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.role-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 26px rgba(63, 13, 44, 0.16);
+}
+
+.role-card.admin    { border-top-color: #B3261E; }
+.role-card.employee { border-top-color: #1B5FA8; }
+.role-card.vendor   { border-top-color: #C97A1A; }
+.role-card.customer { border-top-color: #2E7D4F; }
+
+.role-card h3 {
+  margin: 10px 0 8px 0;
+}
+
+.role-card ul {
+  margin: 12px 0 0 20px;
+  font-size: 0.91rem;
+}
+
+.role-card .btn {
+  margin-top: 16px;
+}
+
+
+/* HOW IT WORKS, three numbered steps */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.step {
+  background-color: #FFFFFF;
+  border: 1px solid #ECD8E4;
+  border-radius: 14px;
+  padding: 36px 22px 22px 22px;
+  box-shadow: 0 5px 14px rgba(63, 13, 44, 0.07);
+  position: relative;          /* the number is placed inside this box */
+}
+
+.step-number {
+  position: absolute;
+  top: -18px;
+  left: 22px;
+  width: 38px;
+  height: 38px;
+  line-height: 36px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #6B2150;
+  border: 2px solid #C9A227;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+
+/* THE BAND near the bottom of the home page */
+.cta-band {
+  background-color: #6B2150;
+  color: #FFFFFF;
+  border-radius: 16px;
+  border-bottom: 4px solid #C9A227;
+  padding: 36px 20px;
+  text-align: center;
+  margin-top: 34px;
+}
+
+.cta-band h2 {
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+
+.cta-band .btn {
+  margin: 8px 6px 0 6px;
+}
+
+
+/* THE LOGIN AND REGISTER BOXES, centred and never too wide */
+.auth-box {
+  max-width: 540px;
+  margin: 40px auto;
+}
+
+.auth-box.wide {
+  max-width: 860px;
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 18px;
+}
+
+
+/* THE REGISTRATION TYPE PICKER
+   The three fieldsets below it stay hidden until a type is chosen */
+.type-fields {
+  display: none;
+}
+
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.type-option {
+  display: block;
+  border: 2px solid #E3CBD9;
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  font-weight: normal;
+  background-color: #FFFFFF;
+  transition: border-color 0.25s, background-color 0.25s, transform 0.2s;
+}
+
+.type-option:hover {
+  border-color: #8E4472;
+  transform: translateY(-3px);
+}
+
+.type-option strong {
+  font-size: 1.05rem;
+  color: #3F0D2C;
+  display: block;
+  margin-top: 6px;
+}
+
+.type-option .hint {
+  display: block;
+  margin-top: 5px;
+}
+
+/* JavaScript adds "selected" to the card the user picked */
+.type-option.selected {
+  border-color: #C9A227;
+  background-color: #F4E7EF;
+}
