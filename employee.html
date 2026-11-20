@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Employee dashboard of the DriveHub Vehicle Marketplace">
+    <title>Employee Dashboard | DriveHub Vehicle Marketplace</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="image/logo.png" alt="DriveHub Logo" width="40" height="40">
+            Drive<span>Hub</span>
+        </a>
+        <div class="user-info">
+            <span class="badge employee">Employee</span>
+            <span>Welcome, Shafayat Jamil</span>
+            <span class="hint">EMP-104</span>
+            <a href="login.html" class="btn btn-small btn-light">Logout</a>
+        </div>
+    </header>
+
+    <!-- THE WORKING AREA: side menu on the left, the content on the right -->
+    <div class="shell">
+
+    <!-- SIDE MENU: each button shows one section -->
+    <nav class="topnav">
+        <button type="button" id="nav-overviewSection" onclick="showSection('overviewSection')">Overview</button>
+        <button type="button" id="nav-moderationSection" onclick="showSection('moderationSection')">Moderation Records</button>
+        <button type="button" id="nav-calendarSection" onclick="showSection('calendarSection')">Test Drive Calendar</button>
+        <button type="button" id="nav-reportSection" onclick="showSection('reportSection')">Daily Report</button>
+        <button type="button" id="nav-inquiryHandlingSection" onclick="showSection('inquiryHandlingSection')">Inquiry Handling</button>
+    </nav>
+
+    <main class="container">
+
+        <!-- OVERVIEW: today's workload and the profile form -->
+        <section id="overviewSection" class="page-section">
+            <h2 class="page-title">Overview</h2>
+            <p class="page-subtitle">Employee ID: EMP-104 &middot; Customer Operations &middot; Joined 11 January 2024</p>
+
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number" id="statWaiting">0</div><div class="stat-label">Listings to moderate</div></div>
+                <div class="stat-card"><div class="stat-number" id="statOpen">0</div><div class="stat-label">Open inquiries</div></div>
+                <div class="stat-card"><div class="stat-number" id="statDrives">0</div><div class="stat-label">Test drives to decide</div></div>
+                <div class="stat-card"><div class="stat-number" id="statCompleted">0</div><div class="stat-label">Test drives completed</div></div>
+                <div class="stat-card"><div class="stat-number" id="statDecisions">0</div><div class="stat-label">Decisions I have made</div></div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3>My Workload Right Now</h3>
+                        <div id="workloadChart"></div>
+                        <p class="hint">Each bar is drawn by JavaScript from the live arrays,
+                            so it changes as soon as you approve a listing or answer an inquiry.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>What you can do here</h3>
+                        <ul style="margin-left:20px">
+                            <li><strong>Moderation Records</strong> &ndash; approve or reject a listing and keep a record of why.</li>
+                            <li><strong>Test Drive Calendar</strong> &ndash; the whole week laid out by day and time slot.</li>
+                            <li><strong>Daily Report</strong> &ndash; build and print the operations report for your manager.</li>
+                            <li><strong>Inquiry Handling</strong> &ndash; step in when a vendor is slow to answer.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <h3>My Profile</h3>
+                        <img src="image/employee-photo.png" alt="Employee Profile Photo" width="150" height="150" class="profile-photo">
+
+                        <div id="profileMessage" class="message"></div>
+
+                        <form id="profileForm" method="post" onsubmit="return saveProfile()">
+                            <fieldset>
+                                <legend>Update My Profile</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="empName">Full Name:</label></td>
+                                        <td>
+                                            <input type="text" id="empName" name="empName" value="Shafayat Jamil" placeholder="Enter your full name">
+                                            <span class="error" id="empNameError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="empEmail">Work Email:</label></td>
+                                        <td>
+                                            <input type="email" id="empEmail" name="empEmail" value="shafayat.jamil@drivehub.com.bd" placeholder="Enter your work email">
+                                            <span class="error" id="empEmailError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="empPhone">Phone Number:</label></td>
+                                        <td>
+                                            <input type="text" id="empPhone" name="empPhone" value="01766554433" placeholder="11 digits starting with 01">
+                                            <span class="error" id="empPhoneError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="empDept">Department:</label></td>
+                                        <td>
+                                            <select id="empDept" name="empDept">
+                                                <option value="Customer Operations" selected>Customer Operations</option>
+                                                <option value="Listing Moderation">Listing Moderation</option>
+                                                <option value="Sales Support">Sales Support</option>
+                                                <option value="Technical Support">Technical Support</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shift:</td>
+                                        <td>
+                                            <input type="radio" id="shiftMorning" name="empShift" value="Morning" checked>
+                                            <label for="shiftMorning" class="option-label">Morning, 9 AM to 5 PM</label>
+                                            <input type="radio" id="shiftEvening" name="empShift" value="Evening">
+                                            <label for="shiftEvening" class="option-label">Evening, 1 PM to 9 PM</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="empPassword">New Password:</label></td>
+                                        <td>
+                                            <input type="password" id="empPassword" name="empPassword" placeholder="Leave blank to keep the current password">
+                                            <span class="error" id="empPasswordError"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="submit" class="btn" value="Save Profile">
+                            <input type="reset" class="btn btn-secondary" value="Undo Changes">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- MODERATION RECORDS: Create, Read, Update, Delete and Search -->
+        <section id="moderationSection" class="page-section">
+            <h2 class="page-title">Moderation Records</h2>
+            <p class="page-subtitle">Create, view, edit, delete and search the decisions you have made on vendor listings.</p>
+
+            <div id="recordMessage" class="message"></div>
+
+            <div class="card">
+                <h3>Listings Waiting for Review</h3>
+                <p class="result-count" id="queueCount"></p>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <caption>Moderation Queue</caption>
+                        <thead>
+                            <tr>
+                                <th>Listing ID</th>
+                                <th>Car Name</th>
+                                <th>Vendor</th>
+                                <th>Price (BDT)</th>
+                                <th>Submitted</th>
+                                <th>Condition</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="queueBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3 id="recordFormTitle">Create a Moderation Record</h3>
+                        <form id="recordForm" method="post" onsubmit="return saveRecord()">
+                            <fieldset>
+                                <legend>Moderation Decision</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="modListing">Select Listing:</label></td>
+                                        <td>
+                                            <select id="modListing" name="modListing"></select>
+                                            <span class="error" id="modListingError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Checks Completed:</td>
+                                        <td>
+                                            <input type="checkbox" id="chkPhotos" name="modChecks" value="Photos">
+                                            <label for="chkPhotos" class="option-label">Photos Are Clear</label>
+                                            <input type="checkbox" id="chkPrice" name="modChecks" value="Price">
+                                            <label for="chkPrice" class="option-label">Price Is Realistic</label>
+                                            <input type="checkbox" id="chkSpecs" name="modChecks" value="Specs">
+                                            <label for="chkSpecs" class="option-label">Specifications Match the Photos</label>
+                                            <input type="checkbox" id="chkPapers" name="modChecks" value="Papers">
+                                            <label for="chkPapers" class="option-label">Documents Uploaded</label>
+                                            <input type="checkbox" id="chkDuplicate" name="modChecks" value="Not Duplicate">
+                                            <label for="chkDuplicate" class="option-label">Not a Duplicate Listing</label>
+                                            <span class="error" id="modChecksError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Decision:</td>
+                                        <td>
+                                            <input type="radio" id="modApprove" name="modDecision" value="Approve">
+                                            <label for="modApprove" class="option-label">Approve and Publish</label>
+                                            <input type="radio" id="modReject" name="modDecision" value="Reject">
+                                            <label for="modReject" class="option-label">Reject</label>
+                                            <input type="radio" id="modChanges" name="modDecision" value="Request Changes">
+                                            <label for="modChanges" class="option-label">Request Changes</label>
+                                            <span class="error" id="modDecisionError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="modReason">Rejection Reason:</label></td>
+                                        <td>
+                                            <select id="modReason" name="modReason">
+                                                <option value="">-- Select Reason --</option>
+                                                <option value="Photos unclear or missing">Photos unclear or missing</option>
+                                                <option value="Price is unrealistic">Price is unrealistic</option>
+                                                <option value="Documents incomplete">Documents incomplete</option>
+                                                <option value="Duplicate listing">Duplicate listing</option>
+                                                <option value="Description does not match the car">Description does not match the car</option>
+                                            </select>
+                                            <span class="error" id="modReasonError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="modNote">Note to the Vendor:</label></td>
+                                        <td>
+                                            <textarea id="modNote" name="modNote" rows="5" cols="40" placeholder="Explain what the vendor must fix"></textarea>
+                                            <span class="error" id="modNoteError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="modDate">Decision Date:</label></td>
+                                        <td>
+                                            <input type="date" id="modDate" name="modDate">
+                                            <span class="error" id="modDateError"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="submit" id="recordSaveButton" class="btn" value="Create Record">
+                            <button type="button" class="btn btn-secondary" onclick="resetRecordForm()">Cancel</button>
+                        </form>
+                        <p class="hint">Approving a listing publishes it to the public catalogue straight away.
+                            Rejecting one sends it back to the vendor with your reason.</p>
+                    </div>
+                </div>
+
+                <div class="col-wide">
+                    <div class="card">
+                        <h3>My Moderation Records</h3>
+                        <div class="search-bar">
+                            <input type="text" id="modSearch" placeholder="Search by car, listing ID or record ID..." onkeyup="renderRecords()">
+                            <select id="modDecisionFilter" onchange="renderRecords()">
+                                <option value="All">Any decision</option>
+                                <option value="Approved">Approved</option>
+                                <option value="Rejected">Rejected</option>
+                                <option value="Changes Requested">Changes Requested</option>
+                            </select>
+                            <select id="modVendorFilter" onchange="renderRecords()">
+                                <option value="All">All vendors</option>
+                                <option value="VEN-2041">Rahim Motors</option>
+                                <option value="VEN-2055">Karim Auto House</option>
+                                <option value="VEN-2088">Dhaka Motors Ltd</option>
+                                <option value="VEN-2104">Sylhet Car Zone</option>
+                            </select>
+                        </div>
+                        <p class="result-count" id="recordCount"></p>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>Decisions Made by Shafayat Jamil</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Record ID</th>
+                                        <th>Listing ID</th>
+                                        <th>Car</th>
+                                        <th>Vendor</th>
+                                        <th>Decision</th>
+                                        <th>Reason</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recordTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- UNIQUE FEATURE 1: TEST DRIVE CALENDAR VIEW -->
+        <section id="calendarSection" class="page-section">
+            <h2 class="page-title">Test Drive Calendar View</h2>
+            <p class="page-subtitle">Every test drive for the week laid out by day and time slot.</p>
+
+            <div class="card">
+                <h3>Change What the Calendar Shows</h3>
+                <form id="calendarForm" method="post" onsubmit="return false">
+                    <fieldset>
+                        <legend>Calendar Filter</legend>
+                        <table class="form-table">
+                            <tr>
+                                <td><label for="calVendor">Vendor:</label></td>
+                                <td>
+                                    <select id="calVendor" name="calVendor" onchange="renderCalendar()">
+                                        <option value="All">All vendors</option>
+                                        <option value="Rahim Motors">Rahim Motors</option>
+                                        <option value="Karim Auto House">Karim Auto House</option>
+                                        <option value="Dhaka Motors Ltd">Dhaka Motors Ltd</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Show:</td>
+                                <td>
+                                    <input type="checkbox" id="showApproved" name="calShow" value="Approved" checked onchange="renderCalendar()">
+                                    <label for="showApproved" class="option-label">Approved</label>
+                                    <input type="checkbox" id="showPending" name="calShow" value="Pending" checked onchange="renderCalendar()">
+                                    <label for="showPending" class="option-label">Pending</label>
+                                    <input type="checkbox" id="showProgress" name="calShow" value="In Progress" checked onchange="renderCalendar()">
+                                    <label for="showProgress" class="option-label">In Progress</label>
+                                    <input type="checkbox" id="showCompleted" name="calShow" value="Completed" onchange="renderCalendar()">
+                                    <label for="showCompleted" class="option-label">Completed</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </form>
+            </div>
+
+            <div class="card">
+                <h3>Weekly Calendar</h3>
+                <p class="result-count" id="calendarCount"></p>
+                <div class="table-wrapper">
+                    <table class="calendar-table" id="calendarTable"></table>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Full Details of This Week</h3>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <caption>Every Booking in the Week Shown Above</caption>
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Customer</th>
+                                <th>Car</th>
+                                <th>Vendor</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="weekDetailBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- UNIQUE FEATURE 2: PRINTABLE DAILY REPORT -->
+        <section id="reportSection" class="page-section">
+            <h2 class="page-title">Printable Daily Report</h2>
+            <p class="page-subtitle">Build the operations report for your manager, then print it or save it as a PDF.</p>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3>Report Settings</h3>
+                        <form id="reportForm" method="post" onsubmit="return generateReport()">
+                            <fieldset>
+                                <legend>What to Include</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="reportDate">Report Date:</label></td>
+                                        <td>
+                                            <input type="date" id="reportDate" name="reportDate">
+                                            <span class="error" id="reportDateError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="reportType">Report Type:</label></td>
+                                        <td>
+                                            <select id="reportType" name="reportType">
+                                                <option value="">-- Select Type --</option>
+                                                <option value="Daily">Daily</option>
+                                                <option value="Weekly">Weekly</option>
+                                                <option value="Monthly">Monthly</option>
+                                            </select>
+                                            <span class="error" id="reportTypeError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Include Sections:</td>
+                                        <td>
+                                            <input type="checkbox" id="secInquiries" name="reportSections" value="Inquiries" checked>
+                                            <label for="secInquiries" class="option-label">Inquiries</label>
+                                            <input type="checkbox" id="secTestDrives" name="reportSections" value="Test Drives" checked>
+                                            <label for="secTestDrives" class="option-label">Test Drives</label>
+                                            <input type="checkbox" id="secListings" name="reportSections" value="Listings" checked>
+                                            <label for="secListings" class="option-label">Listings</label>
+                                            <input type="checkbox" id="secSales" name="reportSections" value="Sales" checked>
+                                            <label for="secSales" class="option-label">Sales</label>
+                                            <span class="error" id="reportSectionsError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="reportNotes">Notes for the Manager:</label></td>
+                                        <td><textarea id="reportNotes" name="reportNotes" rows="5" cols="40" placeholder="Anything the manager should know">Inquiry INQ-5519 has been waiting two days because the vendor has not replied. The moderation backlog grew because of the Friday holiday. I recommend assigning one more employee to moderation during weekends.</textarea></td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="submit" class="btn" value="Generate Report">
+                            <button type="button" class="btn btn-secondary" onclick="printReport()">Print</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-wide">
+                    <div class="card" id="reportBody" style="display:none"></div>
+                    <div class="card">
+                        <h3>How the report is built</h3>
+                        <p class="hint">Every figure is counted by JavaScript from the live arrays at the moment
+                            you press Generate, so the report always matches what is on the system.
+                            Nothing in it is typed in by hand.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- UNIQUE FEATURE 3: INQUIRY AND TEST DRIVE HANDLING -->
+        <section id="inquiryHandlingSection" class="page-section">
+            <h2 class="page-title">Inquiry and Test Drive Handling</h2>
+            <p class="page-subtitle">Step in when a vendor is slow to answer, and decide on test drive requests.</p>
+
+            <div id="handlingMessage" class="message"></div>
+
+            <div class="row">
+                <div class="col-wide">
+                    <div class="card">
+                        <h3>Open Inquiries Across Every Vendor</h3>
+                        <p class="result-count" id="openInquiryCount"></p>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>Inquiries Needing Attention</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Inquiry ID</th>
+                                        <th>Customer</th>
+                                        <th>Car</th>
+                                        <th>Vendor</th>
+                                        <th>Topic</th>
+                                        <th>Date</th>
+                                        <th>Waiting</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="openInquiryBody"></tbody>
+                            </table>
+                        </div>
+                        <p class="hint">Anything waiting two days or more is shown in red.</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <h3>Respond to an Inquiry</h3>
+                        <form id="replyForm" method="post" onsubmit="return sendReply()">
+                            <fieldset>
+                                <legend>Employee Reply</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="empInquiry">Select Inquiry:</label></td>
+                                        <td>
+                                            <select id="empInquiry" name="empInquiry"></select>
+                                            <span class="error" id="empInquiryError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="empReply">Your Reply:</label></td>
+                                        <td>
+                                            <textarea id="empReply" name="empReply" rows="5" cols="40" placeholder="Write the reply for the customer"></textarea>
+                                            <span class="error" id="empReplyError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Action Taken:</td>
+                                        <td>
+                                            <input type="radio" id="actReply" name="empAction" value="Reply">
+                                            <label for="actReply" class="option-label">Reply to the Customer</label>
+                                            <input type="radio" id="actRemind" name="empAction" value="Remind Vendor">
+                                            <label for="actRemind" class="option-label">Send the Vendor a Reminder</label>
+                                            <input type="radio" id="actEscalate" name="empAction" value="Escalate">
+                                            <label for="actEscalate" class="option-label">Escalate to the Admin</label>
+                                            <span class="error" id="empActionError"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="submit" class="btn" value="Send Reply">
+                            <input type="reset" class="btn btn-secondary" value="Clear">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-wide">
+                    <div class="card">
+                        <h3>Pending Test Drive Requests</h3>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <caption>Requests Waiting for a Decision</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Request ID</th>
+                                        <th>Customer</th>
+                                        <th>Car</th>
+                                        <th>Vendor</th>
+                                        <th>Requested Date</th>
+                                        <th>Time Slot</th>
+                                        <th>Licence Verified</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="pendingDriveBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <h3>Approve or Reject a Test Drive</h3>
+                        <form id="driveForm" method="post" onsubmit="return saveDriveDecision()">
+                            <fieldset>
+                                <legend>Test Drive Decision</legend>
+                                <table class="form-table">
+                                    <tr>
+                                        <td><label for="tdRequest">Select Request:</label></td>
+                                        <td>
+                                            <select id="tdRequest" name="tdRequest"></select>
+                                            <span class="error" id="tdRequestError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Decision:</td>
+                                        <td>
+                                            <input type="radio" id="decApprove" name="tdDecision" value="Approve">
+                                            <label for="decApprove" class="option-label">Approve</label>
+                                            <input type="radio" id="decReject" name="tdDecision" value="Reject">
+                                            <label for="decReject" class="option-label">Reject</label>
+                                            <input type="radio" id="decReschedule" name="tdDecision" value="Reschedule">
+                                            <label for="decReschedule" class="option-label">Reschedule</label>
+                                            <span class="error" id="tdDecisionError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Checks Completed:</td>
+                                        <td>
+                                            <input type="checkbox" id="checkLicence" name="tdChecks" value="Licence">
+                                            <label for="checkLicence" class="option-label">Driving Licence Verified</label>
+                                            <input type="checkbox" id="checkCar" name="tdChecks" value="Car Available">
+                                            <label for="checkCar" class="option-label">Car Available</label>
+                                            <input type="checkbox" id="checkVendor" name="tdChecks" value="Vendor Confirmed">
+                                            <label for="checkVendor" class="option-label">Vendor Confirmed</label>
+                                            <span class="error" id="tdChecksError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="newSlotDate">New Date if Rescheduling:</label></td>
+                                        <td>
+                                            <input type="date" id="newSlotDate" name="newSlotDate">
+                                            <span class="error" id="newSlotDateError"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="tdReason">Reason or Note:</label></td>
+                                        <td>
+                                            <textarea id="tdReason" name="tdReason" rows="4" cols="40" placeholder="Explain the decision to the customer"></textarea>
+                                            <span class="error" id="tdReasonError"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="submit" class="btn btn-success" value="Save Decision">
+                            <input type="reset" class="btn btn-secondary" value="Clear">
+                        </form>
+                        <p class="hint">A test drive can only be approved once the driving licence has been verified.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <h3>DriveHub Vehicle Marketplace Ltd.</h3>
+
+        <p>Level 5, Tech Tower, Kawran Bazar, Dhaka 1215, Bangladesh<br>
+            Phone: +880 1700 000000 | Hotline: 16263<br>
+            Email: support@drivehub.com.bd | Sales: sales@drivehub.com.bd<br>
+            Office Hours: Saturday to Thursday, 9:00 AM to 6:00 PM<br>
+            Trade Licence: TRAD-DH-2018-99120 | TIN: 441920883715 | BIN: 004412098-0203
+        </p>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="customer.html">Customer Dashboard</a>
+            <a href="vendor.html">Vendor Dashboard</a>
+            <a href="employee.html">Employee Dashboard</a>
+            <a href="admin.html">Admin Dashboard</a>
+        </div>
+
+        <p class="footer-social">
+            <a href="https://facebook.com/drivehubbd" target="_blank"><img src="image/facebook.png" alt="Facebook" width="30" height="30"></a>
+            <a href="https://github.com/drivehubbd" target="_blank"><img src="image/github.png" alt="GitHub" width="30" height="30"></a>
+            <a href="https://drivehub.com.bd" target="_blank"><img src="image/website.png" alt="Website" width="30" height="30"></a>
+        </p>
+
+        <div class="footer-bottom">
+            Copyright DriveHub Vehicle Marketplace Ltd. 2026. All rights reserved.<br>
+            CSC 3215 Web Technologies Project, American International University-Bangladesh.
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/employee.js"></script>
+</body>
+
+</html>
